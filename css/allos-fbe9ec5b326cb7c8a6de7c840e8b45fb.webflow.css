@@ -1,6 +1,43 @@
+.w-form-formradioinput--inputType-custom {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-color: #ccc;
+  border-bottom-color: #ccc;
+  border-left-color: #ccc;
+  border-right-color: #ccc;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  width: 12px;
+  height: 12px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.w-form-formradioinput--inputType-custom.w--redirected-focus {
+  box-shadow: 0px 0px 3px 1px #3898ec;
+}
+
+.w-form-formradioinput--inputType-custom.w--redirected-checked {
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+  border-right-width: 4px;
+  border-top-color: #3898ec;
+  border-bottom-color: #3898ec;
+  border-left-color: #3898ec;
+  border-right-color: #3898ec;
+}
+
 body {
+  overflow: hidden;
   background-color: #2c1f2a;
-  font-family: Roboto, sans-serif;
+  font-family: embarcadero-mvb-pro, sans-serif;
   color: #fff;
   font-size: 14px;
   line-height: 20px;
@@ -19,7 +56,7 @@ h1 {
 h2 {
   margin-top: 20px;
   margin-bottom: 30px;
-  font-family: liberation-sans, sans-serif;
+  font-family: embarcadero-mvb-pro, sans-serif;
   font-size: 33px;
   line-height: 40px;
   font-weight: 700;
@@ -37,6 +74,15 @@ ul {
   margin-bottom: 10px;
   padding-left: 40px;
   font-size: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-family: embarcadero-mvb-pro, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .navbar {
@@ -140,7 +186,7 @@ ul {
 }
 
 .h-p-container {
-  width: 480px;
+  width: 510px;
   margin-top: 60px;
 }
 
@@ -233,7 +279,7 @@ ul {
 }
 
 .curly-pentagon-lottie {
-  margin-right: -29px;
+  margin-right: -36px;
 }
 
 .phone {
@@ -343,6 +389,55 @@ ul {
   text-align: center;
 }
 
+.beta-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 140px;
+  padding: 50px 80px 70px;
+  border-radius: 10px;
+  background-image: radial-gradient(circle farthest-corner at 0% 0%, #330031, #000);
+}
+
+.hand-phone {
+  position: absolute;
+  left: auto;
+  top: auto;
+  right: -9%;
+  bottom: -2%;
+  max-width: 57%;
+}
+
+.radio-btn-field {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+
+.radio-btn {
+  border-color: #6d6d6d;
+  border-radius: 20%;
+  background-color: #fff;
+}
+
+.beta-form {
+  max-width: 330px;
+}
+
+.beta-text-field {
+  height: 50px;
+  border-radius: 7px;
+}
+
+.beta-submit-btn {
+  width: 330px;
+  height: 65px;
+  margin-top: 30px;
+  border-radius: 7px;
+  background-color: #3898ec;
+  background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
+  font-size: 18px;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 1280px) {
   .container-hero {
     max-width: 1000px;
@@ -382,6 +477,24 @@ ul {
 
   .signup-container {
     max-width: 1000px;
+  }
+
+  .beta-container {
+    max-width: 1200px;
+    padding-right: 250px;
+  }
+
+  .hand-phone {
+    right: -5%;
+    bottom: -22px;
+  }
+
+  .beta-form {
+    max-width: 430px;
+  }
+
+  .beta-submit-btn {
+    width: 100%;
   }
 }
 
@@ -426,6 +539,17 @@ ul {
 
   .signup-container {
     max-width: 760px;
+  }
+
+  .hand-phone {
+    right: -34%;
+    z-index: 0;
+    max-width: 76%;
+  }
+
+  .form-2 {
+    position: relative;
+    z-index: 2;
   }
 }
 
@@ -557,7 +681,7 @@ ul {
 @media screen and (max-width: 479px) {
   h1 {
     font-size: 24px;
-    line-height: 35px;
+    line-height: 30px;
   }
 
   h2 {
@@ -607,6 +731,24 @@ ul {
   .curly-pentagon-lottie {
     max-width: none;
     margin-right: 0px;
+  }
+
+  .beta-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 9px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .hand-phone {
+    right: -41%;
+    display: none;
+    max-width: 470px;
+  }
+
+  .beta-form {
+    max-width: none;
   }
 }
 
