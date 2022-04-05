@@ -81,8 +81,18 @@
     <div class="signup-container w-container">
       <h2 class="signup-heading">Ready to explore our soundscapes and visuals for your own unique breathing experience?</h2>
       <p>Get notified when Allos launches!</p>
+      <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
       <div class="form-block w-form">
-        <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form"><input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Enter your email" id="email" required=""><input type="submit" value="Notify Me" data-wait="Yay!" class="submit-button w-button"></form>
+        <form id="email-form" name="email-form" data-name="Email Form" method="post" class="form"
+        action="https://app.convertkit.com/forms/2971074/subscriptions"
+        data-sv-form="2971074"
+        data-uid="4320d3d3f8"
+        data-format="inline"
+        data-version="5">
+
+          <input type="email" class="text-field w-input" maxlength="256" name="email_address" data-name="Email" placeholder="Enter your email" id="email" required="">
+          <input data-element="submit" type="submit" value="Notify Me" data-wait="Yay!" class="submit-button w-button">
+        </form>
         <div class="success-message w-form-done">
           <div>Awesome! After we tell our moms you&#x27;ll be the first to hear!</div>
         </div>
