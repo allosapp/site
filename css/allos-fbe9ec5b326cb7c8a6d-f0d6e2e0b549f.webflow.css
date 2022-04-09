@@ -433,6 +433,15 @@ label {
   background-color: #fff;
 }
 
+.radio-btn:active {
+  background-color: #f800a5;
+}
+
+.radio-btn.w--redirected-checked {
+  border-color: #f51ba5;
+  background-color: #e2009e;
+}
+
 .beta-form {
   max-width: 330px;
 }
@@ -1022,6 +1031,10 @@ label {
 
   .signup-heading {
     text-align: center;
+  }
+
+  .radio-btn.w--redirected-checked {
+    border-width: 1px;
   }
 
   .footer-container {
