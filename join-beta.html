@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Tue Apr 05 2022 19:45:30 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Sat Apr 09 2022 00:14:07 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="623cb759e826f529a04f0ed3" data-wf-site="623cb759e826f5aeff4f0ec3">
 <head>
   <meta charset="utf-8">
@@ -29,8 +29,8 @@
           <a href="about.html" class="nav-link-block w-inline-block">
             <div class="nav-link-text-block">About</div>
           </a>
-          <a href="articles.html" class="nav-link-block w-inline-block">
-            <div class="nav-link-text-block">Recources</div>
+          <a href="resources.html" class="nav-link-block w-inline-block">
+            <div class="nav-link-text-block">Resources</div>
           </a>
           <a href="join-beta.html" aria-current="page" class="nav-link-block beta-nav-block w-inline-block w--current">
             <div class="nav-link-text-block beta-text-block">Join Beta</div>
@@ -44,27 +44,111 @@
       <h1>Become an Allos Beta Tester</h1>
       <p>We have been hard at work building a unique app to help guide you in your paced breathing practices. We are just about ready to share this project with a select group of people who are interested in this technology and would like to help us finalize the first version of the product.</p>
       <div class="beta-form w-form">
-        <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form-join-beta"><label for="name">Full Name</label><input type="text" class="beta-text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Enter your first and last name" id="name" required=""><label for="email">Email Address</label><input type="email" class="beta-text-field w-input" maxlength="256" name="email" data-name="Email" placeholder="email@example.com" id="email" required=""><label>How did you hear about Allos?</label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" data-name="referral" id="youtube-2" name="referral" value="youtube" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="youtube-2">YouTube</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="referral" id="google" value="google" data-name="referral" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="google">Google</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" data-name="referral" id="friend" name="referral" value="friend" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="friend">A friend/acquaintance</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" data-name="referral" id="other" name="referral" value="other" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="other">Other</span>
-          </label><label>How often do you practice breathing?</label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="active-status" id="high" value="high" data-name="active-status" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="high">Two times a day or more</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="active-status" id="medium" value="medium" data-name="active-status" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="medium">Once a day</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="active-status" id="low" value="low" data-name="active-status" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="low">A few times a week</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="active-status" id="none" value="none" data-name="active-status" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="none">I am new and just learning about this type of breathing</span>
-          </label><label>What OS will you be testing on?</label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="os" id="ios" value="ios" data-name="os" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="ios">iOS</span>
-          </label><label class="radio-btn-field w-radio">
-            <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div><input type="radio" name="os" id="android" value="android" data-name="os" style="opacity:0;position:absolute;z-index:-1"><span class="w-form-label" for="android">Android</span>
-          </label><input type="submit" value="Get Allos Beta" data-wait="Please wait..." class="beta-submit-btn w-button"></form>
+
+
+        <!-- This section is updated and connected to Convert Kit -->
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+
+        <form
+          action="https://app.convertkit.com/forms/2971208/subscriptions"
+          data-sv-form="2971208"
+          data-uid="6c4be0cd20"
+          data-format="inline"
+          data-version="5"
+          id="email-form"
+          name="email-form"
+          data-name="Email Form"
+          method="post"
+          class="form-join-beta">
+
+          <label for="name">Full Name</label>
+          <input type="text" class="beta-text-field w-input" maxlength="256"  name="fields[full_name]" placeholder="Enter your first and last name" id="name" required="">
+          <label for="email">Email Address</label>
+          <input type="email" class="beta-text-field w-input" maxlength="256" name="email_address" data-name="Email" placeholder="email@example.com" id="email" required="">
+
+          <fieldset data-group="checkboxes" type="Custom" order="2" save_as="Tag" group="field">
+
+            <label>How did you hear about Allos?</label>
+
+            <label class="radio-btn-field w-radio" for="tag-256179519-3003570">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input">
+              </div>
+              <input type="radio" name="tags[]" value="3003570" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">YouTube</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179519-2921190">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="2921190" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">Google</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179519-3003572">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003572" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">A friend/acquaintance</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179519-3003574">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003574" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">Other</span>
+            </label>
+
+          </fieldset>
+
+          <fieldset data-group="checkboxes" type="Custom" order="3" save_as="Tag" group="field">
+
+            <label>How often do you practice breathing?</label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179520-3003578">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003578" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">Two times a day or more</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179520-3003580">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003580" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">Once a day</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179520-3003583">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003583" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">A few times a week</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-256179520-3003586">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003586" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">I am new and just learning about this type of breathing</span>
+            </label>
+          </fieldset>
+
+          <fieldset data-group="checkboxes" group="field" type="Custom" order="5" save_as="Tag">
+            
+            <label>What OS will you be testing on?</label>
+            
+            <label class="radio-btn-field w-radio" for="tag-4877-3003588">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio"  name="tags[]" value="3003588" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">iOS</span>
+            </label>
+            
+            <label class="radio-btn-field w-radio" for="tag-4877-3003590">
+              <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio-btn w-radio-input"></div>
+              <input type="radio" name="tags[]" value="3003590" style="opacity:0;position:absolute;z-index:-1">
+              <span class="w-form-label">Android</span>
+            </label>
+          </fieldset>
+          
+          <input type="submit" data-element="submit" value="Get Allos Beta" data-wait="Please wait..." class="beta-submit-btn w-button">
+        </form>
+
+        <!-- END of section updated and connected to Convert Kit -->
+
+
         <div class="success-form-join-beta w-form-done">
           <div class="success-text-form-join-beta">Thanks! We are looking forward to working with you on the Allos app!</div>
         </div>
@@ -74,6 +158,86 @@
       </div><img src="images/hand-holding-allos-app.png" loading="eager" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 553.265625px, (max-width: 1279px) 470px, 600px" srcset="images/hand-holding-allos-app-p-500.png 500w, images/hand-holding-allos-app.png 617w" alt="" class="hand-phone">
     </div>
   </div>
+  <footer class="footer wf-section">
+    <div class="footer-container w-container">
+      <div class="resources-container">
+        <div class="resources">
+          <h3 class="heading-footer">Resources</h3>
+          <ul role="list" class="ul-resources w-list-unstyled">
+            <li class="list-item-resources">
+              <a href="about.html" class="footer-link">About the Allos Breath Pacer</a>
+            </li>
+            <li class="list-item-resources">
+              <a href="resources.html" class="footer-link">The Allos Blog</a>
+            </li>
+            <li class="list-item-resources">
+              <a href="join-beta.html" aria-current="page" class="footer-link w--current">Join the Beta</a>
+            </li>
+          </ul>
+        </div>
+        <div class="follow-us">
+          <h3 class="heading-footer">Follow Us</h3>
+          <ul role="list" class="ul-resources w-list-unstyled">
+            <li class="list-item-resources youtube">
+              <a href="https://www.youtube.com/channel/UCcDEUhEN3HWmdSzQOyGIi_A/" target="_blank" class="footer-link">YouTube</a>
+            </li>
+            <li class="list-item-resources instagram">
+              <a href="https://www.instagram.com/allos.app" target="_blank" class="footer-link">Instagram</a>
+            </li>
+            <li class="list-item-resources facebook">
+              <a href="https://www.facebook.com/allosapp" target="_blank" class="footer-link">Facebook</a>
+            </li>
+          </ul>
+        </div>
+        <div class="newsletter-footer">
+          <h3 class="heading-footer no-border">Sign up for the Allos Newsletter</h3>
+          <p class="newsletter-description">A bimonthly newsletter with an insightful look into the latest research on breathing.</p>
+          <div class="form-block w-form">
+            
+
+            <!-- Footer Newsletter form section updated and connected to Convert Kit -->
+            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+            <form
+              action="https://app.convertkit.com/forms/3165770/subscriptions"
+              id="email-form"
+              name="email-form"
+              data-name="Email Form"
+              method="post"
+              class="form"
+              data-sv-form="3165770"
+              data-uid="668370a791"
+              data-format="inline"
+              data-version="5">
+              <input type="email" class="text-field w-input" maxlength="256" name="email_address" placeholder="Enter your email" id="email-2" required="">
+              <input data-element="submit" type="submit" value="Level Up" data-wait="Yay!" class="submit-button w-button">
+            </form>
+            <!-- END of Footer Newsletter form section updated and connected to Convert Kit -->
+
+
+            <div class="success-message w-form-done">
+              <div>Get ready to impress your friends will your new breathing knowledge!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gradient-footer-bar"></div>
+    </div>
+    <div class="sub-footer">
+      <div class="copyright">© 2021-2022 Allos Inc.</div>
+      <div>
+        <a href="#" class="sub-footer-link">Terms and Conditions</a>
+      </div>
+      <div>
+        <a href="#" class="sub-footer-link">Privacy Policy</a>
+      </div>
+      <div>
+        <a href="#" class="sub-footer-link">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=623cb759e826f5aeff4f0ec3" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
