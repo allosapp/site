@@ -114,7 +114,16 @@
 }
 
 body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   overflow: visible;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: #2c1f2a;
   font-family: embarcadero-mvb-pro, sans-serif;
   color: #fff;
@@ -242,11 +251,9 @@ label {
 
 .breath-curve {
   position: absolute;
-  left: -45%;
-  top: 30%;
+  left: -4%;
+  top: -8%;
   max-width: 1000px;
-  -webkit-transform: scale3d(2, 2, 2) rotateX(0deg) rotateY(46deg) rotateZ(0deg);
-  transform: scale3d(2, 2, 2) rotateX(0deg) rotateY(46deg) rotateZ(0deg);
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
@@ -257,9 +264,9 @@ label {
   top: 0%;
   right: auto;
   bottom: auto;
-  width: 1100px;
-  height: 240px;
-  background-image: linear-gradient(272deg, #2c1f2a 11%, hsla(0, 0%, 100%, 0) 44%);
+  width: 1010px;
+  height: 380px;
+  background-image: linear-gradient(272deg, #2c1f2a 28%, hsla(0, 0%, 100%, 0) 82%);
 }
 
 .container {
@@ -414,6 +421,7 @@ label {
 
 .signup-section {
   margin-top: 220px;
+  margin-bottom: 140px;
 }
 
 .signup-container {
@@ -475,7 +483,7 @@ label {
 }
 
 .footer {
-  margin-top: 150px;
+  margin-top: auto;
   background-color: #212121;
 }
 
@@ -490,6 +498,10 @@ label {
   padding: 50px 80px 70px;
   border-radius: 10px;
   background-image: radial-gradient(circle farthest-corner at 0% 0%, #330031, #000);
+}
+
+.beta-container.thankyou {
+  height: 760px;
 }
 
 .hand-phone {
@@ -728,7 +740,7 @@ label {
 }
 
 .nav-links-container {
-  width: 125px;
+  width: 210px;
 }
 
 .nav-links {
@@ -827,6 +839,28 @@ label {
   font-style: italic;
 }
 
+.article-container {
+  width: 61vw;
+  max-width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.article-section {
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+
+.article-paragraph {
+  margin-bottom: 15px;
+  color: #e7e7e7;
+  line-height: 32px;
+}
+
+.image {
+  height: 373px;
+}
+
 @media screen and (min-width: 1280px) {
   .container-hero {
     max-width: 1000px;
@@ -837,11 +871,13 @@ label {
   }
 
   .breath-curve {
-    left: -31%;
+    left: 0%;
+    max-width: 1120px;
   }
 
   .breath-curve-fade {
-    background-image: linear-gradient(272deg, #2c1f2a 10%, hsla(0, 0%, 100%, 0) 50%);
+    width: 1000px;
+    background-image: linear-gradient(272deg, #2c1f2a 22%, hsla(0, 0%, 100%, 0) 65%);
   }
 
   .container {
@@ -871,6 +907,10 @@ label {
   .beta-container {
     max-width: 1200px;
     padding-right: 250px;
+  }
+
+  .beta-container.thankyou {
+    height: 910px;
   }
 
   .hand-phone {
@@ -936,6 +976,10 @@ label {
     margin-right: 100px;
     margin-left: 100px;
   }
+
+  .article-container {
+    width: 700px;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -952,7 +996,11 @@ label {
   }
 
   .breath-curve {
-    left: -85%;
+    left: -11%;
+  }
+
+  .breath-curve-fade {
+    background-image: linear-gradient(272deg, #2c1f2a 37%, hsla(0, 0%, 100%, 0) 82%);
   }
 
   .h-p-container {
@@ -981,6 +1029,10 @@ label {
     max-width: 760px;
   }
 
+  .beta-container.thankyou {
+    height: 950px;
+  }
+
   .hand-phone {
     right: -34%;
     z-index: 0;
@@ -1002,6 +1054,10 @@ label {
 
   .sub-footer {
     padding-left: 20px;
+  }
+
+  .article-container {
+    width: 80vw;
   }
 }
 
@@ -1133,6 +1189,10 @@ label {
     text-align: center;
   }
 
+  .beta-container.thankyou {
+    height: 823px;
+  }
+
   .radio-btn.w--redirected-checked {
     border-width: 1px;
   }
@@ -1194,7 +1254,7 @@ label {
   }
 
   .nav-links-container {
-    width: 420px;
+    width: 300px;
   }
 
   .nav-bar-section {
@@ -1278,10 +1338,14 @@ label {
     padding-left: 30px;
   }
 
+  .beta-container.thankyou {
+    height: 650px;
+  }
+
   .hand-phone {
     right: -41%;
-    display: none;
-    max-width: 470px;
+    display: block;
+    max-width: 370px;
   }
 
   .beta-form {
@@ -1344,6 +1408,10 @@ label {
 
   .success-text-form-join-beta {
     width: auto;
+  }
+
+  .article-paragraph {
+    line-height: 27px;
   }
 }
 
