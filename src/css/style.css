@@ -495,6 +495,7 @@ label {
   position: relative;
   overflow: hidden;
   margin-top: 140px;
+  margin-bottom: 150px;
   padding: 50px 80px 70px;
   border-radius: 10px;
   background-image: radial-gradient(circle farthest-corner at 0% 0%, #330031, #000);
@@ -857,8 +858,33 @@ label {
   line-height: 32px;
 }
 
-.image {
+.breath-curve-img {
   height: 373px;
+}
+
+.gradient-article-left {
+  position: absolute;
+  left: -38%;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  width: 650px;
+  height: 1310px;
+  background-image: radial-gradient(circle farthest-side at 0% 50%, #fa03ae, hsla(0, 0%, 100%, 0) 98%);
+  opacity: 0.52;
+}
+
+.gradient-article-right {
+  position: absolute;
+  left: 73%;
+  top: 830px;
+  right: auto;
+  bottom: auto;
+  z-index: -1;
+  width: 620px;
+  height: 1090px;
+  background-image: radial-gradient(circle farthest-side at 100% 50%, #a107a7, hsla(0, 0%, 100%, 0) 98%);
+  opacity: 0.44;
 }
 
 @media screen and (min-width: 1280px) {
@@ -980,6 +1006,10 @@ label {
   .article-container {
     width: 700px;
   }
+
+  .gradient-article-left {
+    left: -23%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1058,6 +1088,10 @@ label {
 
   .article-container {
     width: 80vw;
+  }
+
+  .gradient-article-left {
+    left: -60%;
   }
 }
 
@@ -1267,6 +1301,11 @@ label {
     z-index: 2;
     margin-top: 195px;
   }
+
+  .gradient-article-left {
+    left: -87%;
+    top: -160%;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -1412,6 +1451,10 @@ label {
 
   .article-paragraph {
     line-height: 27px;
+  }
+
+  .gradient-article-left {
+    left: -140%;
   }
 }
 
