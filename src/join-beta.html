@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.html
-title: Join the beta to test the Allos Breath Pacer
+title: Join the beta to test the Allos Breath Pacer app
 ---
 <div class="wf-section">
   <div class="beta-container w-container">
@@ -22,7 +22,8 @@ title: Join the beta to test the Allos Breath Pacer
         name="email-form"
         data-name="Email Form"
         method="post"
-        class="form-join-beta">
+        class="form-join-beta"
+        data-options='{"settings":{"after_subscribe":{"action":"redirect","redirect_url":"https://allos.app/beta-tester"}'>
 
         <label for="name">First Name</label>
         <input type="text" class="beta-text-field w-input" maxlength="256"  name="fields[first_name]" placeholder="First name" id="name" required="">
@@ -117,6 +118,6 @@ title: Join the beta to test the Allos Breath Pacer
       <div class="w-form-fail">
         <div>Oops! Something went wrong while submitting the form.</div>
       </div>
-    </div><img src="../assets/images/hand-holding-allos-app.png" loading="eager" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 553.265625px, (max-width: 1279px) 470px, 600px" srcset="../assets/images/hand-holding-allos-app-p-500.png 500w, ../assets/images/hand-holding-allos-app.png 617w" alt="" class="hand-phone">
+    </div><img src="../assets/images/hand-holding-allos-app.png" loading="eager" sizes="(max-width: 479px) 100vw, (max-width: 767px) 76vw, (max-width: 991px) 553.265625px, (max-width: 1279px) 470px, 600px" srcset="../assets/images/hand-holding-allos-app-p-500.png 500w, ../assets/images/hand-holding-allos-app.png 617w" alt="A hand holding a phone with a blank screen" class="hand-phone">
   </div>
 </div>
