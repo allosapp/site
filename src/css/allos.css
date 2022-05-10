@@ -1107,6 +1107,11 @@ label {
     line-height: 40px;
     text-align: center;
   }
+  
+  .form-block {
+    position: relative;
+    z-index: 1;
+  }
 
   .navbar {
     display: none;
