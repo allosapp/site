@@ -468,6 +468,7 @@ label {
 
 .form-block {
   margin-top: 15px;
+  z-index: 2;
 }
 
 .gradient-right {
