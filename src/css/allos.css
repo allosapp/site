@@ -371,7 +371,7 @@ label {
 .list-item {
   margin-bottom: 20px;
   padding-left: 30px;
-  background-image: url('/assets/images/bullet-point_1bullet-point.png');
+  background-image: url('../images/bullet-point_1bullet-point.png');
   background-position: 1px 2px;
   background-size: auto;
   background-repeat: no-repeat;
@@ -468,7 +468,6 @@ label {
 
 .form-block {
   margin-top: 15px;
-  z-index: 2;
 }
 
 .gradient-right {
@@ -581,7 +580,7 @@ label {
 
 .list-item-resources.youtube {
   padding-left: 24px;
-  background-image: url('/assets/images/youtube.svg');
+  background-image: url('../images/youtube.svg');
   background-position: 0% 50%;
   background-size: auto;
   background-repeat: no-repeat;
@@ -589,7 +588,7 @@ label {
 
 .list-item-resources.instagram {
   padding-left: 23px;
-  background-image: url('/assets/images/instagram.svg');
+  background-image: url('../images/instagram.svg');
   background-position: 0% 50%;
   background-size: auto;
   background-repeat: no-repeat;
@@ -597,7 +596,7 @@ label {
 
 .list-item-resources.facebook {
   padding-left: 23px;
-  background-image: url('/assets/images/facebook.svg');
+  background-image: url('../images/facebook.svg');
   background-position: 0% 0%;
   background-size: auto;
   background-repeat: no-repeat;
@@ -887,6 +886,42 @@ label {
   opacity: 0.44;
 }
 
+.gradient-right-article {
+  position: absolute;
+  left: auto;
+  top: 33%;
+  right: 0%;
+  bottom: auto;
+  width: 900px;
+  height: 1310px;
+  background-image: radial-gradient(circle farthest-side at 130% 50%, #a107a7, hsla(0, 0%, 100%, 0) 49%);
+}
+
+.gradient-right-resources {
+  position: absolute;
+  left: auto;
+  top: 14%;
+  right: 0%;
+  bottom: auto;
+  z-index: -5;
+  width: 900px;
+  height: 840px;
+  background-image: radial-gradient(circle farthest-side at 130% 50%, rgba(161, 7, 167, 0.31), hsla(0, 0%, 100%, 0) 49%);
+}
+
+.gradient-left-resources {
+  position: absolute;
+  left: -38%;
+  top: -64px;
+  right: auto;
+  bottom: auto;
+  z-index: -5;
+  width: 650px;
+  height: 1310px;
+  background-image: radial-gradient(circle farthest-side at 0% 50%, #fa03ae, hsla(0, 0%, 100%, 0) 98%);
+  opacity: 0.52;
+}
+
 @media screen and (min-width: 1280px) {
   .container-hero {
     max-width: 1000px;
@@ -1010,6 +1045,10 @@ label {
   .gradient-article-left {
     left: -23%;
   }
+
+  .gradient-left-resources {
+    left: -23%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -1100,6 +1139,10 @@ label {
   .gradient-article-left {
     left: -60%;
   }
+
+  .gradient-left-resources {
+    left: -60%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1107,11 +1150,6 @@ label {
     font-size: 30px;
     line-height: 40px;
     text-align: center;
-  }
-  
-  .form-block {
-    position: relative;
-    z-index: 1;
   }
 
   .navbar {
@@ -1231,6 +1269,11 @@ label {
     align-items: center;
   }
 
+  .form-block {
+    position: relative;
+    z-index: 1;
+  }
+
   .signup-heading {
     text-align: center;
   }
@@ -1315,6 +1358,17 @@ label {
   }
 
   .gradient-article-left {
+    left: -87%;
+    top: -160%;
+  }
+
+  .gradient-right-article {
+    z-index: -2;
+    width: 280px;
+    background-image: radial-gradient(circle farthest-side at 130% 50%, rgba(161, 7, 167, 0.45), hsla(0, 0%, 100%, 0) 49%);
+  }
+
+  .gradient-left-resources {
     left: -87%;
     top: -160%;
   }
@@ -1469,6 +1523,10 @@ label {
   }
 
   .gradient-article-left {
+    left: -140%;
+  }
+
+  .gradient-left-resources {
     left: -140%;
   }
 }
