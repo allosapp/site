@@ -867,8 +867,9 @@ label {
   top: auto;
   right: auto;
   bottom: auto;
+  z-index: -3;
   width: 650px;
-  height: 1310px;
+  height: 1130px;
   background-image: radial-gradient(circle farthest-side at 0% 50%, #fa03ae, hsla(0, 0%, 100%, 0) 98%);
   opacity: 0.52;
 }
@@ -889,18 +890,19 @@ label {
 .gradient-right-article {
   position: absolute;
   left: auto;
-  top: 33%;
+  top: 21%;
   right: 0%;
   bottom: auto;
-  width: 900px;
-  height: 1310px;
+  z-index: -3;
+  width: 770px;
+  height: 900px;
   background-image: radial-gradient(circle farthest-side at 130% 50%, #a107a7, hsla(0, 0%, 100%, 0) 49%);
 }
 
 .gradient-right-resources {
   position: absolute;
   left: auto;
-  top: 14%;
+  top: 1%;
   right: 0%;
   bottom: auto;
   z-index: -5;
@@ -917,7 +919,7 @@ label {
   bottom: auto;
   z-index: -5;
   width: 650px;
-  height: 1310px;
+  height: 1210px;
   background-image: radial-gradient(circle farthest-side at 0% 50%, #fa03ae, hsla(0, 0%, 100%, 0) 98%);
   opacity: 0.52;
 }
