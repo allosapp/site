@@ -388,7 +388,7 @@ label {
 .list-item {
   margin-bottom: 20px;
   padding-left: 30px;
-  background-image: url('../images/bullet-point_1bullet-point.png');
+  background-image: url('/assets/images/bullet-point_1bullet-point.png');
   background-position: 1px 2px;
   background-size: auto;
   background-repeat: no-repeat;
