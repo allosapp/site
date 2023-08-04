@@ -2,4 +2,4 @@
 .vscode
 _site/
 node_modules/
-.old
+*.old
