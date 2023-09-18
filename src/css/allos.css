@@ -517,6 +517,7 @@ label {
   padding: 50px 80px 70px;
   border-radius: 10px;
   background-image: radial-gradient(circle farthest-corner at 0% 0%, #330031, #000);
+  min-height: 1035px;
 }
 
 .beta-container.thankyou {
@@ -1123,6 +1124,7 @@ label {
   .beta-container {
     max-width: 1200px;
     padding-right: 250px;
+    min-height: 1015px;
   }
 
   .beta-container.thankyou {
@@ -1677,6 +1679,7 @@ label {
     padding-top: 9px;
     padding-right: 30px;
     padding-left: 30px;
+    min-height: 974px;
   }
 
   .beta-container.thankyou {
