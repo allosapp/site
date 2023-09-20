@@ -1747,7 +1747,7 @@ label {
   }
 
   .beta-container.thankyou {
-    height: 650px;
+    height: auto;
   }
 
   .hand-phone {
