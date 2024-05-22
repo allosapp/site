@@ -637,6 +637,17 @@ label {
   font-weight: 700;
 }
 
+.beta-access-btn {
+  width: 330px;
+  height: 65px;
+  margin-top: 30px;
+  border-radius: 7px;
+  background-color: #3898ec;
+  background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .ul-resources {
   display: -webkit-box;
   display: -webkit-flex;
