@@ -1,3 +1,8 @@
+.appstore-icon {
+  max-width: 70px;
+  margin: -10px 30px 0 0;
+}
+
 .beta-download-btn {
   font-size: 22px;
   font-weight: bold;
@@ -7,7 +12,7 @@
   display: inline-block;
   border-radius: 10px;
   background-color: #22011e;
-  border: #ff0e93 solid .5px;
+  border: #ff0e93 solid 1px;
   text-decoration: none;
 }
 
@@ -20,10 +25,11 @@
   display: inline-block;
   border-radius: 10px;
   background-color: #22011e;
-  border: #ff0e93 solid 1.5px;
+  border: #ff0e93 solid 2px;
   text-decoration: none;
   box-sizing: border-box;
 }
+
 
 .beta-download-btn:first-of-type {
   font-size: 22px;
@@ -34,7 +40,7 @@
   display: inline-block;
   border-radius: 10px;
   background-color: #22011e;
-  border: #ff0e93 solid .5px;
+  border: #ff0e93 solid 1px;
   text-decoration: none;
 }
 
@@ -47,7 +53,7 @@
   display: inline-block;
   border-radius: 10px;
   background-color: #22011e;
-  border: #ff0e93 solid 1.5px;
+  border: #ff0e93 solid 2px;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -1681,6 +1687,68 @@ label {
 }
 
 @media screen and (max-width: 479px) {
+  .appstore-icon {
+    max-width: 70px;
+    display: block;
+    width: 70px;
+    margin: 0 auto 20px auto;
+    
+  }
+
+  .beta-download-btn {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff0e93;
+    padding: 20px;
+    margin: 0 0 50px 0;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 1px;
+    text-decoration: none;
+  }
+  
+  .beta-download-btn:hover {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff249d;
+    padding: 20px;
+    margin: -1px 0 49px -1px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 2px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  
+  
+  .beta-download-btn:first-of-type {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff0e93;
+    padding: 20px;
+    margin: 0 0 70px 0;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 1px;
+    text-decoration: none;
+  }
+  
+  .beta-download-btn:first-of-type:hover {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff249d;
+    padding: 20px;
+    margin: -1px 0 69px -1px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 2px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
   h1 {
     font-size: 24px;
     line-height: 30px;
