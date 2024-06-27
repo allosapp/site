@@ -654,6 +654,18 @@ label {
   font-weight: 700;
 }
 
+.beta-access-btn-top-mobile {
+  display: none;
+  width: 330px;
+  height: 65px;
+  margin: 30px 0 40px 0;
+  border-radius: 7px;
+  background-color: #3898ec;
+  background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .ul-resources {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1422,6 +1434,18 @@ label {
     text-align: center;
   }
 
+  .beta-access-btn-top-mobile {
+    display: inline;
+    width: 330px;
+    height: 65px;
+    margin: 30px 0 40px 0;
+    border-radius: 7px;
+    background-color: #3898ec;
+    background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
   .navbar {
     display: none;
   }
@@ -1693,6 +1717,18 @@ label {
     width: 70px;
     margin: 0 auto 20px auto;
     
+  }
+
+  .beta-access-btn-top-mobile {
+    display: inline;
+    width: 330px;
+    height: 65px;
+    margin: 30px 0 40px 0;
+    border-radius: 7px;
+    background-color: #3898ec;
+    background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
+    font-size: 18px;
+    font-weight: 700;
   }
 
   .beta-download-btn {
