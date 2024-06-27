@@ -656,14 +656,6 @@ label {
 
 .beta-access-btn-top-mobile {
   display: none;
-  width: 330px;
-  height: 65px;
-  margin: 30px 0 40px 0;
-  border-radius: 7px;
-  background-color: #3898ec;
-  background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
-  font-size: 18px;
-  font-weight: 700;
 }
 
 .ul-resources {
@@ -1444,6 +1436,7 @@ label {
     background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
     font-size: 18px;
     font-weight: 700;
+    text-decoration: none;
   }
 
   .navbar {
