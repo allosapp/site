@@ -3,6 +3,40 @@
   margin: -10px 30px 0 0;
 }
 
+.beta-large {
+  margin: 10px 0 20px;
+}
+
+.beta-small {
+  display: none;
+}
+.beta-download-btn-ios {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff0e93;
+  padding: 20px;
+  margin: 0 0 50px 0;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #22011e;
+  border: #ff0e93 solid 1px;
+  text-decoration: none;
+}
+
+.beta-download-btn-ios:hover {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff249d;
+  padding: 20px;
+  margin: -1px 0 49px -1px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #22011e;
+  border: #ff0e93 solid 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
 .beta-download-btn {
   font-size: 22px;
   font-weight: bold;
@@ -22,34 +56,6 @@
   color: #ff249d;
   padding: 20px;
   margin: -1px 0 49px -1px;
-  display: inline-block;
-  border-radius: 10px;
-  background-color: #22011e;
-  border: #ff0e93 solid 2px;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-
-.beta-download-btn:first-of-type {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff0e93;
-  padding: 20px;
-  margin: 0 0 70px 0;
-  display: inline-block;
-  border-radius: 10px;
-  background-color: #22011e;
-  border: #ff0e93 solid 1px;
-  text-decoration: none;
-}
-
-.beta-download-btn:first-of-type:hover {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ff249d;
-  padding: 20px;
-  margin: -1px 0 69px -1px;
   display: inline-block;
   border-radius: 10px;
   background-color: #22011e;
@@ -588,6 +594,10 @@ label {
   font-size: 15px;
   position: relative;
   z-index: 1;
+}
+
+.beta-container.thankyou {
+  height: 760px;
 }
 
 .beta-container.thankyou {
@@ -1216,6 +1226,10 @@ label {
     height: 910px;
   }
 
+  .beta-container.thankyou {
+    height: 910px;
+  }
+
   .hand-phone {
     right: -5%;
     bottom: -22px;
@@ -1420,6 +1434,16 @@ label {
 }
 
 @media screen and (max-width: 767px) {
+
+  .beta-large {
+    display: none;
+  }
+  
+  .beta-small {
+    display: inline;
+    margin: 10px 0 20px;
+  }
+
   h1 {
     font-size: 30px;
     line-height: 40px;
@@ -1703,81 +1727,79 @@ label {
   }
 }
 
-@media screen and (max-width: 479px) {
+
+@media screen and (max-width: 570px) {
+
+  a.beta-download-btn-ios {
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff0e93;
+    padding: 20px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 1px;
+    text-decoration: none;
+  }
+
+  a.beta-download-btn-ios:hover {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff249d;
+    padding: 20px;
+    margin: -1px auto;
+    display: block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 2px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  a.beta-download-btn {
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff0e93;
+    padding: 20px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 1px;
+    text-decoration: none;
+  }
+  
+  a.beta-download-btn:hover {
+      font-size: 22px;
+    font-weight: bold;
+    color: #ff249d;
+    padding: 20px;
+    margin: -1px auto;
+    display: block;
+    border-radius: 10px;
+    background-color: #22011e;
+    border: #ff0e93 solid 2px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
   .appstore-icon {
     max-width: 70px;
     display: block;
     width: 70px;
     margin: 0 auto 20px auto;
-    
   }
 
-  .beta-access-btn-top-mobile {
-    display: inline;
-    width: 330px;
-    height: 65px;
-    margin: 30px 0 40px 0;
-    border-radius: 7px;
-    background-color: #3898ec;
-    background-image: radial-gradient(circle farthest-corner at 0% 0%, #d91f65, #b01e7d);
-    font-size: 18px;
-    font-weight: 700;
-  }
+}
 
-  .beta-download-btn {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ff0e93;
-    padding: 20px;
-    margin: 0 0 50px 0;
-    display: inline-block;
-    border-radius: 10px;
-    background-color: #22011e;
-    border: #ff0e93 solid 1px;
-    text-decoration: none;
-  }
-  
-  .beta-download-btn:hover {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ff249d;
-    padding: 20px;
-    margin: -1px 0 49px -1px;
-    display: inline-block;
-    border-radius: 10px;
-    background-color: #22011e;
-    border: #ff0e93 solid 2px;
-    text-decoration: none;
-    box-sizing: border-box;
-  }
-  
-  
-  .beta-download-btn:first-of-type {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ff0e93;
-    padding: 20px;
-    margin: 0 0 70px 0;
-    display: inline-block;
-    border-radius: 10px;
-    background-color: #22011e;
-    border: #ff0e93 solid 1px;
-    text-decoration: none;
-  }
-  
-  .beta-download-btn:first-of-type:hover {
-    font-size: 22px;
-    font-weight: bold;
-    color: #ff249d;
-    padding: 20px;
-    margin: -1px 0 69px -1px;
-    display: inline-block;
-    border-radius: 10px;
-    background-color: #22011e;
-    border: #ff0e93 solid 2px;
-    text-decoration: none;
-    box-sizing: border-box;
-  }
+
+
+@media screen and (max-width: 479px) {
+
+
   h1 {
     font-size: 24px;
     line-height: 30px;
