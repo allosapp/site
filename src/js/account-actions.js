@@ -100,7 +100,7 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
     const validatePassword = () => newPassword && newPassword.length > 4;
     elements.passwordInput.addEventListener("input", (e) => {
       newPassword = e.target.value;
-      elements.passwordSubmit.disabled = !validatePassword()
+      elements.passwordSubmit.disabled = !validatePassword();
     });
 
     const handlePasswordSubmit = () => {
@@ -148,8 +148,6 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
   document.addEventListener(
     "DOMContentLoaded",
     () => {
-      const { action, apiKey } = getUrlParams();
-
       elements = {
         passwordInput: document.getElementById("acc-acts-new-password"),
         passwordSubmit: document.getElementById("acc-acts-save-password"),
@@ -170,6 +168,13 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
           "acc-acts-reset-password-error"
         ),
       };
+
+      const { action, apiKey } = getUrlParams();
+
+      if (!apiKey) {
+        showWorkflow(workflows.genericError);
+        return;
+      }
 
       // Configure the Firebase SDK.
       app = initializeApp({ apiKey });
