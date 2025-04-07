@@ -1,0 +1,12 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.allosdev.allos",
+        "sha256_cert_fingerprints": [
+        "EA:02:96:21:CE:72:D8:C5:45:65:77:DF:34:FD:CC:2E:3E:97:B1:32:63:A9:77:96:7A:D8:37:3E:58:2F:C0:A7"
+        ]
+      }
+    }
+  ]

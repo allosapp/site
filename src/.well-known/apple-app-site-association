@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "R5343NHNKS.com.allosdev.allos",
+        "paths": ["/account-actions/*"]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["R5343NHNKS.com.allosdev.allos"]
+  }
+}
