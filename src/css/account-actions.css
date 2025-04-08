@@ -91,3 +91,31 @@
   font-size: 17px;
   line-height: 22px;
 }
+
+.acc-acts-content.acc-acts-is-mobile {
+  .acc-acts-app-link-container {
+    display: block;
+  }
+}
+
+.acc-acts-app-link-container {
+  /* By default, this is hidden, but it will be shown if the user-agent looks like a mobile device. */
+  display: none;
+  background-image: linear-gradient(-45deg, #fe276c, #fb2b73 5%, #c278f6);
+  padding-bottom: 1px;
+  margin-top: 40px;
+
+  div {
+    background-color: #212121;
+  }
+
+  a {
+    font-size: 20px;
+    line-height: 32px;
+
+    background-image: linear-gradient(-45deg, #fe276c, #fb2b73 5%, #c278f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

@@ -24,8 +24,6 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
       action: urlParams.get("mode"),
       // Get the one-time code.
       otp: urlParams.get("oobCode"),
-      // (Optional) Get the continue URL from the query parameter if available.
-      continueUrl: urlParams.get("continueUrl"),
       // (Optional) Get the language code if available.
       lang: urlParams.get("lang") || "en",
     };
@@ -35,6 +33,12 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
     if (currentWorkflow) {
       currentWorkflow?.classList.add("acc-acts-hidden");
     }
+
+    const isMobile = navigator?.userAgent?.match(/Android|iPhone|iPad/i) ?? false
+    if (isMobile) {
+      workflow?.classList.add("acc-acts-is-mobile")
+    }
+
     workflow?.classList.remove("acc-acts-hidden");
     currentWorkflow = workflow;
   }
@@ -63,7 +67,7 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
     const { otp } = urlParams;
     try {
       // Confirm the password the user has entered password.
-      const res = await firebase.confirmPasswordReset(auth, otp, newPassword);
+      await firebase.confirmPasswordReset(auth, otp, newPassword);
       // Password reset has been confirmed and new password updated.
       return { success: true };
     } catch (e) {
@@ -140,8 +144,6 @@ import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-au
       showWorkflow(workflows.emailNotVerified);
       return;
     }
-    const { continueUrl } = urlParams;
-    // TODO: If a continue URL is available, provide a link back to the app.
     showWorkflow(workflows.emailVerified);
   }
 
