@@ -1,3 +1,13 @@
+/* Hide navigation when inApp parameter is present */
+body[data-in-app="true"] {
+  .nav-bar-section, .menu-icon, .resources-container {
+    display: none;
+  }
+  .article-list-container, .resource-article-container {
+    margin-top: 20px;
+  }
+}
+
 .appstore-icon {
   max-width: 70px;
   margin: -10px 30px 0 0;
