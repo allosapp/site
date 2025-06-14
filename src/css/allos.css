@@ -865,6 +865,7 @@ label {
 }
 
 .nav-links-container {
+  opacity: 0;
   width: 350px;
 }
 
