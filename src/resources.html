@@ -4,13 +4,23 @@ title: Resources for Resonance Frequency Breathing
 description: A list of artiles and resources about slow-paced and resonance frequency breathing.
 social_image: social-preview.jpg
 ---
+  <script>
+    // Auto-scroll to after-about div on resources page when in-app-web-view is active
+    if (window.sessionStorage.getItem("in-app-web-view")) {
+      document.addEventListener("DOMContentLoaded", function() {
+        const target = document.getElementsByClassName("article-list-grid")[1]
+        target?.scrollIntoView()
+      })
+    }
+  </script>
   <div class="wf-section">
     <div class="article-list-container">
       <div class="article-list-grid">
         <h1 id="w-node-_63b718fd-0a23-824e-ce47-593509070a3e-f3753d76" class="article-title-list">
           <a href="/about" class="article-title-list-link">Introducing the Allos Breath Pacer</a>
         </h1>
-        <p id="w-node-_63b718fd-0a23-824e-ce47-593509070a40-f3753d76" class="preview-text">The Allos Breath Pacer was developed specifically for the practice of slow-paced breathing and resonance frequency breathing. The app offers a wide variety of audio and visual content and lets you curate your own collection of paced music, soundscapes, and animated video to use as a guide for your own customized breathing practice.</p><img src="/assets/images/allos-icon.svg" loading="lazy" id="w-node-_63b718fd-0a23-824e-ce47-593509070a42-f3753d76" alt="">
+        <p id="w-node-_63b718fd-0a23-824e-ce47-593509070a40-f3753d76" class="preview-text">The Allos Breath Pacer was developed specifically for the practice of slow-paced breathing and resonance frequency breathing. The app offers a wide variety of audio and visual content and lets you curate your own collection of paced music, soundscapes, and animated video to use as a guide for your own customized breathing practice.</p>
+        <img src="/assets/images/allos-icon.svg" id="w-node-_63b718fd-0a23-824e-ce47-593509070a42-f3753d76" alt="">
         <a id="w-node-_726be2e9-7834-6a93-ac1f-4233225166c1-f3753d76" href="/about" class="cont-reading">Continue Reading</a>
       </div>
       <div class="article-list-divider"></div>
