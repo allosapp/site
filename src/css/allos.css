@@ -1,6 +1,6 @@
 /* Hide navigation when inApp parameter is present */
 body[data-in-app="true"] {
-  .nav-bar-section, .menu-icon, .resources-container {
+  .nav-bar-section, .menu-icon, .resources-container, .nav-links-container {
     display: none;
   }
   .article-list-container, .resource-article-container {
@@ -865,7 +865,6 @@ label {
 }
 
 .nav-links-container {
-  opacity: 0;
   width: 350px;
 }
 
