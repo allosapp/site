@@ -1,0 +1,93 @@
+---
+layout: layouts/account-actions-base.html
+title: Allos Account
+description: Manage your Allos account.
+---
+
+<div class="section-hero">
+  <div class="hero-container w-container acc-acts-container">
+    <div class="acc-acts-container-inner">
+      <div
+        id="acc-acts-email-verified"
+        class="acc-acts-content acc-acts-hidden"
+      >
+        <h1>Your email has been verified</h1>
+        <div class="acc-acts-text">
+          You can now sign in with your new account.
+        </div>
+        <div class="acc-acts-app-link-container">
+          <div>
+            <a href="allos://nav/verify-email">Back to the app</a>
+          </div>
+        </div>
+      </div>
+      <div
+        id="acc-acts-email-not-verified"
+        class="acc-acts-content acc-acts-hidden"
+      >
+        <h1>Try verifying your email again</h1>
+        <div class="acc-acts-text">
+          Your request to verify your email has expired or the link has already
+          been used.
+        </div>
+      </div>
+      <div
+        id="acc-acts-reset-password"
+        class="acc-acts-content acc-acts-hidden"
+      >
+        <h1>Reset your password</h1>
+        <h2>for <span id="acc-acts-user-email"></span></h2>
+        <div class="acc-acts-input-container">
+          <label for="acc-acts-new-password">New Password</label>
+          <input
+            id="acc-acts-new-password"
+            class="w-input beta-text-field"
+            name="acc-acts-new-password"
+            placeholder="Enter new password"
+            autofocus
+            type="password"
+            autocomplete="new-password"
+          />
+        </div>
+        <button
+          id="acc-acts-save-password"
+          class="w-button beta-submit-btn"
+          disabled
+        >
+          Save Password
+        </button>
+      </div>
+      <div
+        id="acc-acts-reset-password-success"
+        class="acc-acts-content acc-acts-hidden"
+      >
+        <h1>Password changed</h1>
+        <div class="acc-acts-text">
+          You can now sign in with your new password.
+        </div>
+        <div class="acc-acts-app-link-container">
+          <div>
+            <a href="allos://nav/sign-in">Back to the app</a>
+          </div>
+        </div>
+      </div>
+      <div
+        id="acc-acts-reset-password-error"
+        class="acc-acts-content acc-acts-hidden"
+      >
+        <h1>Try resetting your password again</h1>
+        <div class="acc-acts-text">
+          Your request to reset your password has expired or the link has
+          already been used.
+        </div>
+      </div>
+      <div id="acc-acts-generic-error" class="acc-acts-content acc-acts-hidden">
+        <h1>Something unexpected happened</h1>
+        <div class="acc-acts-text">
+          The link you received may have expired or already been used. Please
+          retry whatever it is that you were originally trying to do.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
