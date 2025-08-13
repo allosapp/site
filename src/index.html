@@ -52,10 +52,30 @@ social_image: social-preview.jpg
   <div class="signup-section wf-section">
     <div class="signup-container w-container">
       <h2 class="signup-heading">Ready to explore custom soundscapes and visuals for your own unique breathing experience?</h2>
-      <div class="wf-section">
-        <a style="margin-right: 30px;" href="https://apps.apple.com/app/id1599591962" target="_blank">
+
+      <style>
+        .apple {
+          margin-right: 30px;
+        }
+  @media screen and (max-width: 376px) {
+    .download-btns {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .apple {
+      margin-right: 0;
+    }
+    a.dnldbtn img {
+      margin: 10px auto;
+    }
+  }
+</style>
+      <div class="wf-section download-btns">
+        <a class="dnldbtn apple" href="https://apps.apple.com/app/id1599591962" target="_blank">
         <img src="assets/images/download-allos-on-the-app-store.svg"></a>
-        <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank">
+        <a class="dnldbtn" href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank">
           <img src="assets/images/download-allos-on-google-play.svg">
         </a>
       </div>
