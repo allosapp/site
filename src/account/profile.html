@@ -1,0 +1,26 @@
+---
+layout: layouts/base-minimal.html
+title: Profile
+description: Manage your Allos profile.
+customHead: |
+  <link type="text/css" rel="stylesheet" href="/css/account/profile.css" />
+customScripts: |
+  <script type="module" src="/js/account/profile.js"></script>
+---
+
+<div id="user-profile-container" class="section-hero">
+  <div class="hero-container w-container acc-acts-container">
+    <div class="acc-acts-container-inner">
+      <div id="main-content" class="acc-acts-content">
+        <h1>Profile</h1>
+        <p id="user-display-name"></p>
+        <p id="user-email"></p>
+        <p id="user-verified" class="italic"></p>
+        <p id="user-tier"></p>
+        <button id="sign-out-button" class="w-button beta-submit-btn">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

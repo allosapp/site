@@ -1,0 +1,9 @@
+#user-profile-container {
+  .italic {
+    font-style: italic;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+}

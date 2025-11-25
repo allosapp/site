@@ -1,5 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import * as firebase from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { App, Auth as firebase } from "./modules/firebase.js"
+const { initializeApp } = App;
 
 (function () {
   let app;
