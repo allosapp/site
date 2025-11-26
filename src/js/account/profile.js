@@ -16,13 +16,14 @@ runOnLoad(() => {
   };
 
   const sendVerificationEmail = (user) => {
-    if (!user) return;
     window.localStorage.setItem(storageKeys.verifyEmail, user.email);
     Auth.sendEmailVerification(user);
   };
 
   elements.resendEmailButton.addEventListener("click", () => {
-    sendVerificationEmail(currentUser);
+    if (currentUser) {
+      sendVerificationEmail(currentUser);
+    }
     elements.resendEmailButton.disabled = true;
     setTimeout(() => (elements.resendEmailButton.disabled = false), 5000);
   });
@@ -39,7 +40,6 @@ runOnLoad(() => {
     if (!user) {
       currentUser = null;
       elements.userEmail.textContent = "";
-      elements.userVerified.textContent = "";
       elements.userName.textContent = "You are not signed in.";
       elements.userTier.textContent = "";
       elements.signOutButton.textContent = "Sign In";
@@ -47,11 +47,15 @@ runOnLoad(() => {
     }
 
     if (!user.emailVerified) {
+      // Reveal the email verification section.
       elements.userVerified.style.display = "flex";
       const cachedEmail = window.localStorage.getItem(storageKeys.verifyEmail);
       if (!cachedEmail) {
         sendVerificationEmail(user);
       }
+    } else {
+      // Back to the default state, which is hidden.
+      elements.userVerified.style.display = "none";
     }
 
     elements.userEmail.textContent = user.email;
