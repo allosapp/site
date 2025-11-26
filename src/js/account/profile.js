@@ -1,8 +1,9 @@
-import { onUserChanged, auth } from "../modules/firebase.js";
+import { Auth, getAuthInstance } from "../modules/firebase.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
   let currentUser = undefined;
+  const auth = getAuthInstance();
   const elements = {
     mainContent: document.getElementById("main-content"),
     userEmail: document.getElementById("user-email"),
@@ -20,7 +21,7 @@ runOnLoad(() => {
     window.location.replace("/account/sign-in");
   });
 
-  onUserChanged((user) => {
+  Auth.onAuthStateChanged(auth, (user) => {
     if (!user) {
       currentUser = null;
       elements.userEmail.textContent = "";

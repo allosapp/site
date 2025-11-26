@@ -14,8 +14,15 @@ export const config = {
   measurementId: "G-MND68E4P69",
 };
 
-export const app = App.initializeApp(config);
-export const auth = Auth.getAuth(app);
-export const onUserChanged = (cb) => {
-  Auth.onAuthStateChanged(auth, cb);
+let app;
+let auth;
+export const getAuthInstance = () => {
+  if (auth) {
+    return auth;
+  }
+  if (!app) {
+    app = App.initializeApp(config);
+  }
+  auth = Auth.getAuth(app);
+  return auth;
 };
