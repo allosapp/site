@@ -1,5 +1,6 @@
 import { storageKeys } from "../modules/constants.js";
 import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
+import { getUserHasPremiumSub } from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
@@ -13,6 +14,7 @@ runOnLoad(() => {
     signOutButton: document.getElementById("sign-out-btn"),
     userEmail: document.getElementById("user-email"),
     userName: document.getElementById("user-display-name"),
+    userSubscribe: document.getElementById("user-subscribe"),
     userTier: document.getElementById("user-tier"),
     userVerified: document.getElementById("user-verified"),
   };
@@ -43,27 +45,24 @@ runOnLoad(() => {
       userRole === "internal" || userRole === "demo" || subscriptionActive;
 
     if (!currentUser) {
-      elements.userVerified.style.display = "none";
       elements.userEmail.textContent = "";
       elements.userName.textContent = "You are not signed in.";
+      elements.userVerified.style.display = "none";
       elements.userTier.textContent = "";
+      elements.userSubscribe.style.display = "none";
       elements.signOutButton.textContent = "Sign In";
       return;
     }
 
-    if (!currentUser.emailVerified) {
-      // Unverified user: reveal the email verification section.
-      elements.userVerified.style.display = "flex";
-    } else {
-      // Verified user: back to the default hidden state.
-      elements.userVerified.style.display = "none";
-    }
-
     elements.userEmail.textContent = currentUser.email;
     elements.userName.textContent = currentUser.displayName;
+    elements.userVerified.style.display = currentUser.emailVerified
+      ? "none"
+      : "flex";
     elements.userTier.textContent = `Subscription: ${
       isPremium ? "Allos Premium" : "Allos Free"
     }`;
+    elements.userSubscribe.style.display = isPremium ? "none" : "block";
     elements.signOutButton.textContent = "Sign Out";
   };
 
@@ -85,6 +84,7 @@ runOnLoad(() => {
 
     currentUser = user;
     userRole = await getUserRole(user);
+    subscriptionActive = await getUserHasPremiumSub(user);
     render();
   });
 });

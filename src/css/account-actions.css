@@ -125,6 +125,9 @@
 .acc-acts-app-link-container {
   /* By default, this is hidden, but it will be shown if the user-agent looks like a mobile device. */
   display: none;
+}
+
+.acc-acts-cta-link-container {
   background-image: linear-gradient(-45deg, #fe276c, #fb2b73 5%, #c278f6);
   padding-bottom: 1px;
   margin-top: 40px;

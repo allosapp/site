@@ -3,6 +3,15 @@
     font-style: italic;
   }
 
+  .hidden {
+    visibility: hidden;
+  }
+
+  .acc-acts-cta-link-container {
+    display: none;
+    margin-top: 0;
+  }
+
   .verify-email {
     display: none;
     flex-direction: column;
@@ -10,11 +19,7 @@
     margin-bottom: 8px;
 
     p {
-        margin-bottom: 0;
+      margin-bottom: 0;
     }
-  }
-
-  .hidden {
-    visibility: hidden;
   }
 }
