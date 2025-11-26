@@ -1,6 +1,9 @@
 import { storageKeys } from "../modules/constants.js";
 import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
-import { getUserHasPremiumSub } from "../modules/revcat.js";
+import {
+  getUserHasPremiumSub,
+  getProfilePurchaseLink,
+} from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
@@ -15,6 +18,7 @@ runOnLoad(() => {
     userEmail: document.getElementById("user-email"),
     userName: document.getElementById("user-display-name"),
     userSubscribe: document.getElementById("user-subscribe"),
+    userSubscribeLink: document.querySelector("#user-subscribe a"),
     userTier: document.getElementById("user-tier"),
     userVerified: document.getElementById("user-verified"),
   };
@@ -50,6 +54,7 @@ runOnLoad(() => {
       elements.userVerified.style.display = "none";
       elements.userTier.textContent = "";
       elements.userSubscribe.style.display = "none";
+      elements.userSubscribeLink.href = "";
       elements.signOutButton.textContent = "Sign In";
       return;
     }
@@ -63,6 +68,9 @@ runOnLoad(() => {
       isPremium ? "Allos Premium" : "Allos Free"
     }`;
     elements.userSubscribe.style.display = isPremium ? "none" : "block";
+    elements.userSubscribeLink.href = !isPremium
+      ? getProfilePurchaseLink(currentUser?.uid)
+      : "";
     elements.signOutButton.textContent = "Sign Out";
   };
 

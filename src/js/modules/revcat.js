@@ -38,3 +38,11 @@ export const getUserHasPremiumSub = async (user) => {
 
   return Object.entries(entitlements?.active ?? {}).length > 0;
 };
+
+const profilePurchaseLink = "https://pay.rev.cat/hmfdntctryrxknzb/";
+export const getProfilePurchaseLink = (uid) => {
+  if (!uid) {
+    return "";
+  }
+  return profilePurchaseLink + uid;
+};
