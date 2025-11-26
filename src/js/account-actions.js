@@ -1,4 +1,5 @@
-import { App, Auth as firebase } from "./modules/firebase.js"
+import { storageKeys } from "./modules/constants.js";
+import { App, Auth as firebase } from "./modules/firebase.js";
 const { initializeApp } = App;
 
 (function () {
@@ -34,9 +35,10 @@ const { initializeApp } = App;
       currentWorkflow?.classList.add("acc-acts-hidden");
     }
 
-    const isMobile = navigator?.userAgent?.match(/Android|iPhone|iPad/i) ?? false
+    const isMobile =
+      navigator?.userAgent?.match(/Android|iPhone|iPad/i) ?? false;
     if (isMobile) {
-      workflow?.classList.add("acc-acts-is-mobile")
+      workflow?.classList.add("acc-acts-is-mobile");
     }
 
     workflow?.classList.remove("acc-acts-hidden");
@@ -145,6 +147,15 @@ const { initializeApp } = App;
       return;
     }
     showWorkflow(workflows.emailVerified);
+    const email = window.localStorage.getItem(storageKeys.verifyEmail);
+    if (email) {
+      // Looks like the user triggered the email verification flow through the site.
+      // Redirect to Profile page.
+      setTimeout(() => {
+        window.localStorage.removeItem(storageKeys.verifyEmail);
+        window.location.replace("/account/profile/");
+      }, 3000);
+    }
   }
 
   document.addEventListener(
