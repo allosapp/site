@@ -1,9 +1,11 @@
 import { storageKeys } from "../modules/constants.js";
-import { Auth, getAuthInstance } from "../modules/firebase.js";
+import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
   let currentUser = undefined;
+  let userRole = undefined;
+  let subscriptionActive = false;
   const auth = getAuthInstance();
   const elements = {
     mainContent: document.getElementById("main-content"),
@@ -36,9 +38,12 @@ runOnLoad(() => {
     window.location.replace("/account/sign-in");
   });
 
-  Auth.onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      currentUser = null;
+  const render = () => {
+    const isPremium =
+      userRole === "internal" || userRole === "demo" || subscriptionActive;
+
+    if (!currentUser) {
+      elements.userVerified.style.display = "none";
       elements.userEmail.textContent = "";
       elements.userName.textContent = "You are not signed in.";
       elements.userTier.textContent = "";
@@ -46,21 +51,40 @@ runOnLoad(() => {
       return;
     }
 
-    if (!user.emailVerified) {
-      // Reveal the email verification section.
+    if (!currentUser.emailVerified) {
+      // Unverified user: reveal the email verification section.
       elements.userVerified.style.display = "flex";
+    } else {
+      // Verified user: back to the default hidden state.
+      elements.userVerified.style.display = "none";
+    }
+
+    elements.userEmail.textContent = currentUser.email;
+    elements.userName.textContent = currentUser.displayName;
+    elements.userTier.textContent = `Subscription: ${
+      isPremium ? "Allos Premium" : "Allos Free"
+    }`;
+    elements.signOutButton.textContent = "Sign Out";
+  };
+
+  Auth.onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      currentUser = null;
+      userRole = null;
+      subscriptionActive = false;
+      render();
+      return;
+    }
+
+    if (!user.emailVerified) {
       const cachedEmail = window.localStorage.getItem(storageKeys.verifyEmail);
       if (!cachedEmail) {
         sendVerificationEmail(user);
       }
-    } else {
-      // Back to the default state, which is hidden.
-      elements.userVerified.style.display = "none";
     }
 
-    elements.userEmail.textContent = user.email;
-    elements.userName.textContent = user.displayName;
-    elements.userTier.textContent = "Tier: Free or Premium";
     currentUser = user;
+    userRole = await getUserRole(user);
+    render();
   });
 });
