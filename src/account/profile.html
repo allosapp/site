@@ -15,9 +15,14 @@ customScripts: |
         <h1>Profile</h1>
         <p id="user-display-name"></p>
         <p id="user-email"></p>
-        <p id="user-verified" class="italic"></p>
+        <div id="user-verified" class="verify-email">
+          <p class="italic">(not verified)</p>
+          <button id="resend-email-btn" class="acc-acts-link-btn">
+            Resend Email
+          </button>
+        </div>
         <p id="user-tier"></p>
-        <button id="sign-out-button" class="w-button beta-submit-btn">
+        <button id="sign-out-btn" class="w-button beta-submit-btn">
           Sign Out
         </button>
       </div>

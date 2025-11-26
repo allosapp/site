@@ -3,6 +3,17 @@
     font-style: italic;
   }
 
+  .verify-email {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+
+    p {
+        margin-bottom: 0;
+    }
+  }
+
   .hidden {
     visibility: hidden;
   }
