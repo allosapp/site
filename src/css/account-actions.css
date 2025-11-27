@@ -120,11 +120,17 @@
   .acc-acts-app-link-container {
     display: block;
   }
+  .acc-acts-sign-in-link-container {
+    display: none;
+  }
 }
-
 .acc-acts-app-link-container {
   /* By default, this is hidden, but it will be shown if the user-agent looks like a mobile device. */
   display: none;
+}
+.acc-acts-sign-in-link-container {
+  /* By default, this is shown, but it will be hidden if the user-agent looks like a mobile device. */
+  display: block;
 }
 
 .acc-acts-cta-link-container {
