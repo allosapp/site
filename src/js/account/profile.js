@@ -3,6 +3,7 @@ import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
 import {
   getUserHasPremiumSub,
   getProfilePurchaseLink,
+  setUserAttributes,
 } from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
 
@@ -94,6 +95,8 @@ runOnLoad(() => {
     userRole = await getUserRole(user);
     subscriptionActive = await getUserHasPremiumSub(user);
     render();
+
+    await setUserAttributes(user);
   });
 
   const recheckPremiumSub = async () => {
