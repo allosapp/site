@@ -3,39 +3,35 @@ import * as PurchasesModule from "https://unpkg.com/@revenuecat/purchases-js@1.1
 // Need to access Purchases again when loading from unpkg.
 const Purchases = PurchasesModule.Purchases;
 
-const purchasesByUser = {};
+let purchases = undefined;
 
-const getUserPurchases = (uid) => {
+const getCustomerInfo = async (uid) => {
   if (!uid) {
     return null;
   }
-  if (purchasesByUser[uid]) {
-    return purchasesByUser[uid];
+  let customerInfo;
+  if (!purchases) {
+    purchases = Purchases.configure({
+      apiKey: "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls",
+      appUserId: uid,
+    });
+  } 
+  
+  if (purchases.getAppUserId() !== uid) {
+    customerInfo = await purchases.changeUser(uid);
+  } else {
+    customerInfo = await purchases.getCustomerInfo();
   }
-  const purchases = Purchases.configure({
-    apiKey: "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls",
-    appUserId: uid,
-  });
-  purchasesByUser[uid] = purchases;
-  return purchases;
+  return customerInfo;
 };
 
 export const getUserHasPremiumSub = async (user) => {
-  if (!user?.uid) {
-    return false;
-  }
-  const purchases = getUserPurchases(user.uid);
-  if (!purchases) {
-    return false;
-  }
-
-  const customerInfo = await purchases.getCustomerInfo();
+  const customerInfo = await getCustomerInfo(user?.uid);
   if (!customerInfo) {
     return false;
   }
 
   const { entitlements } = customerInfo;
-
   return Object.entries(entitlements?.active ?? {}).length > 0;
 };
 

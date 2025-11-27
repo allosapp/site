@@ -95,4 +95,27 @@ runOnLoad(() => {
     subscriptionActive = await getUserHasPremiumSub(user);
     render();
   });
+
+  const recheckPremiumSub = async () => {
+    if (!currentUser) {
+      return;
+    }
+    const hasSub = await getUserHasPremiumSub(currentUser);
+    if (subscriptionActive !== hasSub) {
+      subscriptionActive = hasSub;
+      render();
+    }
+  };
+
+  // Refresh subscription status when window gains focus
+  // (e.g., user returns from payment page in another tab)
+  window.addEventListener("focus", recheckPremiumSub);
+
+  // Refresh subscription status when page becomes visible
+  // (e.g., user switches back to this tab)
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      recheckPremiumSub();
+    }
+  });
 });
