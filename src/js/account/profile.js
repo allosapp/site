@@ -23,7 +23,8 @@ runOnLoad(() => {
     userSubscribe: document.getElementById("user-subscribe"),
     userSubscribeLink: document.querySelector("#user-subscribe a"),
     userTier: document.getElementById("user-tier"),
-    userVerified: document.getElementById("user-verified"),
+    userVerify: document.getElementById("user-verify"),
+    verifyEmailAddress: document.getElementById("verify-email-address"),
   };
 
   const sendVerificationEmail = (user) => {
@@ -55,13 +56,13 @@ runOnLoad(() => {
       return;
     } else {
       elements.loadingContainer.classList.add("invisible");
-      elements.mainContent.classList.remove("hidden");
     }
 
     if (!currentUser) {
+      elements.userVerify.classList.add("invisible");
+      elements.mainContent.classList.remove("invisible");
       elements.userEmail.textContent = "";
       elements.userName.textContent = "You are not signed in.";
-      elements.userVerified.style.display = "none";
       elements.userTier.textContent = "";
       elements.userSubscribe.style.display = "none";
       elements.userSubscribeLink.href = "";
@@ -69,11 +70,17 @@ runOnLoad(() => {
       return;
     }
 
+    if (!currentUser.emailVerified) {
+      elements.mainContent.classList.add("invisible");
+      elements.userVerify.classList.remove("invisible");
+      elements.verifyEmailAddress.textContent = currentUser.email;
+      return;
+    }
+
+    elements.userVerify.classList.add("invisible");
+    elements.mainContent.classList.remove("invisible");
     elements.userEmail.textContent = currentUser.email;
     elements.userName.textContent = currentUser.displayName;
-    elements.userVerified.style.display = currentUser.emailVerified
-      ? "none"
-      : "flex";
     elements.userTier.textContent = `Subscription: ${
       isPremium ? "Allos Premium" : "Allos Free"
     }`;

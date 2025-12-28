@@ -14,16 +14,18 @@ customScripts: |
       <div id="loading-container" class="spinner-container">
         <div class="spinner"></div>
       </div>
-      <div id="main-content" class="acc-acts-content hidden">
+      <div id="user-verify" class="acc-acts-content invisible">
+        <h1>Verify Your Email</h1>
+        <p>A verification email has been sent to </p>
+        <p id="verify-email-address"></p>
+        <button id="resend-email-btn" class="acc-acts-link-btn">
+          Resend Email
+        </button>
+      </div>
+      <div id="main-content" class="acc-acts-content invisible">
         <h1>Profile</h1>
         <p id="user-display-name"></p>
         <p id="user-email"></p>
-        <div id="user-verified" class="verify-email">
-          <p class="italic">(not verified)</p>
-          <button id="resend-email-btn" class="acc-acts-link-btn">
-            Resend Email
-          </button>
-        </div>
         <p id="user-tier"></p>
         <div id="user-subscribe" class="acc-acts-cta-link-container">
           <div>
