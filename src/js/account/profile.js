@@ -27,6 +27,10 @@ runOnLoad(() => {
     verifyEmailAddress: document.getElementById("verify-email-address"),
   };
 
+  const userIsPremium = () => {
+    return userRole === "internal" || userRole === "demo" || subscriptionActive;
+  };
+
   const sendVerificationEmail = (user) => {
     window.localStorage.setItem(storageKeys.verifyEmail, user.email);
     Auth.sendEmailVerification(user);
@@ -49,8 +53,7 @@ runOnLoad(() => {
   });
 
   const render = () => {
-    const isPremium =
-      userRole === "internal" || userRole === "demo" || subscriptionActive;
+    const isPremium = userIsPremium();
 
     if (isLoading) {
       return;
@@ -120,10 +123,16 @@ runOnLoad(() => {
     currentUser = user;
     userRole = await getUserRole(user);
     subscriptionActive = await getUserHasPremiumSub(user);
+    await setUserAttributes(user);
+
+    if (user.emailVerified && !userIsPremium()) {
+      // User is verified and not yet subscribed. Send them to the purchase page.
+      window.location.href = getProfilePurchaseLink(user.uid);
+      return;
+    }
+
     hideLoading();
     render();
-
-    await setUserAttributes(user);
   });
 
   const recheckPremiumSub = async () => {
