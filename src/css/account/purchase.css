@@ -1,0 +1,77 @@
+#purchase-container {
+  .invisible {
+    display: none;
+  }
+
+  .spinner-container {
+    top: 50px;
+    position: absolute;
+  }
+
+  .subtitle {
+    color: #a0a0a0;
+  }
+
+  .packages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .package-card {
+    background-color: #2a2d35;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    min-width: 280px;
+    max-width: 320px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .package-card:hover {
+    border-color: #5a5d65;
+    transform: translateY(-2px);
+  }
+
+  .package-card:active {
+    transform: translateY(0);
+  }
+
+  .package-type {
+    color: #8a8d95;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .package-price {
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+
+  .package-price .amount {
+    font-weight: 700;
+  }
+
+  .package-price .period {
+    color: #a0a0a0;
+  }
+
+  .error-message {
+    color: #ff6b6b;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+}

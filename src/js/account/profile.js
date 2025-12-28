@@ -2,7 +2,6 @@ import { storageKeys } from "../modules/constants.js";
 import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
 import {
   getUserHasPremiumSub,
-  getProfilePurchaseLink,
   setUserAttributes,
 } from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
@@ -128,7 +127,7 @@ runOnLoad(() => {
       // User is verified and not yet subscribed, and we haven't auto-forwarded this user yet.
       // Send the user to the purchase page.
       window.localStorage.setItem(storageKeys.purchaseEmail, user.email);
-      window.location.assign(getProfilePurchaseLink(user.uid));
+      window.location.assign("/account/purchase/");
       return;
     }
 

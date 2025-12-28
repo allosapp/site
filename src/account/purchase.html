@@ -1,0 +1,25 @@
+---
+layout: layouts/base-minimal.html
+title: Subscribe
+description: Choose your Allos subscription.
+customHead: |
+  <link type="text/css" rel="stylesheet" href="/css/account/purchase.css" />
+customScripts: |
+  <script type="module" src="/js/account/purchase.js"></script>
+---
+
+<div id="purchase-container" class="section-hero">
+  <div class="hero-container w-container acc-acts-container">
+    <div class="acc-acts-container-inner">
+      <div id="loading-container" class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+      <div id="main-content" class="acc-acts-content invisible">
+        <h1>Choose a Subscription</h1>
+        <p class="subtitle">Unlock access to all audio and video tracks and future updates</p>
+        <div id="packages-container" class="packages-container"></div>
+        <div id="error-message" class="error-message invisible"></div>
+      </div>
+    </div>
+  </div>
+</div>
