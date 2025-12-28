@@ -1,4 +1,5 @@
 export const storageKeys = {
-  purchaseEmail: "allos.app.purchase-email-address",
-  verifyEmail: "allos.app.verify-email-address",
+  sandboxKey: "rc-sb-key",
+  purchaseEmail: "purchase-email-address",
+  verifyEmail: "verify-email-address",
 };

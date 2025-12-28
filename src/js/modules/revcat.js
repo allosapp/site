@@ -1,5 +1,8 @@
 import * as PurchasesModule from "https://unpkg.com/@revenuecat/purchases-js@1.18.4/dist/Purchases.es.js";
+import { storageKeys } from "./constants.js";
 import { extractEmailTld } from "./util.js";
+const ErrorCode = PurchasesModule.ErrorCode;
+const PurchasesError = PurchasesModule.PurchasesError;
 
 // Need to access Purchases again when loading from unpkg.
 const Purchases = PurchasesModule.Purchases;
@@ -11,8 +14,9 @@ const getUserPurchases = (uid) => {
     return null;
   }
   if (!_purchases) {
+    const apiKey = window.localStorage.getItem(storageKeys.sandboxKey)?.trim() ?? "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls"
     _purchases = Purchases.configure({
-      apiKey: "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls",
+      apiKey,
       appUserId: uid,
     });
   }
@@ -34,14 +38,27 @@ const getCustomerInfo = async (uid) => {
   return customerInfo;
 };
 
-export const getUserHasPremiumSub = async (user) => {
-  const customerInfo = await getCustomerInfo(user?.uid);
+export const getUserOfferings = async (uid) => {
+  const purchases = getUserPurchases(uid);
+  if (!purchases) {
+    return null;
+  }
+  const offerings = await purchases.getOfferings();
+  return offerings;
+};
+
+const getHasPremiumEntitlement = (customerInfo) => {
   if (!customerInfo) {
     return false;
   }
 
   const { entitlements } = customerInfo;
   return Object.entries(entitlements?.active ?? {}).length > 0;
+};
+
+export const getUserHasPremiumSub = async (uid) => {
+  const customerInfo = await getCustomerInfo(uid);
+  return getHasPremiumEntitlement(customerInfo);
 };
 
 /**
@@ -73,6 +90,30 @@ export const setUserAttributes = async (user) => {
     } catch (error) {
       console.error("Failed to set RevenueCat attributes:", error);
     }
+  }
+};
+
+export const openPurchaseFlow = async (uid, rcPackage) => {
+  const purchases = getUserPurchases(uid);
+  if (!purchases || !rcPackage) {
+    return false;
+  }
+
+  try {
+    const { customerInfo } = await purchases.purchase({
+      rcPackage
+    });
+    return getHasPremiumEntitlement(customerInfo);
+  } catch (e) {
+    if (
+      e instanceof PurchasesError &&
+      e.errorCode == ErrorCode.UserCancelledError
+    ) {
+      // User cancelled the purchase process, don't do anything
+    } else {
+      console.error(e);
+    }
+    return false;
   }
 };
 

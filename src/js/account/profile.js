@@ -70,7 +70,6 @@ runOnLoad(() => {
       elements.userName.textContent = "You are not signed in.";
       elements.userTier.textContent = "";
       elements.userSubscribe.style.display = "none";
-      elements.userSubscribeLink.href = "";
       elements.signOutButton.textContent = "Sign In";
       return;
     }
@@ -90,9 +89,6 @@ runOnLoad(() => {
       isPremium ? "Allos Premium" : "Allos Free"
     }`;
     elements.userSubscribe.style.display = isPremium ? "none" : "block";
-    elements.userSubscribeLink.href = !isPremium
-      ? getProfilePurchaseLink(currentUser?.uid)
-      : "";
     elements.signOutButton.textContent = "Sign Out";
   };
 
@@ -124,7 +120,7 @@ runOnLoad(() => {
 
     currentUser = user;
     userRole = await getUserRole(user);
-    subscriptionActive = await getUserHasPremiumSub(user);
+    subscriptionActive = await getUserHasPremiumSub(user?.uid);
     await setUserAttributes(user);
 
     const forwardedEmail = window.localStorage.getItem(storageKeys.purchaseEmail);
@@ -144,7 +140,7 @@ runOnLoad(() => {
     if (!currentUser) {
       return;
     }
-    const hasSub = await getUserHasPremiumSub(currentUser);
+    const hasSub = await getUserHasPremiumSub(currentUser?.uid);
     if (subscriptionActive !== hasSub) {
       subscriptionActive = hasSub;
       render();
