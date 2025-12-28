@@ -57,14 +57,16 @@ runOnLoad(() => {
 
     const title = document.createElement("div");
     title.className = "package-title";
-    title.textContent = rcPackage.rcBillingProduct?.displayName || "Allos Premium";
+    title.textContent =
+      rcPackage.rcBillingProduct?.displayName || "Allos Premium";
 
     const price = document.createElement("div");
     price.className = "package-price";
 
     const priceAmount = document.createElement("span");
     priceAmount.className = "amount";
-    priceAmount.textContent = rcPackage.rcBillingProduct?.currentPrice?.formattedPrice || "";
+    priceAmount.textContent =
+      rcPackage.rcBillingProduct?.currentPrice?.formattedPrice || "";
 
     const pricePeriod = document.createElement("span");
     pricePeriod.className = "period";
@@ -78,16 +80,16 @@ runOnLoad(() => {
     card.appendChild(price);
 
     card.addEventListener("click", async () => {
-      card.style.opacity = "0.7";
-      card.style.pointerEvents = "none";
-      
+      elements.mainContent.classList.add("invisible");
+      elements.loadingContainer.classList.remove("invisible");
+
       const success = await openPurchaseFlow(currentUser.uid, rcPackage);
-      
-      card.style.opacity = "1";
-      card.style.pointerEvents = "auto";
-      
+
       if (success) {
-        window.location.assign("/account/profile/");
+        window.location.assign("/account/welcome/");
+      } else {
+        elements.loadingContainer.classList.add("invisible");
+        elements.mainContent.classList.remove("invisible");
       }
     });
 
@@ -99,7 +101,8 @@ runOnLoad(() => {
 
     const currentOffering = offerings?.current;
     if (!currentOffering || !currentOffering.availablePackages?.length) {
-      elements.errorMessage.textContent = "No subscription options available at this time.";
+      elements.errorMessage.textContent =
+        "No subscription options available at this time.";
       elements.errorMessage.classList.remove("invisible");
       return;
     }

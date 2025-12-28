@@ -1,0 +1,30 @@
+#welcome-container {
+    .subtitle {
+        color: #a0a0a0;
+    }
+
+    .store-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .store-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 180px;
+        transition: opacity 0.2s ease;
+    }
+
+    .store-links a:hover {
+        opacity: 0.8;
+    }
+
+    .store-links img {
+        height: 54px;
+        width: auto;
+    }
+}

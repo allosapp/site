@@ -14,7 +14,9 @@ const getUserPurchases = (uid) => {
     return null;
   }
   if (!_purchases) {
-    const apiKey = window.localStorage.getItem(storageKeys.sandboxKey)?.trim() ?? "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls"
+    const apiKey =
+      window.localStorage.getItem(storageKeys.sandboxKey)?.trim() ??
+      "rcb_wtOLXBwmiEkKrEuzfyPqVMTNWRls";
     _purchases = Purchases.configure({
       apiKey,
       appUserId: uid,
@@ -101,7 +103,8 @@ export const openPurchaseFlow = async (uid, rcPackage) => {
 
   try {
     const { customerInfo } = await purchases.purchase({
-      rcPackage
+      rcPackage,
+      skipSuccessPage: true,
     });
     return getHasPremiumEntitlement(customerInfo);
   } catch (e) {
