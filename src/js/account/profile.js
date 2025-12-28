@@ -49,6 +49,8 @@ runOnLoad(() => {
       elements.mainContent.classList.add("hidden");
       auth.signOut();
     }
+    window.localStorage.removeItem(storageKeys.verifyEmail);
+    window.localStorage.removeItem(storageKeys.purchaseEmail);
     window.location.replace("/account/sign-in");
   });
 
@@ -99,7 +101,7 @@ runOnLoad(() => {
       setTimeout(() => {
         isLoading = false;
         render();
-      }, 750);
+      }, 500);
     }
   };
 
@@ -125,9 +127,12 @@ runOnLoad(() => {
     subscriptionActive = await getUserHasPremiumSub(user);
     await setUserAttributes(user);
 
-    if (user.emailVerified && !userIsPremium()) {
-      // User is verified and not yet subscribed. Send them to the purchase page.
-      window.location.href = getProfilePurchaseLink(user.uid);
+    const forwardedEmail = window.localStorage.getItem(storageKeys.purchaseEmail);
+    if (user.emailVerified && !userIsPremium() && forwardedEmail !== user.email) {
+      // User is verified and not yet subscribed, and we haven't auto-forwarded this user yet.
+      // Send the user to the purchase page.
+      window.localStorage.setItem(storageKeys.purchaseEmail, user.email);
+      window.location.assign(getProfilePurchaseLink(user.uid));
       return;
     }
 
