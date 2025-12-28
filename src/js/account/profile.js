@@ -11,8 +11,10 @@ runOnLoad(() => {
   let currentUser = undefined;
   let userRole = undefined;
   let subscriptionActive = false;
+  let isLoading = true;
   const auth = getAuthInstance();
   const elements = {
+    loadingContainer: document.getElementById("loading-container"),
     mainContent: document.getElementById("main-content"),
     resendEmailButton: document.getElementById("resend-email-btn"),
     signOutButton: document.getElementById("sign-out-btn"),
@@ -49,6 +51,13 @@ runOnLoad(() => {
     const isPremium =
       userRole === "internal" || userRole === "demo" || subscriptionActive;
 
+    if (isLoading) {
+      return;
+    } else {
+      elements.loadingContainer.classList.add("invisible");
+      elements.mainContent.classList.remove("hidden");
+    }
+
     if (!currentUser) {
       elements.userEmail.textContent = "";
       elements.userName.textContent = "You are not signed in.";
@@ -75,11 +84,21 @@ runOnLoad(() => {
     elements.signOutButton.textContent = "Sign Out";
   };
 
+  const hideLoading = () => {
+    if (isLoading) {
+      setTimeout(() => {
+        isLoading = false;
+        render();
+      }, 750);
+    }
+  };
+
   Auth.onAuthStateChanged(auth, async (user) => {
     if (!user) {
       currentUser = null;
       userRole = null;
       subscriptionActive = false;
+      hideLoading();
       render();
       return;
     }
@@ -94,6 +113,7 @@ runOnLoad(() => {
     currentUser = user;
     userRole = await getUserRole(user);
     subscriptionActive = await getUserHasPremiumSub(user);
+    hideLoading();
     render();
 
     await setUserAttributes(user);

@@ -7,6 +7,15 @@
     visibility: hidden;
   }
 
+  .invisible {
+      display: none;
+  }
+
+  .spinner-container {
+      top: 50px;
+      position: absolute;
+  }
+
   .acc-acts-cta-link-container {
     display: none;
     margin-top: 0;
