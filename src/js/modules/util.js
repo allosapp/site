@@ -1,5 +1,11 @@
 export const runOnLoad = (cb) => {
-    document.addEventListener("DOMContentLoaded", cb, false)
+  document.addEventListener("DOMContentLoaded", cb, false);
+};
+
+export const getUserDisplayName = (user) => {
+  return (
+    user?.displayName ?? user?.email?.slice(0, user.email?.indexOf("@")) ?? ""
+  );
 };
 
 /**
