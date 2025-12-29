@@ -1,5 +1,5 @@
 import { Auth, getAuthInstance } from "../modules/firebase.js";
-import { getUserOfferings, openPurchaseFlow } from "../modules/revcat.js";
+import { getUserHasPremiumSub, getUserOfferings, openPurchaseFlow } from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
@@ -142,6 +142,12 @@ runOnLoad(() => {
     currentUser = user;
 
     try {
+      const hasPremium = await getUserHasPremiumSub(user.uid);
+      if (hasPremium) {
+        window.location.replace("/account/profile/");
+        return;
+      }
+
       const offerings = await getUserOfferings(user.uid);
       renderPackages(offerings);
     } catch (error) {
