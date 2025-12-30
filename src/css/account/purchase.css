@@ -26,7 +26,7 @@
     border-radius: 12px;
     padding: 1.5rem 2rem;
     min-width: 280px;
-    max-width: 320px;
+    flex: 1;
     cursor: pointer;
     transition: border-color 0.2s ease, transform 0.2s ease;
   }
@@ -56,9 +56,23 @@
     margin-bottom: 0.75rem;
   }
 
-  .package-price {
+  .package-price-primary {
     color: #ffffff;
     font-size: 1.1rem;
+  }
+
+  .package-price-primary .amount {
+    font-weight: 700;
+  }
+
+  .package-price-primary .period {
+    color: #a0a0a0;
+  }
+
+  .package-price {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-top: 0.25rem;
   }
 
   .package-price .amount {
@@ -66,6 +80,31 @@
   }
 
   .package-price .period {
+    color: #a0a0a0;
+  }
+
+  .intro-offer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #3a3d45;
+  }
+
+  .intro-offer-trial {
+    font-size: 0.9rem;
+    color: #7dd3a0;
+    margin-bottom: 0.25rem;
+  }
+
+  .intro-offer-price {
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+
+  .intro-offer-price .amount {
+    font-weight: 700;
+  }
+
+  .intro-offer-price .period {
     color: #a0a0a0;
   }
 

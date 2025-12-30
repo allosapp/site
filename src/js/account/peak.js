@@ -1,8 +1,10 @@
+import { storageKeys } from "../modules/constants.js";
 import {
   config as firebaseConfig,
 } from "../modules/firebase.js";
 import { runOnLoad } from "../modules/util.js";
 
+const utm_campaign = "partner_peak";
 runOnLoad(() => {
   /**
    * This page uses global firebase and firebaseui objects defined globally via imported scripts in the HTML file,
@@ -14,7 +16,7 @@ runOnLoad(() => {
 
   auth.onAuthStateChanged((user) => {
     if (user) {
-      localStorage.setItem("utm_campaign", "peak");
+      localStorage.setItem(storageKeys.utmCampaign, utm_campaign);
       window.location.replace("/account/profile");
     }
   });
@@ -30,7 +32,7 @@ runOnLoad(() => {
     ],
     callbacks: {
       signInSuccessWithAuthResult: function() {
-        localStorage.setItem("utm_campaign", "peak");
+        localStorage.setItem(storageKeys.utmCampaign, utm_campaign);
         window.location.replace("/account/profile/");
         return false;
       },

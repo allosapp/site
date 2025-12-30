@@ -85,6 +85,12 @@ export const setUserAttributes = async (user) => {
     }
   }
 
+  // Add utm_campaign if the user has an entry in localStorage.
+  const utmCampaign = localStorage.getItem(storageKeys.utmCampaign)?.trim();
+  if (utmCampaign) {
+    attributes.utm_campaign = utmCampaign;
+  }
+
   // Only call setAttributes if we have attributes to set
   if (Object.keys(attributes).length > 0) {
     try {

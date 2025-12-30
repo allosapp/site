@@ -47,6 +47,97 @@ runOnLoad(() => {
     return "";
   };
 
+  const formatPeriodDuration = (periodDuration, cycleCount = 1, omitOne = false) => {
+    if (!periodDuration) return "";
+    // ISO 8601 duration format: P1M, P1Y, P1W, P7D, etc.
+    const match = periodDuration.match(/^P(\d+)([DWMY])$/);
+    if (!match) return periodDuration;
+    const [, count, unit] = match;
+    const num = parseInt(count, 10) * cycleCount;
+    const units = {
+      D: num === 1 ? "day" : "days",
+      W: num === 1 ? "week" : "weeks",
+      M: num === 1 ? "month" : "months",
+      Y: num === 1 ? "year" : "years",
+    };
+    if (num === 1 && omitOne) {
+      return units[unit] || unit;
+    }
+    return `${num} ${units[unit] || unit}`;
+  };
+
+  const getIntroOfferInfo = (product) => {
+    const freeTrialPhase = product?.freeTrialPhase;
+    const introPricePhase = product?.introPricePhase;
+
+    if (!freeTrialPhase && !introPricePhase) {
+      return null;
+    }
+
+    const info = {
+      hasIntroPrice: !!introPricePhase,
+      hasFreeTrial: !!freeTrialPhase,
+      introPriceDuration: null,
+    };
+
+    if (introPricePhase) {
+      const cycleCount = introPricePhase.cycleCount || 1;
+      info.introPriceDuration = formatPeriodDuration(
+        introPricePhase.periodDuration,
+        cycleCount,
+        true
+      );
+    }
+
+    return info;
+  };
+
+  const createIntroOfferElement = (product) => {
+    const freeTrialPhase = product?.freeTrialPhase;
+    const introPricePhase = product?.introPricePhase;
+
+    if (!freeTrialPhase && !introPricePhase) {
+      return null;
+    }
+
+    const introOffer = document.createElement("div");
+    introOffer.className = "intro-offer";
+
+    if (freeTrialPhase) {
+      const trialText = document.createElement("div");
+      trialText.className = "intro-offer-trial";
+      const duration = formatPeriodDuration(freeTrialPhase.periodDuration);
+      trialText.textContent = `${duration} free trial`;
+      introOffer.appendChild(trialText);
+    }
+
+    if (introPricePhase) {
+      const introText = document.createElement("div");
+      introText.className = "intro-offer-price";
+      const cycleCount = introPricePhase.cycleCount || 1;
+      const duration = formatPeriodDuration(
+        introPricePhase.periodDuration,
+        cycleCount,
+        true
+      );
+      const price = introPricePhase.price?.formattedPrice || "";
+
+      const priceAmount = document.createElement("span");
+      priceAmount.className = "amount";
+      priceAmount.textContent = price;
+
+      const pricePeriod = document.createElement("span");
+      pricePeriod.className = "period";
+      pricePeriod.textContent = ` for the first ${duration}`;
+
+      introText.appendChild(priceAmount);
+      introText.appendChild(pricePeriod);
+      introOffer.appendChild(introText);
+    }
+
+    return introOffer;
+  };
+
   const createPackageCard = (rcPackage) => {
     const card = document.createElement("div");
     card.className = "package-card";
@@ -60,23 +151,38 @@ runOnLoad(() => {
     title.textContent =
       rcPackage.rcBillingProduct?.displayName || "Allos Premium";
 
+    const product = rcPackage.rcBillingProduct;
+    const introOfferInfo = getIntroOfferInfo(product);
+    const introOffer = createIntroOfferElement(product);
+
     const price = document.createElement("div");
-    price.className = "package-price";
+    price.className = introOfferInfo?.hasIntroPrice
+      ? "package-price"
+      : "package-price-primary";
 
     const priceAmount = document.createElement("span");
     priceAmount.className = "amount";
-    priceAmount.textContent =
-      rcPackage.rcBillingProduct?.currentPrice?.formattedPrice || "";
+    priceAmount.textContent = product?.currentPrice?.formattedPrice || "";
 
     const pricePeriod = document.createElement("span");
     pricePeriod.className = "period";
-    pricePeriod.textContent = " " + getPricePeriod(rcPackage);
+    if (introOfferInfo?.hasIntroPrice) {
+      const thenText = document.createElement("span");
+      thenText.textContent = "then ";
+      price.appendChild(thenText);
+      pricePeriod.textContent = " after";
+    } else {
+      pricePeriod.textContent = " " + getPricePeriod(rcPackage);
+    }
 
     price.appendChild(priceAmount);
     price.appendChild(pricePeriod);
 
     card.appendChild(packageType);
     card.appendChild(title);
+    if (introOffer) {
+      card.appendChild(introOffer);
+    }
     card.appendChild(price);
 
     card.addEventListener("click", async () => {
