@@ -1,7 +1,7 @@
 ---
 layout: layouts/base-minimal.html
 title: Allos + Peak
-description: Train Your Nervous System for High Performance
+description: Train Your Nervous System for Peak Performance
 ---
 
 <style>
@@ -23,7 +23,7 @@ description: Train Your Nervous System for High Performance
   .content-box {
     max-width: 1200px;
     margin: 0 auto;
-    background: rgba(93, 52, 110, 0.4);
+    background: #322337;
     border-radius: 24px;
     padding: 40px 30px;
     display: flex;
@@ -141,6 +141,16 @@ description: Train Your Nervous System for High Performance
     position: relative;
   }
 
+  .hero-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    z-index: 1;
+  }
+
   .hero-logos {
     margin-bottom: 40px;
   }
@@ -155,7 +165,7 @@ description: Train Your Nervous System for High Performance
     color: white;
     max-width: 800px;
     margin: 0 auto 40px;
-    padding: 0 20px;
+    padding: 100px 20px 0 20px;
   }
 
   .hero-text h1 {
@@ -286,6 +296,11 @@ description: Train Your Nervous System for High Performance
      ============================================ */
   
   @media screen and (min-width: 768px) {
+    /* Logo sizing for tablet/desktop */
+    .hero-logo {
+      max-width: 150px;
+    }
+
     /* Shared section spacing */
     .section-dark {
       padding: 80px 40px;
@@ -459,8 +474,9 @@ description: Train Your Nervous System for High Performance
 
 <main>
   <div class="hero-section">
+    <img src="/assets/images/allos-logo.svg" alt="Allos" class="hero-logo">
     <div class="hero-text">
-      <h1>Train Your Nervous System for High Performance</h1>
+      <h1>Train Your Nervous System for Peak Performance</h1>
       <p>Music-guided breathing to support flow, focus, and recovery</p>
     </div>
 
