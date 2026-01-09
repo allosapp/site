@@ -1,9 +1,12 @@
 import { storageKeys } from "../modules/constants.js";
-import { Auth, getAuthInstance, getUserRole } from "../modules/firebase.js";
 import {
-  getUserHasPremiumSub,
-  setUserAttributes,
-} from "../modules/revcat.js";
+  Auth,
+  getAuthInstance,
+  getUserRole,
+  setUserSubgroup,
+  ensureUserProfile,
+} from "../modules/firebase.js";
+import { getUserHasPremiumSub, setUserAttributes } from "../modules/revcat.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
@@ -118,12 +121,28 @@ runOnLoad(() => {
     }
 
     currentUser = user;
+
+    // Ensure user profile document exists
+    await ensureUserProfile(user);
+
     userRole = await getUserRole(user);
     subscriptionActive = await getUserHasPremiumSub(user?.uid);
     await setUserAttributes(user);
 
-    const forwardedEmail = window.localStorage.getItem(storageKeys.purchaseEmail);
-    if (user.emailVerified && !userIsPremium() && forwardedEmail !== user.email) {
+    // Set subgroup from UTM campaign if available and not already set
+    const utmCampaign = localStorage.getItem(storageKeys.utmCampaign);
+    if (utmCampaign) {
+      await setUserSubgroup(user, utmCampaign);
+    }
+
+    const forwardedEmail = window.localStorage.getItem(
+      storageKeys.purchaseEmail,
+    );
+    if (
+      user.emailVerified &&
+      !userIsPremium() &&
+      forwardedEmail !== user.email
+    ) {
       // User is verified and not yet subscribed, and we haven't auto-forwarded this user yet.
       // Send the user to the purchase page.
       window.localStorage.setItem(storageKeys.purchaseEmail, user.email);
