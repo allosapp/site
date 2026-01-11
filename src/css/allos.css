@@ -1158,6 +1158,25 @@ label {
   backdrop-filter: blur(5px);
 }
 
+.app-store-badges {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-badge {
+  height: 60px;
+  width: auto;
+  transition: opacity 0.2s ease;
+}
+
+.app-badge:hover {
+  opacity: 0.8;
+}
+
 .article-h2 {
   margin-bottom: 10px;
 }

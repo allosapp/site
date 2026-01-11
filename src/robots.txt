@@ -1,0 +1,7 @@
+# Robots.txt for Allos website
+User-agent: *
+Disallow: /peak
+Disallow: /peak/
+
+# Allow all other pages
+Allow: /
