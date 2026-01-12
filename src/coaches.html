@@ -1,21 +1,13 @@
 ---
-layout: layouts/base-minimal.html
-title: Allos + Peak
-description: Train Your Nervous System for Peak Performance
-customHead: |
-  <meta name="robots" content="noindex, nofollow">
-customScripts: |
-  <script type="module" src="/js/account/peak.js"></script>
+layout: layouts/base.html
+title: Allos for Performance Coaches
+description: Music-guided breathing app to support your clients' nervous system training, focus, and recovery
 ---
 
 <style>
   /* ============================================
      Global & Shared Styles
      ============================================ */
-
-  .nav-bar-section {
-    display: none;
-  }
 
   /* Shared dark section background and spacing */
   .section-dark {
@@ -113,25 +105,30 @@ customScripts: |
     display: block;
   }
 
-  /* Shared button styling */
-  .btn-primary {
-    display: inline-block;
-    background: linear-gradient(135deg, #ff0e93 0%, #ff6eb4 100%);
-    color: white;
-    font-family: basic-sans, sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 14px 32px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 14, 147, 0.3);
-    white-space: nowrap;
+  /* App store badges styling */
+  .app-store-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
   }
 
-  .btn-primary:hover {
+  .app-store-badges a {
+    display: block;
+    max-width: 200px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .app-store-badges a:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 14, 147, 0.4);
+    opacity: 0.9;
+  }
+
+  .app-store-badges img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ============================================
@@ -140,71 +137,37 @@ customScripts: |
 
   .hero-section {
     background: linear-gradient(180deg, #1a0a1f 0%, #2d1535 100%);
-    padding: 40px 20px 0;
+    padding: 80px 20px 0;
     text-align: center;
     position: relative;
   }
 
-  .hero-logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    max-width: 100px;
-    width: auto;
-    height: auto;
-    z-index: 1;
-  }
-
-  .hero-logos {
-    margin-bottom: 40px;
-  }
-
-  .hero-logos img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-  }
-
-  .hero-text {
-    color: white;
+  .hero-content {
     max-width: 800px;
-    margin: 0 auto 40px;
-    padding: 100px 20px 0 20px;
+    margin: 0 auto;
   }
 
-  .hero-text h1 {
+  .hero-content h1 {
     font-family: basic-sans, sans-serif;
     font-weight: 600;
     font-size: 2rem;
     line-height: 1.2;
     margin: 0 0 20px 0;
+    color: white;
     letter-spacing: -0.02em;
-  }
-
-  .hero-text p {
-    font-family: basic-sans, sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    margin: 0 0 30px 0;
-    opacity: 0.9;
   }
 
   .hero-image-container {
     position: relative;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
+    margin-top: 40px;
   }
 
   .hero-image-container img {
     width: 100%;
     height: auto;
     display: block;
-  }
-
-  .hero-cta {
-    position: relative;
-    margin-bottom: 30px;
   }
 
   /* ============================================
@@ -262,8 +225,8 @@ customScripts: |
     gap: 30px;
   }
 
-  .cta-logos img {
-    max-width: 300px;
+  .cta-logo img {
+    max-width: 250px;
     width: 100%;
     height: auto;
   }
@@ -291,20 +254,16 @@ customScripts: |
     opacity: 0.9;
   }
 
-  .cta-button {
-    margin-top: 10px;
-  }
-
   /* ============================================
      Responsive Styles - Tablet (768px+)
      ============================================ */
 
   @media screen and (min-width: 768px) {
-    /* Logo sizing and positioning for tablet/desktop */
-    .hero-logo {
-      max-width: 150px;
-      top: 15px;
-      left: 30px;
+    /* App store badges side by side */
+    .app-store-badges {
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
     }
 
     /* Shared section spacing */
@@ -316,6 +275,7 @@ customScripts: |
       flex-direction: row;
       gap: 60px;
       padding: 60px 50px;
+      align-items: flex-end;
     }
 
     /* Shared typography scaling */
@@ -328,45 +288,16 @@ customScripts: |
       font-size: 1.125rem;
     }
 
-    /* Shared button scaling */
-    .btn-primary {
-      font-size: 1.1rem;
-      padding: 16px 40px;
-    }
-
     /* Hero section */
     .hero-section {
-      padding: 60px 40px 0;
+      padding: 100px 40px 0;
     }
 
-    .hero-logos img {
-      max-width: 400px;
-    }
-
-    .hero-text h1 {
+    .hero-content h1 {
       font-size: 3rem;
     }
 
-    .hero-text p {
-      font-size: 1.35rem;
-    }
-
-    .hero-cta {
-      position: absolute;
-      top: 20%;
-      left: 66.66%;
-      transform: translateX(-50%);
-      margin-bottom: 0;
-    }
-
-    .hero-cta:hover {
-      transform: translateX(-50%) translateY(-2px);
-    }
-
     /* Feature & Difference sections */
-    .content-box {
-      align-items: flex-end;
-    }
 
     .feature-content,
     .difference-content {
@@ -395,8 +326,8 @@ customScripts: |
       padding: 100px 40px;
     }
 
-    .cta-logos img {
-      max-width: 400px;
+    .cta-logo img {
+      max-width: 300px;
     }
 
     .cta-headline {
@@ -405,10 +336,6 @@ customScripts: |
 
     .cta-subtext {
       font-size: 1.35rem;
-    }
-
-    .cta-button {
-      margin-top: 20px;
     }
   }
 
@@ -440,19 +367,13 @@ customScripts: |
       margin-bottom: 20px;
     }
 
-    /* Shared button scaling */
-    .btn-primary {
-      font-size: 1.2rem;
-      padding: 18px 48px;
-    }
-
     /* Hero section */
-    .hero-text h1 {
-      font-size: 3.5rem;
+    .hero-section {
+      padding: 120px 60px 0;
     }
 
-    .hero-text p {
-      font-size: 1.5rem;
+    .hero-content h1 {
+      font-size: 3.5rem;
     }
 
     /* Feature & Difference images */
@@ -478,15 +399,20 @@ customScripts: |
 
 <main>
   <div class="hero-section">
-    <img src="/assets/images/allos-logo.svg" alt="Allos" class="hero-logo">
-    <div class="hero-text">
-      <h1>Train Your Nervous System for Peak Performance</h1>
-      <p>Music-guided breathing to support flow, focus, and recovery</p>
+    <div class="hero-content">
+      <h1>Train Your Clients' Nervous Systems for Peak Performance</h1>
+      <div class="app-store-badges">
+        <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
+        </a>
+      </div>
     </div>
 
     <div class="hero-image-container">
-      <a href="/account/sign-in/" class="btn-primary hero-cta">Unlock Your 25% Discount</a>
-      <img src="/assets/images/hero-image-coach.webp" alt="Peak Performance Coach">
+      <img src="/assets/images/hero-image-coach.webp" alt="Performance Coach">
     </div>
   </div>
 
@@ -496,7 +422,7 @@ customScripts: |
         <h2>Science-Based Practice Guided by Music</h2>
         <p>Slow-paced breathing at an individual's <strong>resonance frequency</strong> has been associated with improvements in heart rate variability (HRV) and autonomic balance.</p>
         <p><strong>Allos</strong> supports this practice by using immersive, customizable music to guide your breathing.</p>
-        <p>The app is designed to support the 15-minute breathing sessions prescribed in the <strong>Peak Under Pressure</strong> training program.</p>
+        <p>The app is designed for the 15-minute daily breathing sessions recommended by sports psychologists and performance coaches.</p>
       </div>
       <div class="section-image feature-image">
         <img src="/assets/images/ui-breath-settings-screen-cropped.webp" alt="Allos app home screen">
@@ -510,7 +436,7 @@ customScripts: |
         <img src="/assets/images/hrv-curve.svg" alt="Heart Rate Variability curve">
       </div>
       <div class="section-content benefits-content">
-        <h2>Supercharge Your Performance</h2>
+        <h2>Support Your Clients' Performance Goals</h2>
         <ul>
           <li>Support <strong>autonomic nervous system regulation</strong></li>
           <li>Improve conditions for <strong>focus and flow</strong></li>
@@ -542,12 +468,19 @@ customScripts: |
 
   <section class="cta-section">
     <div class="cta-container">
-      <div class="cta-logos">
-        <img src="/assets/images/allos-peak-logos.webp" alt="Allos + Peak">
+      <div class="cta-logo">
+        <img src="/assets/images/allos-logo.svg" alt="Allos">
       </div>
-      <h2 class="cta-headline">25% off your first year of Allos Premium</h2>
-      <p class="cta-subtext">Exclusive offer for <strong>Peak Under Pressure</strong> program members</p>
-      <a href="/account/sign-in/" class="btn-primary cta-button">Claim Your 25% Off</a>
+      <h2 class="cta-headline">Download Allos Today</h2>
+      <p class="cta-subtext">Available for iOS and Android</p>
+      <div class="app-store-badges">
+        <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
+        </a>
+      </div>
     </div>
   </section>
 </main>
