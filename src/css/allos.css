@@ -1181,6 +1181,16 @@ label {
   margin-bottom: 10px;
 }
 
+.key-points-list {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.key-points-list li {
+  margin-bottom: 8px;
+}
+
 .reference-heading {
   margin-top: 70px;
   font-weight: 400;
