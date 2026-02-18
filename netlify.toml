@@ -1,0 +1,39 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[[redirects]]
+  from = "/beta"
+  to = "/download"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources"
+  to = "/learn"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/slow-paced-breathing/guide-to-slow-paced-breathing"
+  to = "/learn/guide-to-slow-paced-breathing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/slow-paced-breathing/what-is-resonance-frequency-breathing"
+  to = "/learn/what-is-resonance-frequency-breathing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resonance-frequency-breathing/a-beginners-guide-to-resonance-frequency-breathing"
+  to = "/learn/a-beginners-guide-to-resonance-frequency-breathing"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resonance-frequency-breathing/how-does-resonance-frequency-breathing-work"
+  to = "/learn/how-does-resonance-frequency-breathing-work"
+  status = 301
+  force = true
