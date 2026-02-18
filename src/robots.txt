@@ -1,7 +1,20 @@
 # Robots.txt for Allos website
 User-agent: *
-Disallow: /peak
+
+# Utility and account management pages
+Disallow: /account/
+Disallow: /account-actions/
+Disallow: /airwaves/
+Disallow: /confirm/
+Disallow: /beta-tester/
+Disallow: /join-beta/
+Disallow: /join-beta_test/
+Disallow: /redirects
+
+# Unlisted/draft pages
 Disallow: /peak/
 
 # Allow all other pages
 Allow: /
+
+Sitemap: https://allos.app/sitemap.xml
