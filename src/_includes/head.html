@@ -2,6 +2,7 @@
 <title>{{title}}</title>
 <meta name="description" content="{{ description }}">
 <link rel="canonical" href="https://allos.app{{ page.url }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="/css/normalize.css" rel="stylesheet" type="text/css">
 <link href="/css/webflow.css" rel="stylesheet" type="text/css">

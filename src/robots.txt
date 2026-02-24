@@ -6,9 +6,6 @@ Disallow: /account/
 Disallow: /account-actions/
 Disallow: /airwaves/
 Disallow: /confirm/
-Disallow: /beta-tester/
-Disallow: /join-beta/
-Disallow: /join-beta_test/
 Disallow: /redirects
 
 # Unlisted/draft pages
