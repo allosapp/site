@@ -13,6 +13,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/safari-pinned-tab.svg');
   eleventyConfig.addPassthroughCopy('src/android-chrome-192x192.png');
   eleventyConfig.addPassthroughCopy('src/android-chrome-512x512.png');
+  eleventyConfig.addPassthroughCopy('src/robots.txt');
+  eleventyConfig.addPassthroughCopy('src/browserconfig.xml');
 
   eleventyConfig.addWatchTarget("src/css");
   eleventyConfig.addWatchTarget("src/js");
