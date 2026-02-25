@@ -1,4 +1,4 @@
-/* Hide navigation when inApp parameter is present */
+/* Hide navigation when viewing from the app, see: layouts/base.html query param check */
 body[data-in-app="true"] {
   .nav-bar-section, .menu-icon, .resources-container, .nav-links-container, .hide-in-app-view {
     display: none;
