@@ -1,11 +1,100 @@
 ---
-layout: layouts/base.html
+layout: layouts/base-home.html
 title: Allos Breath Pacer
 description: The Allos Breath Pacer is an audio/visual pacer for practicing slow-paced breathing and resonance frequency breathing. Both the audio and visuals are synced perfectly to you breathing rate.
 social_image: social-preview.jpg
 ---
 
 <style>
+  /* ============================================
+     Nav Override – fixed position for hero overlap
+     ============================================ */
+
+  .nav-bar-section {
+    position: fixed !important;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(44, 31, 42, 0.5) !important;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-bar-section.nav-hidden {
+    transform: translateY(-100%);
+  }
+
+  /* Mobile nav: logo left, hamburger right */
+  .nav-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 20px;
+  }
+
+  /* Smaller logo on mobile */
+  .nav-logo img {
+    width: 120px;
+    height: auto;
+    display: block;
+  }
+
+  /* Mobile: hide nav links by default */
+  .nav-links-container {
+    display: none;
+    width: 100%;
+    padding: 8px 0 4px;
+  }
+
+  /* Mobile: show links when menu is open */
+  .nav-bar-section.nav-open .nav-links-container {
+    display: block;
+  }
+
+  /* Mobile: stack links vertically when open */
+  .nav-bar-section.nav-open .nav-links {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Hamburger button */
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Hamburger animates to X when open */
+  .nav-bar-section.nav-open .nav-hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .nav-bar-section.nav-open .nav-hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-bar-section.nav-open .nav-hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
   /* ============================================
      Global & Shared Styles
      ============================================ */
@@ -138,17 +227,18 @@ social_image: social-preview.jpg
 
   .hero-section {
     background: linear-gradient(180deg, #1a0a1f 0%, #2d1535 100%);
-    padding: 120px 20px 0;
+    padding: 0 20px 0;
     text-align: center;
     position: relative;
   }
 
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px 20px 30px;
+    /* padding-top clears the fixed nav on mobile (stacked logo + links ≈ 154px) */
+    padding: 160px 20px 30px;
   }
 
   .hero-content h1 {
@@ -156,9 +246,23 @@ social_image: social-preview.jpg
     font-weight: 700;
     font-size: 2rem;
     line-height: 1.2;
-    margin: 0 0 20px 0;
+    margin: 0 0 8px 0;
     color: white;
     letter-spacing: -0.02em;
+  }
+
+  .hero-line-break {
+    display: block;
+  }
+
+  .hero-subheading {
+    font-family: basic-sans, sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.01em;
   }
 
   .hero-image-container {
@@ -285,6 +389,31 @@ social_image: social-preview.jpg
       justify-content: center;
     }
 
+    /* Tablet+: hide hamburger, restore nav-bar to desktop layout */
+    .nav-hamburger {
+      display: none;
+    }
+
+    .nav-bar {
+      flex-wrap: nowrap;
+      padding: 0 80px;
+    }
+
+    .nav-logo img {
+      width: 183.59px;
+      height: 77px;
+    }
+
+    .nav-links-container {
+      display: block !important;
+      width: 350px;
+      padding: 0;
+    }
+
+    .nav-links {
+      flex-direction: row !important;
+    }
+
     /* Shared section spacing */
     .section-dark {
       padding: 80px 40px;
@@ -309,24 +438,24 @@ social_image: social-preview.jpg
 
     /* Hero section */
     .hero-section {
-      padding: 60px 40px 0;
+      padding: 0 40px 0;
     }
 
     .hero-content h1 {
       font-size: 3rem;
     }
 
-    /* Hero content overlay – tablet: absolute over image */
+    /* Hero content overlay – tablet: absolute over image, top clears fixed nav (≈97px) */
     .hero-content {
       position: absolute;
-      top: 20%;
+      top: 145px;
       left: 40%;
       transform: translateX(-50%);
       width: 48%;
       max-width: 560px;
       margin: 0;
       padding: 0;
-      z-index: 2;
+      z-index: 10;
     }
 
     /* Waveform overlay – tablet: full image, fixed at lower left */
@@ -410,16 +539,21 @@ social_image: social-preview.jpg
 
     /* Hero section */
     .hero-section {
-      padding: 80px 60px 0;
+      padding: 0 60px 0;
     }
 
     .hero-content h1 {
       font-size: 3.5rem;
+      white-space: nowrap;
     }
 
-    /* Hero content overlay – desktop */
+    .hero-line-break {
+      display: none;
+    }
+
+    /* Hero content overlay – desktop, top clears fixed nav (≈97px) */
     .hero-content {
-      top: 20%;
+      top: 157px;
       width: 48%;
       max-width: 560px;
     }
@@ -455,11 +589,36 @@ social_image: social-preview.jpg
   }
 </style>
 
+<nav class="nav-bar-section">
+  <div class="nav-bar">
+    <a href="/" class="nav-logo" aria-current="page"><img src="/assets/images/allos-logo.svg" alt="allos" width="183.59" height="77"></a>
+    <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-links-container">
+      <div class="nav-links">
+        <a href="/about" class="nav-link-block">
+          <div class="nav-link-text-block">About</div>
+        </a>
+        <a href="/learn" class="nav-link-block">
+          <div class="nav-link-text-block">Learn</div>
+        </a>
+        <a href="/download" class="nav-link-block beta-nav-block">
+          <div class="nav-link-text-block beta-text-block">Download</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <main>
   <div class="hero-section">
     <div class="hero-image-container">
       <div class="hero-content">
-        <h1>Nervous System Training, Guided by Music</h1>
+        <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
+        <p class="hero-subheading">For calm, focus, and sleep</p>
         <div class="app-store-badges">
           <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
@@ -546,3 +705,45 @@ social_image: social-preview.jpg
     </div>
   </section>
 </main>
+
+<script>
+  (function () {
+    var nav = document.querySelector('.nav-bar-section');
+    var lastScrollY = window.scrollY;
+    var ticking = false;
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var currentScrollY = window.scrollY;
+          // Only trigger after scrolling past the nav itself
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            nav.classList.add('nav-hidden');
+          } else {
+            nav.classList.remove('nav-hidden');
+          }
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  })();
+
+  // Hamburger menu toggle
+  (function () {
+    var hamburger = document.querySelector('.nav-hamburger');
+    var navSection = document.querySelector('.nav-bar-section');
+
+    if (hamburger && navSection) {
+      hamburger.addEventListener('click', function () {
+        var isOpen = navSection.classList.toggle('nav-open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        // Ensure nav is visible when opening the menu
+        if (isOpen) {
+          navSection.classList.remove('nav-hidden');
+        }
+      });
+    }
+  })();
+</script>
