@@ -18,11 +18,19 @@ social_image: social-preview.jpg
     width: 100% !important;
     z-index: 100;
     background-color: rgba(44, 31, 42, 0.5) !important;
+    /* Own vertical padding explicitly so allos.css @767px (padding-bottom:20px)
+       doesn't silently inflate mobile nav height */
+    padding: 10px 0;
     transition: transform 0.3s ease;
   }
 
   .nav-bar-section.nav-hidden {
     transform: translateY(-100%);
+  }
+
+  /* Mobile open: darken the panel so content behind doesn't bleed through */
+  .nav-bar-section.nav-open {
+    background-color: rgba(44, 31, 42, 0.95) !important;
   }
 
   /* Mobile nav: logo left, hamburger right */
@@ -61,10 +69,38 @@ social_image: social-preview.jpg
     display: block;
   }
 
-  /* Mobile: stack links vertically when open */
+  /* Mobile: hide logo when menu is open (links take full width) */
+  .nav-bar-section.nav-open .nav-logo {
+    display: none;
+  }
+
+  /* Mobile open: switch to column layout so X and links each occupy their own row.
+     Cross-axis in column direction is horizontal, so align-self: flex-end on the
+     hamburger pushes it to the right edge — same spot as the closed hamburger. */
+  .nav-bar-section.nav-open .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Mobile open: float X to the top row and push it to the right edge */
+  .nav-bar-section.nav-open .nav-hamburger {
+    order: -1;
+    align-self: flex-end;
+  }
+
+  /* Mobile: stack links vertically when open, centred under the hamburger */
   .nav-bar-section.nav-open .nav-links {
     flex-direction: column;
+    align-items: center;
     gap: 0;
+  }
+
+  /* Override allos.css @479px: removes the 22px top margin it adds to every nav link.
+     Applied in the open-menu context to keep mobile menu spacing consistent. */
+  .nav-bar-section.nav-open .nav-links .nav-link-block {
+    margin-top: 0;
+    text-align: center;
+    min-width: 120px;
   }
 
   /* Hamburger button */
@@ -101,6 +137,42 @@ social_image: social-preview.jpg
 
   .nav-bar-section.nav-open .nav-hamburger span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* ============================================
+     Download button – gradient border, transparent fill
+     Replaces allos.css "gradient bg + 1px padding + opaque inner" trick:
+     that approach causes a faded left edge artefact and forces an opaque fill.
+     The mask technique renders a pixel-perfect 1px gradient border with the
+     button interior fully transparent, matching the nav's own transparency.
+     ============================================ */
+
+  .nav-link-block.beta-nav-block {
+    padding: 0;
+    background-image: none;
+    background-color: transparent;
+    position: relative;
+  }
+
+  /* Gradient border drawn via pseudo-element + mask */
+  .nav-link-block.beta-nav-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 11px;
+    padding: 1px;
+    background: linear-gradient(106deg, #ec0086, #c200d8);
+    /* Punch a hole in the centre so only the 1px border is painted */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Remove the solid fill from the inner text block */
+  .nav-link-text-block.beta-text-block {
+    background-color: transparent;
   }
 
   /* ============================================
@@ -245,8 +317,9 @@ social_image: social-preview.jpg
     z-index: 10;
     max-width: 800px;
     margin: 0 auto;
-    /* padding-top clears the fixed nav on mobile (stacked logo + links ≈ 154px) */
-    padding: 160px 20px 30px;
+    /* padding-top clears the fixed nav on mobile:
+       nav-section padding (10px) + logo height at 120px wide (~50px) + nav-section padding (10px) + breathing room (~15px) ≈ 85px */
+    padding: 85px 20px 30px;
   }
 
   .hero-content h1 {
