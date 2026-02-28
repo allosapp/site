@@ -375,7 +375,48 @@ social_image: social-preview.jpg
   }
 
   /* ============================================
-     Feature & Difference Sections (with boxes)
+     Feature Section – gradient background, no text box
+     ============================================ */
+
+  /* Section background: vertical gradient, pink top → purple bottom */
+  .feature-section {
+    background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
+  }
+
+  /* content-box stripped to layout container only – no visual box */
+  .feature-section .content-box {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    /* Centre the text+image pair so left margin ≈ right margin */
+    justify-content: center;
+  }
+
+  /* Text content sits directly on the gradient – no box */
+  .feature-section .feature-content {
+    /* Don't flex-grow to fill all remaining space; let the pair stay centred */
+    flex: 0 1 auto;
+    max-width: 480px;
+    align-self: center;
+  }
+
+  /* Phone image sits directly on gradient – no box to overflow */
+  .feature-section .feature-image {
+    /* 30% larger than the shared 300px default */
+    max-width: 390px;
+    flex-shrink: 0;
+    align-self: center;
+    margin-bottom: 0;
+    /* Mobile: shift phone right to visually centre it within the asset;
+       bleed the right edge of the image flush to the window edge by
+       negating .section-dark’s 20px right padding. */
+    padding-left: 56px;
+    margin-right: -20px;
+    box-sizing: border-box;
+  }
+
+  /* ============================================
+     Difference Section (with box)
      ============================================ */
 
   .feature-image,
@@ -549,8 +590,19 @@ social_image: social-preview.jpg
       transform: none;
     }
 
-    /* Feature & Difference sections */
-    .feature-content,
+    /* Feature section – responsive overrides */
+    .feature-section .content-box {
+      padding: 0;
+    }
+
+    .feature-section .feature-image {
+      margin-bottom: 0;
+      /* Tablet+: image asset looks balanced at full size – remove mobile indent/bleed */
+      padding-left: 0;
+      margin-right: 0;
+    }
+
+    /* Difference section */
     .difference-content {
       align-self: center;
     }
@@ -649,7 +701,12 @@ social_image: social-preview.jpg
       transform: none;
     }
 
-    /* Feature & Difference images */
+    /* Feature section – responsive overrides */
+    .feature-section .feature-image {
+      margin-bottom: 0;
+    }
+
+    /* Difference section */
     .feature-image,
     .difference-image {
       margin-bottom: -80px;
@@ -698,7 +755,7 @@ social_image: social-preview.jpg
   <div class="hero-section">
     <div class="hero-image-container">
       <div class="hero-content">
-        <h1>Sync Your Breath<br class="hero-line-break"> to Muzic</h1>
+        <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
         <p class="hero-subheading">For calm, focus, and sleep</p>
         <div class="app-store-badges">
           <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
@@ -721,13 +778,13 @@ social_image: social-preview.jpg
   <section class="section-dark feature-section">
     <div class="content-box">
       <div class="section-content feature-content">
-        <h2>Science-Based Practice, Personalized Engagement</h2>
-        <p>Slow-paced breathing at an individual's <strong>resonance frequency</strong> has been associated with improvements in heart rate variability (HRV) and autonomic balance.</p>
+        <h2>Discover the Power of Resonance</h2>
+        <p>Slow-paced breathing at your unique <strong>resonance frequency</strong> has been associated with improvements in heart rate variability (HRV) and autonomic balance.</p>
         <p><strong>Allos</strong> supports this practice by using immersive, customizable music to guide your breathing at your unique resonance frequency and preferred inhale/exhale ratio.</p>
         <p>The app is designed to work alongside the <strong>HRV biofeedback</strong> apps used by sports psychologists and performance coaches.</p>
       </div>
       <div class="section-image feature-image">
-        <img src="/assets/images/ui-breath-settings-screen-cropped.webp" alt="Allos app home screen">
+        <img src="/assets/images/session-screens.avif" alt="Allos app session screen">
       </div>
     </div>
   </section>
