@@ -378,9 +378,10 @@ social_image: social-preview.jpg
      Feature Section – gradient background, no text box
      ============================================ */
 
-  /* Section background: vertical gradient, pink top → purple bottom */
   .feature-section {
     background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   /* content-box stripped to layout container only – no visual box */
@@ -388,38 +389,28 @@ social_image: social-preview.jpg
     background: none;
     border-radius: 0;
     padding: 0;
-    /* Centre the text+image pair so left margin ≈ right margin */
+    gap: 16px;
     justify-content: center;
   }
 
   /* Text content sits directly on the gradient – no box */
   .feature-section .feature-content {
-    /* Don't flex-grow to fill all remaining space; let the pair stay centred */
     flex: 0 1 auto;
     max-width: 480px;
     align-self: center;
   }
 
-  /* Phone image sits directly on gradient – no box to overflow */
+  /* Phone image: mobile = below text, centred */
   .feature-section .feature-image {
-    /* 30% larger than the shared 300px default */
-    max-width: 390px;
-    flex-shrink: 0;
+    max-width: 240px;
     align-self: center;
     margin-bottom: 0;
-    /* Mobile: shift phone right to visually centre it within the asset;
-       bleed the right edge of the image flush to the window edge by
-       negating .section-dark’s 20px right padding. */
-    padding-left: 56px;
-    margin-right: -20px;
-    box-sizing: border-box;
   }
 
   /* ============================================
      Difference Section (with box)
      ============================================ */
 
-  .feature-image,
   .difference-image {
     max-width: 300px;
     align-self: flex-end;
@@ -591,15 +582,43 @@ social_image: social-preview.jpg
     }
 
     /* Feature section – responsive overrides */
+    .feature-section {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
     .feature-section .content-box {
       padding: 0;
+      gap: 40px;
+      align-items: flex-end;
+      /* Collapse box to content width, then self-centre in the section */
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .feature-section .feature-content {
+      align-self: center;
     }
 
     .feature-section .feature-image {
-      margin-bottom: 0;
-      /* Tablet+: image asset looks balanced at full size – remove mobile indent/bleed */
-      padding-left: 0;
-      margin-right: 0;
+      flex-shrink: 0;
+      align-self: flex-end;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* max-height caps the image; width scales by aspect ratio.
+       object-position: bottom keeps the phone base anchored as height shrinks. */
+    .feature-section .feature-image img {
+      height: auto;
+      max-height: 400px;
+      width: auto;
+      max-width: none;
+      display: block;
+      margin: 0;
+      object-fit: contain;
+      object-position: bottom center;
     }
 
     /* Difference section */
@@ -607,7 +626,6 @@ social_image: social-preview.jpg
       align-self: center;
     }
 
-    .feature-image,
     .difference-image {
       margin-bottom: -60px;
     }
@@ -622,6 +640,15 @@ social_image: social-preview.jpg
       flex-direction: row;
       gap: 60px;
       align-items: center;
+      /* Collapse to content width and self-centre, same as feature section */
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Prevent flex:1 from expanding the text beyond natural width inside fit-content container */
+    .benefits-content {
+      flex: 0 1 auto;
     }
 
     /* CTA section */
@@ -702,12 +729,24 @@ social_image: social-preview.jpg
     }
 
     /* Feature section – responsive overrides */
-    .feature-section .feature-image {
-      margin-bottom: 0;
+    .feature-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .feature-section .content-box {
+      padding: 0;
+      gap: 40px;
+      align-items: flex-end;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .feature-section .feature-image img {
+      max-height: 560px;
     }
 
     /* Difference section */
-    .feature-image,
     .difference-image {
       margin-bottom: -80px;
     }
@@ -784,7 +823,7 @@ social_image: social-preview.jpg
         <p>The app is designed to work alongside the <strong>HRV biofeedback</strong> apps used by sports psychologists and performance coaches.</p>
       </div>
       <div class="section-image feature-image">
-        <img src="/assets/images/session-screens.avif" alt="Allos app session screen">
+        <img src="/assets/images/ui-breath-settings-screen-cropped.webp" alt="Allos app home screen">
       </div>
     </div>
   </section>
