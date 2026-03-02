@@ -3,6 +3,12 @@ layout: layouts/base-home.html
 title: Allos Breath Pacer
 description: The Allos Breath Pacer is an audio/visual pacer for practicing slow-paced breathing and resonance frequency breathing. Both the audio and visuals are synced perfectly to you breathing rate.
 social_image: social-preview.jpg
+customHead: |
+  <link rel="preload" as="image"
+    imagesrcset="/assets/images/hero-image-home-mobile.avif,
+                 /assets/images/hero-image-home-tablet.avif 768w,
+                 /assets/images/hero-image-home-desktop.avif 1024w"
+    imagesizes="100vw">
 ---
 
 <style>
@@ -310,6 +316,9 @@ social_image: social-preview.jpg
     padding: 0 20px 0;
     text-align: center;
     position: relative;
+    /* Reserve full viewport height while hero image loads,
+       preventing the section below from flashing into view */
+    min-height: 100svh;
   }
 
   .hero-content {
@@ -398,6 +407,9 @@ social_image: social-preview.jpg
     flex: 0 1 auto;
     max-width: 480px;
     align-self: center;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 28px 32px;
   }
 
   /* Phone image: mobile = below text, centred */
@@ -423,6 +435,23 @@ social_image: social-preview.jpg
 
   .difference-content {
     order: 1;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 28px 32px;
+  }
+
+  /* Plain native bullets for difference section */
+  .difference-content ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  .difference-content li::before {
+    display: none;
+  }
+
+  .difference-content li {
+    padding-left: 0;
   }
 
   /* ============================================
@@ -603,7 +632,8 @@ social_image: social-preview.jpg
     .feature-section .feature-image {
       flex-shrink: 0;
       align-self: flex-end;
-      max-width: none;
+      /* Cap at native source width (628px) so the browser never upscales */
+      max-width: 628px;
       margin: 0;
       padding: 0;
     }
@@ -742,6 +772,11 @@ social_image: social-preview.jpg
       margin: 0 auto;
     }
 
+    .feature-section .feature-image {
+      /* Cap at native source width (628px) so the browser never upscales */
+      max-width: 628px;
+    }
+
     .feature-section .feature-image img {
       max-height: 560px;
     }
@@ -806,9 +841,13 @@ social_image: social-preview.jpg
         </div>
       </div>
       <picture>
-        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif">
-        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-home-tablet.avif">
-        <img src="/assets/images/hero-image-home-mobile.avif" alt="Allos Breath Pacer">
+        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
+        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-home-tablet.avif" width="2127" height="1579">
+        <img src="/assets/images/hero-image-home-mobile.avif" alt="Allos Breath Pacer"
+          width="1080" height="1211"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync">
       </picture>
       <img class="hero-waveform-overlay" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
@@ -823,7 +862,7 @@ social_image: social-preview.jpg
         <p>The app is designed to work alongside the <strong>HRV biofeedback</strong> apps used by sports psychologists and performance coaches.</p>
       </div>
       <div class="section-image feature-image">
-        <img src="/assets/images/ui-breath-settings-screen-cropped.webp" alt="Allos app home screen">
+        <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
       </div>
     </div>
   </section>
