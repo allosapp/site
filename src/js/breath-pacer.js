@@ -28,7 +28,7 @@
 
   // ─── DOM refs ─────────────────────────────────────────────────────────────
 
-  var circleEl = document.getElementById('bp-circle');
+  var circleEl = document.getElementById('bp-circle-wrap');
   var bgEl     = document.getElementById('bp-bg');
   var labelEl  = document.getElementById('bp-phase-label');
   var timerEl  = document.getElementById('bp-session-timer');
@@ -46,28 +46,62 @@
   var audioBuffers = {};
 
   function initAudio() {
-    if (audioCtx) { return Promise.resolve(); }
+    // If context already exists, resume if suspended (e.g. after phone call / lock screen)
+    // and bail out — buffers are already loaded.
+    if (audioCtx) {
+      if (audioCtx.state === 'suspended') {
+        return audioCtx.resume().catch(function () {});
+      }
+      return Promise.resolve();
+    }
+
     try {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     } catch (e) {
       return Promise.resolve();
     }
-    return Promise.all([
-      loadSound('inhale', '/assets/audio/inhale.mp3'),
-      loadSound('exhale', '/assets/audio/exhale.mp3'),
-    ]);
+
+    // iOS unlock trick: play a silent one-sample buffer *synchronously* within
+    // the user gesture. Without this, older iOS (incl. iOS 15 on iPhone SE)
+    // keeps the context suspended even after resume() is called.
+    try {
+      var silence = audioCtx.createBuffer(1, 1, audioCtx.sampleRate);
+      var silentSrc = audioCtx.createBufferSource();
+      silentSrc.buffer = silence;
+      silentSrc.connect(audioCtx.destination);
+      silentSrc.start(0);
+    } catch (e) { /* ignore — best-effort unlock */ }
+
+    // resume() is async; we must await it before the context is guaranteed
+    // to be in 'running' state. Chain the buffer loads off its resolution.
+    var resumeP = audioCtx.resume ? audioCtx.resume().catch(function () {}) : Promise.resolve();
+
+    return resumeP.then(function () {
+      return Promise.all([
+        loadSound('inhale', '/assets/audio/inhale.mp3'),
+        loadSound('exhale', '/assets/audio/exhale.mp3'),
+      ]);
+    });
   }
 
+  // Use the callback form of decodeAudioData — the Promise API is unreliable
+  // on iOS Safari below 14.5 (common on iPhone SE running older iOS).
   function loadSound(name, url) {
     return fetch(url)
       .then(function (r) { return r.arrayBuffer(); })
-      .then(function (buf) { return audioCtx.decodeAudioData(buf); })
+      .then(function (arrayBuf) {
+        return new Promise(function (resolve, reject) {
+          audioCtx.decodeAudioData(arrayBuf, resolve, reject);
+        });
+      })
       .then(function (decoded) { audioBuffers[name] = decoded; })
       .catch(function () { /* audio unavailable — continue silently */ });
   }
 
   function playSound(name) {
     if (state.muted || !audioCtx || !audioBuffers[name]) { return; }
+    // Guard against the context being suspended mid-session (e.g. Siri, phone call)
+    if (audioCtx.state === 'suspended') { audioCtx.resume().catch(function () {}); return; }
     try {
       var src = audioCtx.createBufferSource();
       src.buffer = audioBuffers[name];

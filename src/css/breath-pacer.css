@@ -7,7 +7,8 @@
 
 .bp-hero {
   background: #1a0a1f;
-  padding: 60px 20px 44px;
+  /* 120px top clears the fixed nav bar on mobile (nav is position:fixed below 768px) */
+  padding: 120px 20px 44px;
   text-align: center;
 }
 
@@ -71,6 +72,11 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  /* Transform lives here, not on the SVG child — keeps the GPU compositor path
+     clean in Firefox. filter + transform on the same element forces a repaint
+     every frame in Firefox; separating them avoids that. */
+  transform: scale(var(--circle-scale, 0.52));
+  will-change: transform;
 }
 
 .bp-circle {
@@ -78,8 +84,8 @@
   height: 200px;
   display: block;
   overflow: visible;
-  transform: scale(var(--circle-scale, 0.52));
-  will-change: transform;
+  /* filter stays on the static SVG (no transform here), so it never triggers
+     a per-frame repaint — only the parent wrapper's transform animates. */
   filter:
     drop-shadow(0 0 18px rgba(191, 106, 254, 0.55))
     drop-shadow(0 0 48px rgba(191, 106, 254, 0.2));
@@ -87,7 +93,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bp-circle {
+  .bp-circle-wrap {
     transform: none !important;
   }
 }
@@ -168,6 +174,15 @@
   background: rgba(191, 106, 254, 0.18);
   border-color: rgba(191, 106, 254, 0.55);
   color: white;
+}
+
+.bp-audio-hint {
+  font-family: basic-sans, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 12px 0 0;
+  line-height: 1.5;
 }
 
 /* ── Action row ───────────────────────────────────────────── */

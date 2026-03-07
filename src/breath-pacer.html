@@ -76,7 +76,7 @@ extra_js: /js/breath-pacer.js
 
 <section class="bp-hero">
   <h1>Breath Pacer</h1>
-  <p class="bp-hero-intro">This breath pacer guides you through slow, rhythmic breathing at a rate you choose. Whether you're new to breathing exercises or practicing resonance frequency breathing, you can use this tool to pace your inhales and exhales — right from your browser, with no account or download required.</p>
+  <p class="bp-hero-intro">This breath pacer guides you in slow, rhythmic breathing to support relaxation, focus, and nervous system balance. It is designed to be used in the practice of resonance frequency breathing, which for most adults is around 5.5 or 6 breaths per minute. For a relaxing effect, choose the longer exhale, which promotes a calming effect. For more focus, choose an equal inhale-exhale.</p>
 </section>
 
 <!-- ── Pacer widget ───────────────────────────────────────────────────── -->
@@ -86,7 +86,7 @@ extra_js: /js/breath-pacer.js
 
     <!-- Animated gradient display + circle -->
     <div class="bp-display" id="bp-bg">
-      <div class="bp-circle-wrap" aria-hidden="true">
+      <div class="bp-circle-wrap" id="bp-circle-wrap" aria-hidden="true">
         <svg id="bp-circle" class="bp-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 650" aria-hidden="true" focusable="false">
           <circle cx="325" cy="325" r="323" fill="none" stroke="white" stroke-width="4"/>
         </svg>
@@ -118,6 +118,7 @@ extra_js: /js/breath-pacer.js
         <button class="bp-btn-secondary" id="bp-reset-btn" type="button" aria-label="Reset">Reset</button>
         <button class="bp-btn-secondary" id="bp-mute-btn" type="button" aria-pressed="false" aria-label="Mute audio cues">Mute</button>
       </div>
+      <p class="bp-audio-hint">On iPhone, audio cues require the silent switch to be off.</p>
 
     </div>
   </div>
