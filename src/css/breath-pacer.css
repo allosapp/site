@@ -60,7 +60,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 52px 20px 44px;
+  padding: 52px 20px 26px;
 }
 
 /* ── Circle ───────────────────────────────────────────────── */
@@ -83,8 +83,7 @@
   width: 200px;
   height: 200px;
   display: block;
-  overflow: visible;
-  /* filter stays on the static SVG (no transform here), so it never triggers
+  /* filter stays on the static image (no transform here), so it never triggers
      a per-frame repaint — only the parent wrapper's transform animates. */
   filter:
     drop-shadow(0 0 18px rgba(191, 106, 254, 0.55))
@@ -110,6 +109,8 @@
   text-align: center;
   min-height: 1.6em;
   margin: 0 0 8px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .bp-timer {
@@ -178,11 +179,13 @@
 
 .bp-audio-hint {
   font-family: basic-sans, sans-serif;
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.3);
   margin: 12px 0 0;
   line-height: 1.5;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* ── Action row ───────────────────────────────────────────── */
@@ -191,9 +194,8 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  padding-top: 22px;
-  margin-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .bp-btn-primary {
@@ -425,6 +427,7 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
+  max-width: 480px;
 }
 
 .bp-cta-badges {

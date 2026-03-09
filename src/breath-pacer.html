@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.html
-title: Free Breath Pacer Online — Resonance Frequency Breathing Tool | Allos
-description: Use this free breath pacer to practice slow-paced breathing and resonance frequency breathing. Set your bpm, inhale/exhale ratio, and session length — no app required.
+title: Free Breath Pacer — Resonance Frequency Breathing Tool | Allos
+description: Use this free breath pacer to practice slow-paced breathing and resonance frequency breathing. Set your breaths per minute, inhale/exhale ratio, and session length.
 social_image: social-preview.jpg
 extra_css: /css/breath-pacer.css
 extra_js: /js/breath-pacer.js
@@ -76,7 +76,7 @@ extra_js: /js/breath-pacer.js
 
 <section class="bp-hero">
   <h1>Breath Pacer</h1>
-  <p class="bp-hero-intro">This breath pacer guides you in slow, rhythmic breathing to support relaxation, focus, and nervous system balance. It is designed to be used in the practice of resonance frequency breathing, which for most adults is around 5.5 or 6 breaths per minute. For a relaxing effect, choose the longer exhale, which promotes a calming effect. For more focus, choose an equal inhale-exhale.</p>
+  <p class="bp-hero-intro">For Resonance Frequency Breathing</p>
 </section>
 
 <!-- ── Pacer widget ───────────────────────────────────────────────────── -->
@@ -87,9 +87,7 @@ extra_js: /js/breath-pacer.js
     <!-- Animated gradient display + circle -->
     <div class="bp-display" id="bp-bg">
       <div class="bp-circle-wrap" id="bp-circle-wrap" aria-hidden="true">
-        <svg id="bp-circle" class="bp-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 650" aria-hidden="true" focusable="false">
-          <circle cx="325" cy="325" r="323" fill="none" stroke="white" stroke-width="4"/>
-        </svg>
+        <img id="bp-circle" class="bp-circle" src="/assets/images/bubble-transparent.svg" alt="" aria-hidden="true">
       </div>
       <p class="bp-phase-label" id="bp-phase-label" role="status" aria-live="polite" aria-atomic="true"></p>
       <p class="bp-timer" id="bp-session-timer" aria-label="Time remaining in session"></p>
@@ -97,6 +95,13 @@ extra_js: /js/breath-pacer.js
 
     <!-- Controls -->
     <div class="bp-controls">
+
+      <div class="bp-actions">
+        <button class="bp-btn-primary" id="bp-start-btn" type="button" aria-label="Start session">Start</button>
+        <button class="bp-btn-secondary" id="bp-reset-btn" type="button" aria-label="Reset">Reset</button>
+        <button class="bp-btn-secondary" id="bp-mute-btn" type="button" aria-pressed="false" aria-label="Mute audio cues">Mute</button>
+      </div>
+      <p class="bp-audio-hint">On iPhone, audio cues require the silent switch to be off.</p>
 
       <div class="bp-control-group">
         <p class="bp-control-label" id="bp-bpm-label">Breathing Rate (breaths per minute)</p>
@@ -113,13 +118,6 @@ extra_js: /js/breath-pacer.js
         <div class="bp-btn-group" id="bp-session-buttons" role="group" aria-labelledby="bp-session-label"></div>
       </div>
 
-      <div class="bp-actions">
-        <button class="bp-btn-primary" id="bp-start-btn" type="button" aria-label="Start session">Start</button>
-        <button class="bp-btn-secondary" id="bp-reset-btn" type="button" aria-label="Reset">Reset</button>
-        <button class="bp-btn-secondary" id="bp-mute-btn" type="button" aria-pressed="false" aria-label="Mute audio cues">Mute</button>
-      </div>
-      <p class="bp-audio-hint">On iPhone, audio cues require the silent switch to be off.</p>
-
     </div>
   </div>
 </section>
@@ -129,16 +127,16 @@ extra_js: /js/breath-pacer.js
 <section class="bp-content">
 
   <div class="bp-article">
-    <h2>What is a breath pacer?</h2>
-    <p>A breath pacer is a simple timing tool that guides the pace of your breathing. Instead of counting in your head, you follow a visual cue — typically an expanding and contracting shape — that shows you when to inhale and when to exhale.</p>
-    <p>Breath pacers are commonly used in slow-paced breathing and resonance frequency breathing practices, where the goal is to breathe at a steady, measured rate that is slower than normal. Breathing at a slow, consistent pace has been studied for its effects on the autonomic nervous system, <strong>heart rate variability (HRV)</strong>, and subjective feelings of calm and focus.</p>
+    <h2>Why should I use a breath pacer?</h2>
+    <p>This breath pacer guides you in slow, rhythmic breathing to support relaxation, focus, and nervous system balance. It is designed to be used in the practice of resonance frequency breathing, which for most adults is around 5.5 or 6 breaths per minute. For relaxation or stress reduction, choose the longer exhale, which promotes a calming effect. For more focus, choose an equal inhale-exhale.</p>
+    <p>Breathing at a slow, steady pace of 5.5 to 6 breaths per minute has been studied for its potential positive effects on the autonomic nervous system, <strong>heart rate variability (HRV)</strong>, and subjective feelings of calm and focus.</p>
   </div>
 
   <div class="bp-article">
     <h2>How to use this breath pacer</h2>
     <ol>
-      <li><strong>Choose your breathing rate.</strong> Select a preset pace in breaths per minute (bpm). If you're new, 6 bpm is a widely-used starting point — that's 5 seconds in and 5 seconds out. You can try 8 bpm if 6 feels too slow at first, and work down over time.</li>
-      <li><strong>Choose an inhale/exhale ratio.</strong> <strong>Even</strong> splits each breath cycle equally. <strong>Long exhale</strong> uses a 2:3 ratio — slightly longer out than in. Some people find the longer exhale more settling; try both and see what feels natural.</li>
+      <li><strong>Choose your breathing rate.</strong> Select a preset pace in breaths per minute (bpm). If you're new, 6 breaths per minute is a common starting point, which is 5 seconds in and 5 seconds out. You can try 8 breaths per minute if 6 feels too slow at first, and work down over time.</li>
+      <li><strong>Choose an inhale/exhale ratio.</strong> <strong>Even</strong> splits each breath cycle equally. <strong>Long exhale</strong> uses a 2:3 inhale to exhale ratio. Most people find the longer exhale more calming and relaxing. Try both and see what feels natural.</li>
       <li><strong>Set a session length (optional).</strong> Choose a preset duration or leave it on continuous (∞) to breathe as long as you like. The timer will count down and the session will stop automatically.</li>
       <li><strong>Press Start and follow the circle.</strong> Inhale as the circle expands, exhale as it contracts. Try to breathe naturally — let the pacer guide you without forcing it. If you lose the rhythm, just relax and reconnect when you're ready.</li>
     </ol>
@@ -146,17 +144,16 @@ extra_js: /js/breath-pacer.js
 
   <div class="bp-article">
     <h2>What is resonance frequency breathing?</h2>
-    <p>Resonance frequency breathing is a form of slow-paced breathing practiced at the specific rate that produces the greatest variability in your heart rate. For most people, this rate falls somewhere between 4.5 and 7 breaths per minute, with around <strong>6 breaths per minute</strong> being the most commonly cited estimate.</p>
+    <p>Resonance frequency breathing is a form of slow-paced breathing practiced at the specific rate that produces the greatest variability in your heart rate. For most people, this rate falls somewhere between 4.5 and 7 breaths per minute, with around <strong>6 breaths per minute</strong> being the most common rate among adults.</p>
     <p>When you breathe at your resonance frequency, your heart rate and breathing naturally synchronize in a rhythm called respiratory sinus arrhythmia. Research suggests this may support relaxation, stress resilience, and nervous system balance when practiced regularly.</p>
-    <p>You don't need to know your exact resonance frequency to benefit from slow-paced breathing. Many people start at 6 bpm and adjust from there based on how it feels. The most important thing is <strong>consistent, regular practice</strong> — even a few minutes a day can make a difference over time.</p>
-    <p>
-      Learn more:
-      <a href="/learn/what-is-resonance-frequency-breathing/">What is resonance frequency breathing?</a>
-      &nbsp;·&nbsp;
-      <a href="/learn/a-beginners-guide-to-resonance-frequency-breathing/">A beginner's guide to resonance frequency breathing</a>
-      &nbsp;·&nbsp;
-      <a href="/learn/guide-to-slow-paced-breathing/">A guide to slow-paced breathing</a>
-    </p>
+    <p>You don't need to know your exact resonance frequency to benefit from slow-paced breathing. Many people start at 6 bpm and adjust from there based on how it feels. The most important thing is <strong>consistent, regular practice</strong>. Even a few minutes a day can make a difference over time.</p>
+    <h3>Learn more</h3>
+    <p>If you'd like to learn more, you may find these articles helpful:</p>
+    <ul>
+      <li><a href="/learn/guide-to-slow-paced-breathing/">A guide to slow-paced breathing</a></li>
+      <li><a href="/learn/a-beginners-guide-to-resonance-frequency-breathing/">A beginner's guide to resonance frequency breathing</a></li>
+      <li><a href="/learn/how-does-resonance-frequency-breathing-work/">How does resonance frequency breathing work?</a></li>
+    </ul>
   </div>
 
 </section>
@@ -169,12 +166,12 @@ extra_js: /js/breath-pacer.js
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">How slow should I breathe?</p>
-      <p class="bp-faq-a">Most slow-paced breathing practices recommend somewhere between 4.5 and 6 breaths per minute. If you're new, 6 bpm — 5 seconds in, 5 seconds out — is a reasonable starting point. Work your way down to slower rates as you become more comfortable.</p>
+      <p class="bp-faq-a">Most slow-paced breathing practices recommend somewhere between 4.5 and 7 breaths per minute. If you're new, 6 bpm (5 seconds in, 5 seconds out) is a reasonable starting point. If that feels too slow, start at 8 bpm and work your way down to slower rates as you become more comfortable.</p>
     </div>
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">What is the difference between the even ratio and the long exhale setting?</p>
-      <p class="bp-faq-a">With an even ratio, each inhale and exhale takes the same amount of time. With the long exhale setting, the exhale is proportionally longer (2:3 ratio). Some people find a longer exhale more calming; try both and see what feels right for you.</p>
+      <p class="bp-faq-a">With an even ratio, each inhale and exhale takes the same amount of time. With the long exhale setting, the exhale is proportionally longer (2:3 ratio). Some people find a longer exhale more calming. Try both and see what feels right for you.</p>
     </div>
 
     <div class="bp-faq-item">
@@ -189,17 +186,17 @@ extra_js: /js/breath-pacer.js
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">Can I use this breath pacer every day?</p>
-      <p class="bp-faq-a">Yes — slow-paced breathing is generally safe for regular daily practice. If you have a respiratory condition, cardiovascular condition, or are pregnant, it's worth checking with your doctor before starting any new breathing practice.</p>
+      <p class="bp-faq-a">Yes. Slow-paced breathing is generally safe for regular daily practice. If you have a respiratory condition, cardiovascular condition, or are pregnant, it's worth checking with your doctor before starting any new breathing practice.</p>
     </div>
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">What's the difference between this tool and the Allos app?</p>
-      <p class="bp-faq-a">This web pacer is a simple, free tool for pacing your breaths. The <a href="/about/">Allos app</a> adds music composed specifically for your breathing rate, richer visual animations, and a more immersive practice experience — designed to help you stay consistent over time.</p>
+      <p class="bp-faq-a">This web pacer is a simple, free tool for pacing your breathing. The <a href="/about/">Allos app</a> adds original, customizable music that adjusts to your unique resonance frequency breathing rate and inhale-exhale ratio. richer visual animations, designed to help you stay engaged and motivated in a consistent practice over time.</p>
     </div>
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">Does slow breathing affect heart rate variability?</p>
-      <p class="bp-faq-a">Slow, rhythmic breathing at your resonance frequency is associated with increases in heart rate variability (HRV) in research studies. HRV is influenced by many factors, and we would caution against over-relying on any single metric — but for many people, regular slow-paced breathing is associated with both measurable HRV changes and subjective improvements in calm and stress resilience.</p>
+      <p class="bp-faq-a">Slow, rhythmic breathing at your resonance frequency is associated with increases in heart rate variability (HRV) in research studies. HRV is influenced by many factors and should be interpreted in the context of overall health and lifestyle, but for many people, regular slow-paced breathing is associated with both measurable HRV changes and subjective improvements in relaxation, and stress resilience.</p>
     </div>
 
   </div>
@@ -210,7 +207,7 @@ extra_js: /js/breath-pacer.js
 <section class="bp-cta">
   <div class="bp-cta-inner">
     <h2>Take your practice further with Allos</h2>
-    <p>This breath pacer is a free, simple tool for pacing your breath. If you'd like a more guided, immersive practice, <strong>Allos</strong> pairs your breathing sessions with music composed specifically for your pace — so every breath is accompanied by sound that moves with you.</p>
+    <p>If you'd like a more immersive experience, <strong>Allos</strong> guides your breathing sessions with music in a variety of genres composed specifically for your unique resonance frequency.</p>
     <p>Allos is available on iOS and Android.</p>
     <div class="bp-cta-badges">
       <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">

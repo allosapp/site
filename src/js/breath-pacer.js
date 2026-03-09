@@ -24,13 +24,15 @@
     lastTimestamp:  0,
     muted:          false,
     rafId:          null,
+    labelPrefaded:  false,
   };
 
   // ─── DOM refs ─────────────────────────────────────────────────────────────
 
-  var circleEl = document.getElementById('bp-circle-wrap');
-  var bgEl     = document.getElementById('bp-bg');
-  var labelEl  = document.getElementById('bp-phase-label');
+  var circleEl      = document.getElementById('bp-circle-wrap');
+  var bgEl          = document.getElementById('bp-bg');
+  var labelEl       = document.getElementById('bp-phase-label');
+  var labelFadeTimer = null;
   var timerEl  = document.getElementById('bp-session-timer');
   var startBtn = document.getElementById('bp-start-btn');
   var resetBtn = document.getElementById('bp-reset-btn');
@@ -164,16 +166,35 @@
 
   // ─── Phase management ─────────────────────────────────────────────────────
 
-  function setLabel(text) {
-    if (labelEl) { labelEl.textContent = text; }
+  function fadeOutLabel() {
+    if (!labelEl) { return; }
+    if (labelFadeTimer) { clearTimeout(labelFadeTimer); labelFadeTimer = null; }
+    labelEl.style.opacity = '0';
   }
 
-  function enterPhase(phase, overflowSeconds) {
+  function setLabel(text, immediate) {
+    if (!labelEl) { return; }
+    if (labelFadeTimer) { clearTimeout(labelFadeTimer); labelFadeTimer = null; }
+    if (immediate) {
+      labelEl.textContent = text;
+      labelEl.style.opacity = text ? '1' : '0';
+    } else {
+      labelEl.style.opacity = '0';
+      labelFadeTimer = setTimeout(function () {
+        labelFadeTimer = null;
+        labelEl.textContent = text;
+        labelEl.style.opacity = text ? '1' : '0';
+      }, 500);
+    }
+  }
+
+  function enterPhase(phase, overflowSeconds, fadeIn) {
     var times          = getCycleTimes();
     state.phase        = phase;
     state.phaseTotal   = times[phase];
     state.phaseElapsed = overflowSeconds || 0;
-    setLabel(phase === 'inhale' ? 'Inhale' : 'Exhale');
+    state.labelPrefaded = false;
+    setLabel(phase === 'inhale' ? 'Inhale' : 'Exhale', !fadeIn);
     playSound(phase);
   }
 
@@ -195,6 +216,13 @@
     if (state.sessionSeconds !== null && state.elapsedSeconds >= state.sessionSeconds) {
       endSession();
       return;
+    }
+
+    // Pre-fade label 500ms before phase transition
+    var timeRemaining = state.phaseTotal - state.phaseElapsed;
+    if (!state.labelPrefaded && timeRemaining > 0 && timeRemaining <= 0.5) {
+      state.labelPrefaded = true;
+      fadeOutLabel();
     }
 
     // Phase transition?
@@ -253,7 +281,7 @@
         state.lastTimestamp  = performance.now();
         updateStartBtn();
         updateTimer();
-        enterPhase('inhale', 0);
+        enterPhase('inhale', 0, true);
         state.rafId = requestAnimationFrame(tick);
         trackEvent('breath_pacer_start', {
           bpm:     state.bpm,
@@ -284,6 +312,7 @@
     state.phase          = null;
     state.elapsedSeconds = 0;
     state.phaseElapsed   = 0;
+    state.labelPrefaded  = false;
     setLabel('');
     if (timerEl) { timerEl.textContent = ''; }
     if (!reducedMotion && circleEl) {
@@ -342,7 +371,7 @@
     // BPM buttons
     buildButtons(
       'bp-bpm-buttons',
-      [4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0].map(function (v) {
+      [4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0].map(function (v) {
         return {
           value:     v,
           label:     v.toFixed(1),
