@@ -77,17 +77,18 @@
      every frame in Firefox; separating them avoids that. */
   transform: scale(var(--circle-scale, 0.52));
   will-change: transform;
+  /* Circular glow via box-shadow — avoids the iOS Safari bug where
+     drop-shadow on an external SVG <img> renders as a rectangular halo. */
+  border-radius: 50%;
+  box-shadow:
+    0 0 18px 4px rgba(191, 106, 254, 0.55),
+    0 0 48px 12px rgba(191, 106, 254, 0.2);
 }
 
 .bp-circle {
   width: 200px;
   height: 200px;
   display: block;
-  /* filter stays on the static image (no transform here), so it never triggers
-     a per-frame repaint — only the parent wrapper's transform animates. */
-  filter:
-    drop-shadow(0 0 18px rgba(191, 106, 254, 0.55))
-    drop-shadow(0 0 48px rgba(191, 106, 254, 0.2));
   opacity: 0.88;
 }
 
