@@ -33,7 +33,31 @@ extra_js: /js/breath-pacer.js
       "name": "Do I need to breathe through my nose?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is that you breathe in a way that feels comfortable and sustainable. If nasal-only breathing feels strained, breathe through your mouth until your capacity builds."
+        "text": "Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is breathing in a way that feels comfortable and sustainable. If nasal breathing feels strained, breathe through your mouth until your capacity builds. The goal is a smooth, gentle breathing rhythm, not large or forceful breaths."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I breathe into my chest or my belly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For slow breathing practices, it is important to sit upright and let the belly and lower ribs expand gently on the inhale while relaxing the shoulders and neck. This allows the diaphragm to do most of the work and makes slow breathing feel easier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if I feel dizzy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dizziness usually means you're breathing too much air, which is common when starting slow breathing. Try softening the breath instead of taking big deep breaths. Let the inhale be smaller and more relaxed. If needed, pause for a moment and resume once you feel normal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can slow breathing help with stress or anxiety?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many people use slow breathing to help reduce stress, calm the nervous system, and improve focus. Research suggests slow breathing can activate the parasympathetic nervous system, which supports relaxation and recovery."
       }
     },
     {
@@ -97,8 +121,8 @@ extra_js: /js/breath-pacer.js
     <div class="bp-controls">
 
       <div class="bp-actions">
-        <button class="bp-btn-primary" id="bp-start-btn" type="button" aria-label="Start session">Start</button>
         <button class="bp-btn-secondary" id="bp-reset-btn" type="button" aria-label="Reset">Reset</button>
+        <button class="bp-btn-primary" id="bp-start-btn" type="button" aria-label="Start session">Start</button>
         <button class="bp-btn-secondary" id="bp-mute-btn" type="button" aria-pressed="false" aria-label="Mute audio cues">Mute</button>
       </div>
       <p class="bp-audio-hint">On iPhone, audio cues require the silent switch to be off.</p>
@@ -127,9 +151,9 @@ extra_js: /js/breath-pacer.js
 <section class="bp-content">
 
   <div class="bp-article">
-    <h2>Why should I use a breath pacer?</h2>
+    <h2>Slow breathing with a breath pacer</h2>
     <p>This breath pacer guides you in slow, rhythmic breathing to support relaxation, focus, and nervous system balance. It is designed to be used in the practice of resonance frequency breathing, which for most adults is around 5.5 or 6 breaths per minute. For relaxation or stress reduction, choose the longer exhale, which promotes a calming effect. For more focus, choose an equal inhale-exhale.</p>
-    <p>Breathing at a slow, steady pace of 5.5 to 6 breaths per minute has been studied for its potential positive effects on the autonomic nervous system, <strong>heart rate variability (HRV)</strong>, and subjective feelings of calm and focus.</p>
+    <p>Breathing slowly at around 5.5 to 6 breaths per minute has been studied for its effects on the autonomic nervous system and heart rate variability (HRV). Many people find it helps them feel calmer and more focused.</p>
   </div>
 
   <div class="bp-article">
@@ -176,7 +200,24 @@ extra_js: /js/breath-pacer.js
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">Do I need to breathe through my nose?</p>
-      <p class="bp-faq-a">Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is that you breathe in a way that feels comfortable and sustainable. If nasal-only breathing feels strained, breathe through your mouth until your capacity builds.</p>
+      <p class="bp-faq-a">Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is breathing in a way that feels comfortable and sustainable.</p>
+      <p class="bp-faq-a">If nasal breathing feels strained, breathe through your mouth until your capacity builds. The goal is a smooth, gentle breathing rhythm, not large or forceful breaths.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Should I breathe into my chest or my belly?</p>
+      <p class="bp-faq-a">For slow breathing practices, it is important to sit upright and let the belly and lower ribs expand gently on the inhale while relaxing the shoulders and neck. This allows the diaphragm to do most of the work and makes slow breathing feel easier.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">What should I do if I feel dizzy?</p>
+      <p class="bp-faq-a">Dizziness usually means you're breathing too much air, which is common when starting slow breathing.</p>
+      <p class="bp-faq-a">Try softening the breath instead of taking big deep breaths. Let the inhale be smaller and more relaxed. If needed, pause for a moment and resume once you feel normal.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Can slow breathing help with stress or anxiety?</p>
+      <p class="bp-faq-a">Many people use slow breathing to help reduce stress, calm the nervous system, and improve focus. Research suggests slow breathing can activate the parasympathetic nervous system, which supports relaxation and recovery.</p>
     </div>
 
     <div class="bp-faq-item">
@@ -191,7 +232,7 @@ extra_js: /js/breath-pacer.js
 
     <div class="bp-faq-item">
       <p class="bp-faq-q">What's the difference between this tool and the Allos app?</p>
-      <p class="bp-faq-a">This web pacer is a simple, free tool for pacing your breathing. The <a href="/about/">Allos app</a> adds original, customizable music that adjusts to your unique resonance frequency breathing rate and inhale-exhale ratio. richer visual animations, designed to help you stay engaged and motivated in a consistent practice over time.</p>
+      <p class="bp-faq-a">This web pacer is a simple, free tool for pacing your breathing. The <a href="/about/">Allos app</a> adds original, customizable music that adjusts to your unique resonance frequency breathing rate and inhale-exhale ratio and offers a variety of visual animations designed to help you stay engaged and motivated in a consistent practice over time.</p>
     </div>
 
     <div class="bp-faq-item">
@@ -220,17 +261,3 @@ extra_js: /js/breath-pacer.js
   </div>
 </section>
 
-<!-- ── Related reading ────────────────────────────────────────────────── -->
-
-<section class="bp-related">
-  <div class="bp-related-inner">
-    <h2>Related reading</h2>
-    <ul>
-      <li><a href="/learn/what-is-resonance-frequency-breathing/">What is resonance frequency breathing?</a></li>
-      <li><a href="/learn/a-beginners-guide-to-resonance-frequency-breathing/">A beginner's guide to resonance frequency breathing</a></li>
-      <li><a href="/learn/guide-to-slow-paced-breathing/">A guide to slow-paced breathing</a></li>
-      <li><a href="/learn/how-does-resonance-frequency-breathing-work/">How does resonance frequency breathing work?</a></li>
-      <li><a href="/about/">About Allos</a></li>
-    </ul>
-  </div>
-</section>
