@@ -1,0 +1,537 @@
+/* ============================================================
+   Breath Pacer — breath-pacer.css
+   Page-scoped styles for /breath-pacer/
+   ============================================================ */
+
+/* ── Hero ─────────────────────────────────────────────────── */
+
+.bp-hero {
+  background: #1a0a1f;
+  /* 120px top clears the fixed nav bar on mobile (nav is position:fixed below 768px) */
+  padding: 120px 20px 44px;
+  text-align: center;
+}
+
+.bp-hero h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: white;
+  margin: 0 0 18px;
+}
+
+.bp-hero-intro {
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── Widget section ───────────────────────────────────────── */
+
+.bp-widget-section {
+  background: #1a0a1f;
+  padding: 0 16px 64px;
+}
+
+.bp-widget {
+  max-width: 680px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Gradient display area ────────────────────────────────── */
+
+.bp-display {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--h1, 278), 52%, 12%) 0%,
+    hsl(var(--h2, 312), 58%, 16%) 100%
+  );
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 20px 26px;
+}
+
+/* ── Circle ───────────────────────────────────────────────── */
+
+.bp-circle-wrap {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  /* Transform lives here, not on the SVG child — keeps the GPU compositor path
+     clean in Firefox. filter + transform on the same element forces a repaint
+     every frame in Firefox; separating them avoids that. */
+  transform: scale(var(--circle-scale, 0.52));
+  will-change: transform;
+  /* Circular glow via box-shadow — avoids the iOS Safari bug where
+     drop-shadow on an external SVG <img> renders as a rectangular halo. */
+  border-radius: 50%;
+  box-shadow:
+    0 0 18px 4px rgba(191, 106, 254, 0.55),
+    0 0 48px 12px rgba(191, 106, 254, 0.2);
+}
+
+.bp-circle {
+  width: 200px;
+  height: 200px;
+  display: block;
+  opacity: 0.88;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-circle-wrap {
+    transform: none !important;
+  }
+}
+
+/* ── Phase label & timer ──────────────────────────────────── */
+
+.bp-phase-label {
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: center;
+  min-height: 1.6em;
+  margin: 0 0 8px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.bp-timer {
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  min-height: 1.2em;
+  margin: 0;
+}
+
+/* ── Controls area ────────────────────────────────────────── */
+
+.bp-controls {
+  background: #271430;
+  padding: 28px 22px 32px;
+}
+
+.bp-control-group {
+  margin-bottom: 20px;
+}
+
+.bp-control-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0 0 10px;
+}
+
+.bp-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.bp-preset-btn {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 7px 13px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.bp-preset-btn:hover {
+  background: rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bp-preset-btn.active {
+  background: rgba(191, 106, 254, 0.18);
+  border-color: rgba(191, 106, 254, 0.55);
+  color: white;
+}
+
+.bp-audio-hint {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 12px 0 0;
+  line-height: 1.5;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Action row ───────────────────────────────────────────── */
+
+.bp-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.bp-btn-primary {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(90deg, #ff276a 0%, #bf6afe 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  cursor: pointer;
+  flex: 1;
+  letter-spacing: 0.01em;
+  transition: opacity 0.15s;
+}
+
+.bp-btn-primary:hover {
+  opacity: 0.88;
+}
+
+.bp-btn-primary:active {
+  opacity: 0.76;
+}
+
+.bp-btn-secondary {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.52);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 80px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.bp-btn-secondary:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.bp-btn-secondary[aria-pressed="true"] {
+  color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Educational content ──────────────────────────────────── */
+
+.bp-content {
+  background: #23102a;
+  padding: 64px 20px;
+}
+
+.bp-article {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bp-article + .bp-article {
+  margin-top: 52px;
+  padding-top: 52px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.bp-article h2 {
+  font-weight: 700;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: white;
+  margin: 0 0 20px;
+}
+
+.bp-article p,
+.bp-article li {
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 18px;
+}
+
+.bp-article strong {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.bp-article a,
+.bp-faq-a a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.bp-article a:hover,
+.bp-faq-a a:hover {
+  opacity: 0.78;
+}
+
+.bp-article ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  counter-reset: bp-counter;
+}
+
+.bp-article ol li {
+  counter-increment: bp-counter;
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.bp-article ol li::before {
+  content: counter(bp-counter);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: rgba(191, 106, 254, 0.9);
+  width: 22px;
+  height: 22px;
+  background: rgba(191, 106, 254, 0.12);
+  border-radius: 50%;
+  line-height: 22px;
+  text-align: center;
+}
+
+.bp-article h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: white;
+  margin: 28px 0 14px;
+}
+
+.bp-article ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.bp-article ul li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.bp-article ul li::before {
+  content: '\2013';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+}
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+
+.bp-faq {
+  background: #1e0d26;
+  padding: 64px 20px;
+}
+
+.bp-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bp-faq h2 {
+  font-weight: 700;
+  font-size: 1.65rem;
+  letter-spacing: -0.02em;
+  color: white;
+  margin: 0 0 32px;
+}
+
+.bp-faq-item {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bp-faq-item:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bp-faq-q {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  margin: 0 0 10px;
+}
+
+.bp-faq-a {
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.74);
+  margin: 0;
+}
+
+/* ── CTA ──────────────────────────────────────────────────── */
+
+.bp-cta {
+  background: #23102a;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.bp-cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.bp-cta h2 {
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, #ff276a 0%, #bf6afe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.bp-cta p {
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  max-width: 480px;
+}
+
+.bp-cta-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.bp-cta-badges a {
+  display: block;
+  max-width: 180px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.bp-cta-badges a:hover {
+  transform: translateY(-2px);
+  opacity: 0.88;
+}
+
+.bp-cta-badges img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Responsive — 480px+ ──────────────────────────────────── */
+
+@media screen and (min-width: 480px) {
+  .bp-hero h1 {
+    font-size: 3rem;
+  }
+
+  .bp-cta-badges {
+    flex-direction: row;
+    gap: 18px;
+    justify-content: center;
+  }
+}
+
+/* ── Responsive — 768px+ ──────────────────────────────────── */
+
+@media screen and (min-width: 768px) {
+  .bp-hero {
+    padding: 100px 60px 60px;
+  }
+
+  .bp-hero h1 {
+    font-size: 4rem;
+  }
+
+  .bp-hero-intro {
+    font-size: 1.2rem;
+  }
+
+  .bp-widget-section {
+    padding: 0 60px 96px;
+  }
+
+  .bp-display {
+    min-height: 380px;
+  }
+
+  .bp-circle-wrap {
+    width: 230px;
+    height: 230px;
+  }
+
+  .bp-circle {
+    width: 230px;
+    height: 230px;
+  }
+
+  .bp-controls {
+    padding: 34px 36px 38px;
+  }
+
+  .bp-content {
+    padding: 80px 40px;
+  }
+
+  .bp-article h2 {
+    font-size: 2rem;
+  }
+
+  .bp-faq {
+    padding: 80px 40px;
+  }
+
+  .bp-faq h2 {
+    font-size: 2rem;
+  }
+
+  .bp-cta {
+    padding: 100px 40px;
+  }
+
+  .bp-cta h2 {
+    font-size: 2.25rem;
+  }
+
+  .bp-related {
+    padding: 56px 40px 72px;
+  }
+}
+
