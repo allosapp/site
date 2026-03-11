@@ -181,6 +181,10 @@ customHead: |
     background-color: transparent;
   }
 
+  .nav-link-block.beta-nav-block:hover {
+    box-shadow: 0 0 4px 1px #f0d;
+  }
+
   /* ============================================
      Global & Shared Styles
      ============================================ */
@@ -308,6 +312,30 @@ customHead: |
   }
 
   /* ============================================
+     Dark text on gradient sections (WCAG AA compliance)
+     ============================================ */
+
+  /* Headings */
+  .feature-section .section-content h2,
+  .difference-section .section-content h2 {
+    color: #1a0a1f;
+  }
+
+  /* Body text and list items — also reset opacity to 1 */
+  .feature-section .section-content p,
+  .feature-section .section-content li,
+  .difference-section .section-content p,
+  .difference-section .section-content li {
+    color: #1a0a1f;
+    opacity: 1;
+  }
+
+  /* Darken the SVG bullet icon to match dark text */
+  .feature-section .section-content li::before {
+    filter: brightness(0);
+  }
+
+  /* ============================================
      Hero Section
      ============================================ */
 
@@ -407,9 +435,6 @@ customHead: |
     flex: 0 1 auto;
     max-width: 480px;
     align-self: center;
-    background: rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    padding: 28px 32px;
   }
 
   /* Phone image: mobile = below text, centred */
@@ -427,17 +452,11 @@ customHead: |
     max-width: 300px;
     align-self: flex-end;
     margin-bottom: -40px;
-  }
-
-  .difference-image {
     order: 2;
   }
 
   .difference-content {
     order: 1;
-    background: rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    padding: 28px 32px;
   }
 
   /* Plain native bullets for difference section */
@@ -748,28 +767,10 @@ customHead: |
       max-width: 560px;
     }
 
-    /* Waveform overlay – desktop: full image visible */
-    .hero-waveform-overlay {
-      left: 5%;
-      width: 40%;
-      clip-path: none;
-      top: auto;
-      bottom: 30%;
-      transform: none;
-    }
-
     /* Feature section – responsive overrides */
     .feature-section {
       padding-top: 40px;
       padding-bottom: 40px;
-    }
-
-    .feature-section .content-box {
-      padding: 0;
-      gap: 40px;
-      align-items: flex-end;
-      width: fit-content;
-      margin: 0 auto;
     }
 
     .feature-section .feature-image {
@@ -830,7 +831,7 @@ customHead: |
     <div class="hero-image-container">
       <div class="hero-content">
         <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
-        <p class="hero-subheading">For calm, focus, and sleep</p>
+        <p class="hero-subheading">For calm, focus, and resilience</p>
         <div class="app-store-badges">
           <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
@@ -873,13 +874,12 @@ customHead: |
         <img src="/assets/images/hrv-curve.svg" alt="Heart Rate Variability curve">
       </div>
       <div class="section-content benefits-content">
-        <h2>Support Your Performance Goals</h2>
+        <h2>Get more from your daily practice</h2>
         <ul>
-          <li>Support <strong>autonomic nervous system regulation</strong></li>
-          <li>Improve conditions for <strong>focus and flow</strong></li>
-          <li>Enhance <strong>recovery</strong> between physical and cognitive load</li>
-          <li>Improve breath-rhythm synchronization (<strong>rhythmic entrainment</strong>)</li>
-          <li>Sustain motivation for <strong>consistent daily practice</strong></li>
+          <li>Use <strong>Target Mode</strong> to slowly guide you to your resonance frequency over time</li>
+          <li>Supports variable <strong>inhale-exhale ratios</strong> for focus or relaxation</li>
+          <li>Diverse genres of music appeal to <strong>all age groups</strong></li>
+          <li>Animated designs and characters for <strong>visual guidance</strong></li>
         </ul>
       </div>
     </div>
