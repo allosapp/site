@@ -856,40 +856,133 @@ label {
   color: #e7e7e7;
 }
 
-.nav-bar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-right: 80px;
-  margin-left: 80px;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+/* =============================================
+   Navigation – Hamburger / Responsive Bar
+   ============================================= */
+
+.nav-bar-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(44, 31, 42, 0.87);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  padding: 10px 0;
+  transition: transform 0.3s ease;
 }
 
+.nav-bar-section.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-bar-section.nav-open {
+  background-color: rgba(44, 31, 42, 0.95);
+}
+
+/* Mobile: logo left, hamburger right */
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.nav-logo img {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+/* Mobile: hide nav links by default */
 .nav-links-container {
-  width: 350px;
+  display: none;
+  width: 100%;
+  padding: 8px 0 4px;
+}
+
+/* Mobile: show links when menu is open */
+.nav-bar-section.nav-open .nav-links-container {
+  display: block;
+}
+
+/* Mobile: hide logo when menu is open */
+.nav-bar-section.nav-open .nav-logo {
+  display: none;
+}
+
+/* Mobile open: switch to column layout */
+.nav-bar-section.nav-open .nav-bar {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Mobile open: float X button to top-right */
+.nav-bar-section.nav-open .nav-hamburger {
+  order: -1;
+  align-self: flex-end;
+}
+
+/* Mobile: stack links vertically, centred */
+.nav-bar-section.nav-open .nav-links {
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-bar-section.nav-open .nav-links .nav-link-block {
+  margin-top: 0;
+  text-align: center;
+  min-width: 120px;
+}
+
+/* Hamburger button */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger animates to X when open */
+.nav-bar-section.nav-open .nav-hamburger span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-bar-section.nav-open .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-bar-section.nav-open .nav-hamburger span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 .nav-links {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
 .nav-link-block {
-  -webkit-transition: color 500ms ease;
   transition: color 500ms ease;
   color: #cecece;
   font-size: 17px;
@@ -901,12 +994,33 @@ label {
   color: #fff;
 }
 
+/* Download button – transparent fill with gradient border via mask technique */
 .nav-link-block.beta-nav-block {
-  padding: 1px;
+  padding: 0;
+  background-image: none;
+  background-color: transparent;
+  position: relative;
   border-radius: 11px;
-  background-image: linear-gradient(106deg, #ec0086, #c200d8);
-  -webkit-transition: box-shadow 500ms ease, color 500ms ease;
   transition: box-shadow 500ms ease, color 500ms ease;
+}
+
+.nav-link-block.beta-nav-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 11px;
+  padding: 1px;
+  background: linear-gradient(106deg, #ec0086, #c200d8);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.nav-link-text-block.beta-text-block {
+  background-color: transparent;
+  border-radius: 10px;
 }
 
 .nav-link-block.beta-nav-block:hover {
@@ -917,29 +1031,44 @@ label {
   padding: 15px;
 }
 
-.nav-link-text-block.beta-text-block {
-  border-radius: 10px;
-  background-color: #2c1f2a;
+/* Nav spacer – compensates for fixed nav on inner pages */
+.nav-spacer {
+  height: 70px; /* mobile: ~50px logo + 20px padding */
 }
 
-.nav-bar-section {
-  position: -webkit-sticky;
-  position: sticky;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: auto;
-  z-index: 2;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: rgba(44, 31, 42, 0.87);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
+/* Tablet and desktop nav layout (768px+) */
+@media screen and (min-width: 768px) {
+  .nav-hamburger {
+    display: none;
+  }
+
+  .nav-bar {
+    padding: 0 80px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-logo img {
+    width: 183.59px;
+    height: 77px;
+  }
+
+  .nav-links-container {
+    display: block;
+    width: 350px;
+    padding: 0;
+  }
+
+  .nav-links {
+    flex-direction: row;
+  }
+
+  .nav-spacer {
+    height: 97px; /* desktop: 77px logo + 20px padding */
+  }
 }
 
 .menu-icon {
   display: none;
-  max-width: 50px;
 }
 
 .success-message {
@@ -1338,8 +1467,7 @@ label {
   }
 
   .nav-bar {
-    margin-right: 100px;
-    margin-left: 100px;
+    padding: 0 100px;
   }
 
   .article-container {
@@ -1511,38 +1639,6 @@ label {
     text-decoration: none;
   }
 
-  .navbar {
-    display: none;
-  }
-
-  .nav-link {
-    margin-right: 0px;
-    margin-left: 0px;
-    font-size: 16px;
-  }
-
-  .nav-container {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    padding-right: 30px;
-    padding-left: 30px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-  }
-
   .container-hero {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1691,23 +1787,6 @@ label {
     display: inline-block;
     padding-top: 17px;
     font-size: 13px;
-  }
-
-  .nav-bar {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  .nav-links-container {
-    width: 420px;
-  }
-
-  .nav-bar-section {
-    padding-top: 10px;
-    padding-bottom: 20px;
   }
 
   .success-form-join-beta {
@@ -1946,55 +2025,6 @@ label {
   .footer-container {
     padding-right: 30px;
     padding-left: 30px;
-  }
-
-  .nav-bar {
-    margin-left: 0px;
-  }
-
-  .nav-links-container {
-    width: 100vw;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .nav-links {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-
-  .nav-link-block {
-    margin-top: 22px;
-  }
-
-  .nav-bar-section {
-    position: fixed;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    background-color: rgba(44, 31, 42, 0.9);
-  }
-
-  .menu-icon {
-    position: fixed;
-    left: auto;
-    top: 0%;
-    right: 0%;
-    bottom: auto;
-    z-index: 3;
-    display: block;
-    margin-top: 25px;
-    margin-right: 25px;
-    opacity: 0.9;
-    cursor: pointer;
   }
 
   .success-text-form-join-beta {

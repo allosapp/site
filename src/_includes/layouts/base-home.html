@@ -16,7 +16,9 @@
       document.body.setAttribute("data-in-app", "true");
     }
   </script>
+  {% include "nav.html" %}
   {{ content | safe }}
   {% include "footer.html" %}
+  <script src="/js/modules/nav.js" defer></script>
 </body>
 </html>
