@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "head.html" %}
+  {% if customHead %}
+    {{ customHead | safe }}
+  {% endif %}
+</head>
+<body>
+  <script>
+    // Hide various elements if the user is viewing from within the app via a webview
+    if (new URLSearchParams(window.location.search).has("inApp")) {
+      document.body.setAttribute("data-in-app", "true");
+      window.sessionStorage.setItem("in-app-web-view", "true")
+    } else if (window.sessionStorage.getItem("in-app-web-view")) {
+      document.body.setAttribute("data-in-app", "true");
+    }
+  </script>
+  {% include "nav.html" %}
+  {{ content | safe }}
+  {% include "footer.html" %}
+  <script src="/js/modules/nav.js" defer></script>
+</body>
+</html>
