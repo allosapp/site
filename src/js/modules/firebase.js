@@ -68,7 +68,7 @@ export const ensureUserProfile = async (user) => {
   }
 };
 
-export const getUserRole = async (user) => {
+export const getUserAccessTier = async (user) => {
   if (!user?.uid) {
     return null;
   }
@@ -78,15 +78,15 @@ export const getUserRole = async (user) => {
   if (!docSnap.exists()) {
     return null;
   }
-  return docSnap.data().user_role ?? null;
+  return docSnap.data().accessTier ?? null;
 };
 
 /**
- * Set the subgroup field on the user's profile document.
- * Only sets if the value is provided and subgroup is not already set.
+ * Set the utmCampaign field on the user's profile document.
+ * Only sets if the value is provided and utmCampaign is not already set.
  */
-export const setUserSubgroup = async (user, subgroupValue) => {
-  if (!user?.uid || !subgroupValue) {
+export const setUserUtmCampaign = async (user, utmCampaignValue) => {
+  if (!user?.uid || !utmCampaignValue) {
     return;
   }
 
@@ -100,18 +100,18 @@ export const setUserSubgroup = async (user, subgroupValue) => {
 
   const userData = docSnap.data();
 
-  if (userData.user_role === "internal") {
+  if (userData.accessTier === "internal") {
     return;
   }
 
-  // Only set subgroup if it's not already set
-  if (!userData.subgroup) {
+  // Only set utmCampaign if it's not already set
+  if (!userData.utmCampaign) {
     try {
       await updateDoc(docRef, {
-        subgroup: subgroupValue,
+        utmCampaign: utmCampaignValue,
       });
     } catch (error) {
-      console.error("Failed to set user subgroup:", error);
+      console.error("Failed to set user utmCampaign:", error);
     }
   }
 };

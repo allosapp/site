@@ -1,0 +1,263 @@
+---
+layout: layouts/base.html
+title: Free Breath Pacer — Resonance Frequency Breathing Tool | Allos
+description: Use this free breath pacer to practice slow-paced breathing and resonance frequency breathing. Set your breaths per minute, inhale/exhale ratio, and session length.
+social_image: social-preview.jpg
+extra_css: /css/breath-pacer.css
+extra_js: /js/breath-pacer.js
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How slow should I breathe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most slow-paced breathing practices recommend somewhere between 4.5 and 6 breaths per minute. If you're new, 6 bpm (5 seconds in, 5 seconds out) is a reasonable starting point. You can work your way to slower rates as you become more comfortable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between the even ratio and the long exhale setting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With an even ratio, each inhale and exhale takes the same amount of time. With the long exhale setting, the exhale is proportionally longer (2:3 ratio). Some people find a longer exhale more calming; try both and see what feels right for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to breathe through my nose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is breathing in a way that feels comfortable and sustainable. If nasal breathing feels strained, breathe through your mouth until your capacity builds. The goal is a smooth, gentle breathing rhythm, not large or forceful breaths."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I breathe into my chest or my belly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For slow breathing practices, it is important to sit upright and let the belly and lower ribs expand gently on the inhale while relaxing the shoulders and neck. This allows the diaphragm to do most of the work and makes slow breathing feel easier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I do if I feel dizzy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dizziness usually means you're breathing too much air, which is common when starting slow breathing. Try softening the breath instead of taking big deep breaths. Let the inhale be smaller and more relaxed. If needed, pause for a moment and resume once you feel normal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can slow breathing help with stress or anxiety?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many people use slow breathing to help reduce stress, calm the nervous system, and improve focus. Research suggests slow breathing can activate the parasympathetic nervous system, which supports relaxation and recovery."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a session be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Even a short 2–5 minute session can be a useful reset. For a more regular practice, 10–20 minutes daily is a common recommendation. Start with what you can maintain consistently rather than aiming for long sessions right away."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this breath pacer every day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — slow-paced breathing is generally safe for regular daily practice. If you have a respiratory condition, cardiovascular condition, or are pregnant, check with your doctor before starting any new breathing practice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between this tool and the Allos app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This web pacer is a simple, free tool for pacing your breaths. The Allos app adds music composed specifically for your breathing rate, richer visual animations, and a more immersive practice experience designed to help you stay consistent over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does breathing rate affect heart rate variability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Slow, rhythmic breathing at your resonance frequency is associated with increases in heart rate variability (HRV) in research studies. HRV is influenced by many factors, but for many people, regular slow-paced breathing practice is associated with both measurable changes in HRV and subjective improvements in calm and stress resilience."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────── -->
+
+<section class="bp-hero">
+  <h1>Breath Pacer</h1>
+  <p class="bp-hero-intro">For Resonance Frequency Breathing</p>
+</section>
+
+<!-- ── Pacer widget ───────────────────────────────────────────────────── -->
+
+<section class="bp-widget-section" id="pacer" aria-label="Interactive breath pacer">
+  <div class="bp-widget">
+
+    <!-- Animated gradient display + circle -->
+    <div class="bp-display" id="bp-bg">
+      <div class="bp-circle-wrap" id="bp-circle-wrap" aria-hidden="true">
+        <img id="bp-circle" class="bp-circle" src="/assets/images/bubble-transparent.svg" alt="" aria-hidden="true">
+      </div>
+      <p class="bp-phase-label" id="bp-phase-label" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p class="bp-timer" id="bp-session-timer" aria-label="Time remaining in session"></p>
+    </div>
+
+    <!-- Controls -->
+    <div class="bp-controls">
+
+      <div class="bp-actions">
+        <button class="bp-btn-secondary" id="bp-reset-btn" type="button" aria-label="Reset">Reset</button>
+        <button class="bp-btn-primary" id="bp-start-btn" type="button" aria-label="Start session">Start</button>
+        <button class="bp-btn-secondary" id="bp-mute-btn" type="button" aria-pressed="false" aria-label="Mute audio cues">Mute</button>
+      </div>
+      <p class="bp-audio-hint">On iPhone, audio cues require the silent switch to be off.</p>
+
+      <div class="bp-control-group">
+        <p class="bp-control-label" id="bp-bpm-label">Breathing Rate (breaths per minute)</p>
+        <div class="bp-btn-group" id="bp-bpm-buttons" role="group" aria-labelledby="bp-bpm-label"></div>
+      </div>
+
+      <div class="bp-control-group">
+        <p class="bp-control-label" id="bp-ratio-label">Inhale / Exhale Ratio</p>
+        <div class="bp-btn-group" id="bp-ratio-buttons" role="group" aria-labelledby="bp-ratio-label"></div>
+      </div>
+
+      <div class="bp-control-group">
+        <p class="bp-control-label" id="bp-session-label">Session Length</p>
+        <div class="bp-btn-group" id="bp-session-buttons" role="group" aria-labelledby="bp-session-label"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Educational content ────────────────────────────────────────────── -->
+
+<section class="bp-content">
+
+  <div class="bp-article">
+    <h2>Slow breathing with a breath pacer</h2>
+    <p>This breath pacer guides you in slow, rhythmic breathing to support relaxation, focus, and nervous system balance. It is designed to be used in the practice of resonance frequency breathing, which for most adults is around 5.5 or 6 breaths per minute. For relaxation or stress reduction, choose the longer exhale, which promotes a calming effect. For more focus, choose an equal inhale-exhale.</p>
+    <p>Breathing slowly at around 5.5 to 6 breaths per minute has been studied for its effects on the autonomic nervous system and heart rate variability (HRV). Many people find it helps them feel calmer and more focused.</p>
+  </div>
+
+  <div class="bp-article">
+    <h2>How to use this breath pacer</h2>
+    <ol>
+      <li><strong>Choose your breathing rate.</strong> Select a preset pace in breaths per minute (bpm). If you're new, 6 breaths per minute is a common starting point, which is 5 seconds in and 5 seconds out. You can try 8 breaths per minute if 6 feels too slow at first, and work down over time.</li>
+      <li><strong>Choose an inhale/exhale ratio.</strong> <strong>Even</strong> splits each breath cycle equally. <strong>Long exhale</strong> uses a 2:3 inhale to exhale ratio. Most people find the longer exhale more calming and relaxing. Try both and see what feels natural.</li>
+      <li><strong>Set a session length (optional).</strong> Choose a preset duration or leave it on continuous (∞) to breathe as long as you like. The timer will count down and the session will stop automatically.</li>
+      <li><strong>Press Start and follow the circle.</strong> Inhale as the circle expands, exhale as it contracts. Try to breathe naturally — let the pacer guide you without forcing it. If you lose the rhythm, just relax and reconnect when you're ready.</li>
+    </ol>
+  </div>
+
+  <div class="bp-article">
+    <h2>What is resonance frequency breathing?</h2>
+    <p>Resonance frequency breathing is a form of slow-paced breathing practiced at the specific rate that produces the greatest variability in your heart rate. For most people, this rate falls somewhere between 4.5 and 7 breaths per minute, with around <strong>6 breaths per minute</strong> being the most common rate among adults.</p>
+    <p>When you breathe at your resonance frequency, your heart rate and breathing naturally synchronize in a rhythm called respiratory sinus arrhythmia. Research suggests this may support relaxation, stress resilience, and nervous system balance when practiced regularly.</p>
+    <p>You don't need to know your exact resonance frequency to benefit from slow-paced breathing. Many people start at 6 bpm and adjust from there based on how it feels. The most important thing is <strong>consistent, regular practice</strong>. Even a few minutes a day can make a difference over time.</p>
+    <h3>Learn more</h3>
+    <p>If you'd like to learn more, you may find these articles helpful:</p>
+    <ul>
+      <li><a href="/learn/guide-to-slow-paced-breathing/">A guide to slow-paced breathing</a></li>
+      <li><a href="/learn/a-beginners-guide-to-resonance-frequency-breathing/">A beginner's guide to resonance frequency breathing</a></li>
+      <li><a href="/learn/how-does-resonance-frequency-breathing-work/">How does resonance frequency breathing work?</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────────────── -->
+
+<section class="bp-faq">
+  <div class="bp-faq-inner">
+    <h2>Frequently asked questions</h2>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">How slow should I breathe?</p>
+      <p class="bp-faq-a">Most slow-paced breathing practices recommend somewhere between 4.5 and 7 breaths per minute. If you're new, 6 bpm (5 seconds in, 5 seconds out) is a reasonable starting point. If that feels too slow, start at 8 bpm and work your way down to slower rates as you become more comfortable.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">What is the difference between the even ratio and the long exhale setting?</p>
+      <p class="bp-faq-a">With an even ratio, each inhale and exhale takes the same amount of time. With the long exhale setting, the exhale is proportionally longer (2:3 ratio). Some people find a longer exhale more calming. Try both and see what feels right for you.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Do I need to breathe through my nose?</p>
+      <p class="bp-faq-a">Nasal breathing is generally recommended for slow breathing practices where possible, but the most important thing is breathing in a way that feels comfortable and sustainable.</p>
+      <p class="bp-faq-a">If nasal breathing feels strained, breathe through your mouth until your capacity builds. The goal is a smooth, gentle breathing rhythm, not large or forceful breaths.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Should I breathe into my chest or my belly?</p>
+      <p class="bp-faq-a">For slow breathing practices, it is important to sit upright and let the belly and lower ribs expand gently on the inhale while relaxing the shoulders and neck. This allows the diaphragm to do most of the work and makes slow breathing feel easier.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">What should I do if I feel dizzy?</p>
+      <p class="bp-faq-a">Dizziness usually means you're breathing too much air, which is common when starting slow breathing.</p>
+      <p class="bp-faq-a">Try softening the breath instead of taking big deep breaths. Let the inhale be smaller and more relaxed. If needed, pause for a moment and resume once you feel normal.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Can slow breathing help with stress or anxiety?</p>
+      <p class="bp-faq-a">Many people use slow breathing to help reduce stress, calm the nervous system, and improve focus. Research suggests slow breathing can activate the parasympathetic nervous system, which supports relaxation and recovery.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">How long should a session be?</p>
+      <p class="bp-faq-a">Even a short 2–5 minute session can be a useful pause during a stressful moment. For a more regular practice, 10–20 minutes daily is a common recommendation in the research literature. Start with what you can maintain consistently rather than aiming for long sessions right away.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Can I use this breath pacer every day?</p>
+      <p class="bp-faq-a">Yes. Slow-paced breathing is generally safe for regular daily practice. If you have a respiratory condition, cardiovascular condition, or are pregnant, it's worth checking with your doctor before starting any new breathing practice.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">What's the difference between this tool and the Allos app?</p>
+      <p class="bp-faq-a">This web pacer is a simple, free tool for pacing your breathing. The <a href="/about/">Allos app</a> adds original, customizable music that adjusts to your unique resonance frequency breathing rate and inhale-exhale ratio and offers a variety of visual animations designed to help you stay engaged and motivated in a consistent practice over time.</p>
+    </div>
+
+    <div class="bp-faq-item">
+      <p class="bp-faq-q">Does slow breathing affect heart rate variability?</p>
+      <p class="bp-faq-a">Slow, rhythmic breathing at your resonance frequency is associated with increases in heart rate variability (HRV) in research studies. HRV is influenced by many factors and should be interpreted in the context of overall health and lifestyle, but for many people, regular slow-paced breathing is associated with both measurable HRV changes and subjective improvements in relaxation, and stress resilience.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────────────────── -->
+
+<section class="bp-cta">
+  <div class="bp-cta-inner">
+    <h2>Take your practice further with Allos</h2>
+    <p>If you'd like a more immersive experience, <strong>Allos</strong> guides your breathing sessions with music in a variety of genres composed specifically for your unique resonance frequency.</p>
+    <p>Allos is available on iOS and Android.</p>
+    <div class="bp-cta-badges">
+      <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download Allos on the App Store">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
+        <img src="/assets/images/download-allos-on-google-play.svg" alt="Get Allos on Google Play">
+      </a>
+    </div>
+  </div>
+</section>
+

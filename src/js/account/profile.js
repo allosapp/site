@@ -2,8 +2,8 @@ import { storageKeys } from "../modules/constants.js";
 import {
   Auth,
   getAuthInstance,
-  getUserRole,
-  setUserSubgroup,
+  getUserAccessTier,
+  setUserUtmCampaign,
   ensureUserProfile,
 } from "../modules/firebase.js";
 import { getUserHasPremiumSub, setUserAttributes } from "../modules/revcat.js";
@@ -11,7 +11,7 @@ import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
   let currentUser = undefined;
-  let userRole = undefined;
+  let userAccessTier = undefined;
   let subscriptionActive = false;
   let isLoading = true;
   const auth = getAuthInstance();
@@ -30,7 +30,7 @@ runOnLoad(() => {
   };
 
   const userIsPremium = () => {
-    return userRole === "internal" || userRole === "demo" || subscriptionActive;
+    return subscriptionActive || ["demo", "internal"].includes(userAccessTier);
   };
 
   const sendVerificationEmail = (user) => {
@@ -106,7 +106,7 @@ runOnLoad(() => {
   Auth.onAuthStateChanged(auth, async (user) => {
     if (!user) {
       currentUser = null;
-      userRole = null;
+      userAccessTier = null;
       subscriptionActive = false;
       hideLoading();
       render();
@@ -125,14 +125,14 @@ runOnLoad(() => {
     // Ensure user profile document exists
     await ensureUserProfile(user);
 
-    userRole = await getUserRole(user);
+    userAccessTier = await getUserAccessTier(user);
     subscriptionActive = await getUserHasPremiumSub(user?.uid);
     await setUserAttributes(user);
 
-    // Set subgroup from UTM campaign if available and not already set
+    // Set utmCampaign from UTM campaign if available and not already set
     const utmCampaign = localStorage.getItem(storageKeys.utmCampaign);
     if (utmCampaign) {
-      await setUserSubgroup(user, utmCampaign);
+      await setUserUtmCampaign(user, utmCampaign);
     }
 
     const forwardedEmail = window.localStorage.getItem(
