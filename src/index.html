@@ -1,82 +1,721 @@
 ---
-layout: layouts/base.html
+layout: layouts/base-home.html
 title: Allos Breath Pacer
-description: The Allos Breath Pacer is an audio/visual pacer for practicing slow-paced breathing and resonance frequency breathing. Both the audio and visuals are synced perfectly to your breathing rate.
+description: The Allos Breath Pacer is an audio/visual pacer for practicing slow-paced breathing and resonance frequency breathing. Both the audio and visuals are synced perfectly to you breathing rate.
 social_image: social-preview.jpg
+customHead: |
+  <link rel="preload" as="image"
+    imagesrcset="/assets/images/hero-image-home-mobile.avif,
+                 /assets/images/hero-image-home-tablet.avif 768w,
+                 /assets/images/hero-image-home-desktop.avif 1024w"
+    imagesizes="100vw">
 ---
 
-  <div class="section-hero">
-    <div class="container-hero w-container">
-      <div class="main-heading-container">
-        <h1>Rhythmic soundscapes and visuals for slow breathing practices.</h1>
-      </div>
-      <div class="phone">
-        <div class="highlight"></div>
-        <img class="frequency-curve-img" src="assets/images/frequency-curve.png" alt="resonance frequency breathing heart rate variability curve">
-      </div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="breath-curve">
-      <div class="breath-curve-fade"></div><img class="breath-curve-img" src="assets/images/BreathCurves4_3d2.svg" loading="eager" alt="breath curve with heart rate variability overlay">
-    </div>
-    <div class="container w-container">
-      <div class="h-p-container"> 
-        <h2>Resonance Frequency Breathing</h2>
-        <p>More and more people are experiencing the benefits of slow-paced breathing at their resonance frequency. If you are one of them, we built this for you.</p>
-      </div>
-    </div>
-    <div class="floating-square-front"></div>
-    <div class="floating-square-middle"></div>
-    <div class="floating-square-back"></div>
-    <div class="gradient-right"></div>
-    <div class="gradient"></div>
-  </div>
-  <div class="lottie-section">
-    <div class="container-1000 w-container">
-      <div class="h-p-container">
-        <h2>A guided experience perfectly paced to help you achieve focus, regeneration, and flow.</h2>
-        <p>The Allos Breath Pacer is designed specifically for the practice of slow-paced breathing and resonance frequency breathing:</p>
-        <ul role="list" class="list">
-          <li class="list-item">Chose from a variety of musical styles, soundscapes, and animated video.</li>
-          <li class="list-item">Customize the pacer to your own desired breathing rate and inhale/exhale ratio.</li>
-          <li class="list-item">Create, save, and share playlists for any mood.</li>
-        </ul>
-      </div>
-      <img class="section-visual" src="assets/images/lungs-heart-breathing.svg" alt="lungs and heart breathing diagram">
-    </div>
-  </div>
-  <div class="signup-section">
-    <div class="signup-container w-container">
-      <h2 class="signup-heading">Ready to explore custom soundscapes and visuals for your own unique breathing experience?</h2>
+<style>
+  /* Nav: more transparent over the hero image */
+  .nav-bar-section {
+    background-color: rgba(44, 31, 42, 0.5);
+  }
 
-      <style>
-        .apple {
-          margin-right: 30px;
-        }
-  @media screen and (max-width: 376px) {
-    .download-btns {
-      display: flex;
+  /* ============================================
+     Page Styles
+     ============================================ */
+
+  /* Shared dark section background and spacing */
+  .section-dark {
+    background: #23102a;
+    padding: 60px 20px;
+  }
+
+  /* Shared content box with gradient background */
+  .content-box {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #FF276A 0%, #BF6AFE 100%);
+    border-radius: 24px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    overflow: visible;
+  }
+
+  /* Shared typography for content sections */
+  .section-content {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .section-content h2 {
+    font-family: basic-sans, sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin: 0 0 24px 0;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  .section-content p {
+    font-family: basic-sans, sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 20px 0;
+    color: white;
+    opacity: 0.9;
+  }
+
+  .section-content p strong,
+  .section-content li strong {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  /* Shared list styling with custom bullets */
+  .section-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .section-content li {
+    font-family: basic-sans, sans-serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 16px 0;
+    color: white;
+    opacity: 0.9;
+    padding-left: 32px;
+    position: relative;
+  }
+
+  .section-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 18px;
+    height: 18px;
+    background-image: url('/assets/images/bullet-point.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Shared image container */
+  .section-image {
+    flex: 1;
+    width: 100%;
+  }
+
+  .section-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* App store badges styling */
+  .app-store-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .app-store-badges a {
+    display: block;
+    max-width: 200px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .app-store-badges a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .app-store-badges img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ============================================
+     Text shadow for white text on gradient sections
+     ============================================ */
+
+  .feature-section .section-content h2,
+  .feature-section .section-content p,
+  .feature-section .section-content li,
+  .difference-section .section-content h2,
+  .difference-section .section-content p,
+  .difference-section .section-content li {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  }
+
+  /* ============================================
+     Hero Section
+     ============================================ */
+
+  .hero-section {
+    background: linear-gradient(180deg, #1a0a1f 0%, #2d1535 100%);
+    padding: 0 20px 0;
+    text-align: center;
+    position: relative;
+    /* Reserve full viewport height while hero image loads,
+       preventing the section below from flashing into view */
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    /* padding-top clears the fixed nav on mobile:
+       nav-section padding (10px) + logo height at 120px wide (~50px) + nav-section padding (10px) + breathing room (~15px) ≈ 85px */
+    padding: 85px 20px 30px;
+  }
+
+  .hero-content h1 {
+    font-family: basic-sans, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0 0 8px 0;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-line-break {
+    display: block;
+  }
+
+  .hero-subheading {
+    font-family: basic-sans, sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.01em;
+  }
+
+  .hero-image-container {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .hero-image-container img:not(.hero-waveform-overlay) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Waveform overlay on hero image */
+  .hero-waveform-overlay {
+    position: absolute;
+    top: 60%;
+    /* Mobile: shift element left by half its width so the visible right half sits at the left edge */
+    transform: translate(-50%, -50%);
+    left: 0;
+    width: 80%;
+    height: auto;
+    display: block;
+    /* Mobile: clip left half, showing right half of image */
+    clip-path: inset(0 0 0 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ============================================
+     Feature Section – gradient background, no text box
+     ============================================ */
+
+  .feature-section {
+    background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  /* content-box stripped to layout container only – no visual box */
+  .feature-section .content-box {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  /* Text content sits directly on the gradient – no box */
+  .feature-section .feature-content {
+    flex: 0 1 auto;
+    max-width: 480px;
+    align-self: center;
+  }
+
+  /* Phone image: mobile = below text, centred */
+  .feature-section .feature-image {
+    max-width: 240px;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  /* ============================================
+     Difference Section (with box)
+     ============================================ */
+
+  .difference-image {
+    max-width: 300px;
+    align-self: flex-end;
+    margin-bottom: -40px;
+    order: 2;
+  }
+
+  .difference-content {
+    order: 1;
+  }
+
+  /* Plain native bullets for difference section */
+  .difference-content ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  .difference-content li::before {
+    display: none;
+  }
+
+  .difference-content li {
+    padding-left: 0;
+  }
+
+  /* ============================================
+     Benefits Section (no box)
+     ============================================ */
+
+  .benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .benefits-image {
+    max-width: 500px;
+  }
+
+  /* ============================================
+     CTA Section
+     ============================================ */
+
+  .cta-section {
+    background: #23102a;
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .cta-logo img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+  }
+
+  .cta-headline {
+    font-family: basic-sans, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cta-subtext {
+    font-family: basic-sans, sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 0;
+    color: white;
+    opacity: 0.9;
+  }
+
+  /* ============================================
+     Responsive Styles - Tablet (768px+)
+     ============================================ */
+
+  @media screen and (min-width: 768px) {
+    /* App store badges side by side */
+    .app-store-badges {
+      flex-direction: row;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    /* Tablet+: hide hamburger, restore nav-bar to desktop layout */
+    .nav-hamburger {
+      display: none;
+    }
+
+    .nav-bar {
+      flex-wrap: nowrap;
+      padding: 0 80px;
+    }
+
+    .nav-logo img {
+      width: 183.59px;
+      height: 77px;
+    }
+
+    .nav-links-container {
+      display: block !important;
+      width: 350px;
+      padding: 0;
+    }
+
+    .nav-links {
+      flex-direction: row !important;
+    }
+
+    /* Shared section spacing */
+    .section-dark {
+      padding: 80px 40px;
+    }
+
+    .content-box {
+      flex-direction: row;
+      gap: 60px;
+      padding: 60px 50px;
+      align-items: flex-end;
+    }
+
+    /* Shared typography scaling */
+    .section-content h2 {
+      font-size: 2.25rem;
+    }
+
+    .section-content p,
+    .section-content li {
+      font-size: 1.125rem;
+    }
+
+    /* Hero section */
+    .hero-section {
+      padding: 0 40px 0;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+
+    /* Hero content overlay – tablet: absolute over image, top clears fixed nav (≈97px) */
+    .hero-content {
+      position: absolute;
+      top: 145px;
+      left: 40%;
+      transform: translateX(-50%);
+      width: 48%;
+      max-width: 560px;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    /* Waveform overlay – tablet: full image, fixed at lower left */
+    .hero-waveform-overlay {
+      left: 5%;
+      width: 40%;
+      clip-path: none;
+      top: auto;
+      bottom: 30%;
+      transform: none;
+    }
+
+    /* Feature section – responsive overrides */
+    .feature-section {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .feature-section .content-box {
+      padding: 0;
+      gap: 40px;
+      align-items: flex-end;
+      /* Collapse box to content width, then self-centre in the section */
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .feature-section .feature-content {
+      align-self: center;
+    }
+
+    .feature-section .feature-image {
+      flex-shrink: 0;
+      align-self: flex-end;
+      /* Cap at native source width (628px) so the browser never upscales */
+      max-width: 628px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* max-height caps the image; width scales by aspect ratio.
+       object-position: bottom keeps the phone base anchored as height shrinks. */
+    .feature-section .feature-image img {
+      height: auto;
+      max-height: 400px;
+      width: auto;
+      max-width: none;
+      display: block;
+      margin: 0;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    /* Difference section */
+    .difference-content {
+      align-self: center;
+    }
+
+    .difference-image {
+      margin-bottom: -60px;
+    }
+
+    .difference-content,
+    .difference-image {
+      order: 0;
+    }
+
+    /* Benefits section */
+    .benefits-container {
+      flex-direction: row;
+      gap: 60px;
       align-items: center;
-      flex-direction: column;
+      /* Collapse to content width and self-centre, same as feature section */
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto;
     }
 
-    .apple {
-      margin-right: 0;
+    /* Prevent flex:1 from expanding the text beyond natural width inside fit-content container */
+    .benefits-content {
+      flex: 0 1 auto;
     }
-    a.dnldbtn img {
-      margin: 10px auto;
+
+    /* CTA section */
+    .cta-section {
+      padding: 100px 40px;
+    }
+
+    .cta-logo img {
+      max-width: 300px;
+    }
+
+    .cta-headline {
+      font-size: 3rem;
+    }
+
+    .cta-subtext {
+      font-size: 1.35rem;
+    }
+  }
+
+  /* ============================================
+     Responsive Styles - Desktop (1024px+)
+     ============================================ */
+
+  @media screen and (min-width: 1024px) {
+    /* Shared section spacing */
+    .section-dark {
+      padding: 100px 60px;
+    }
+
+    .content-box {
+      padding: 80px 70px;
+    }
+
+    /* Shared typography scaling */
+    .section-content h2 {
+      font-size: 2.5rem;
+    }
+
+    .section-content p,
+    .section-content li {
+      font-size: 1.2rem;
+    }
+
+    .section-content li {
+      margin-bottom: 20px;
+    }
+
+    /* Hero section */
+    .hero-section {
+      padding: 0 60px 0;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      white-space: nowrap;
+    }
+
+    .hero-line-break {
+      display: none;
+    }
+
+    /* Hero content overlay – desktop, top clears fixed nav (≈97px) */
+    .hero-content {
+      top: 157px;
+      width: 48%;
+      max-width: 560px;
+    }
+
+    /* Feature section – responsive overrides */
+    .feature-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .feature-section .feature-image {
+      /* Cap at native source width (628px) so the browser never upscales */
+      max-width: 628px;
+    }
+
+    .feature-section .feature-image img {
+      max-height: 560px;
+    }
+
+    /* Difference section */
+    .difference-image {
+      margin-bottom: -80px;
+    }
+
+    /* CTA section */
+    .cta-section {
+      padding: 120px 60px;
+    }
+
+    .cta-headline {
+      font-size: 2.5rem;
+    }
+
+    .cta-subtext {
+      font-size: 1.5rem;
     }
   }
 </style>
-      <div class="download-btns">
-        <a class="dnldbtn apple" href="https://apps.apple.com/app/id1599591962" target="_blank">
-        <img src="assets/images/download-allos-on-the-app-store.svg"></a>
-        <a class="dnldbtn" href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank">
-          <img src="assets/images/download-allos-on-google-play.svg">
-        </a>
+
+<main>
+  <div class="hero-section">
+    <div class="hero-image-container">
+      <div class="hero-content">
+        <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
+        <p class="hero-subheading">For calm, focus, and resilience</p>
+        <div class="app-store-badges">
+          <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
+          </a>
+        </div>
       </div>
-
-
+      <picture>
+        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
+        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-home-tablet.avif" width="2127" height="1579">
+        <img src="/assets/images/hero-image-home-mobile.avif" alt="Allos Breath Pacer"
+          width="1080" height="1211"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync">
+      </picture>
+      <img class="hero-waveform-overlay" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
   </div>
+
+  <section class="section-dark feature-section">
+    <div class="content-box">
+      <div class="section-content feature-content">
+        <h2>Discover the Power of Resonance</h2>
+        <p><strong>Resonance Frequency Breathing</strong> is a simple, science-based exercise that has been shown to support relaxation, improved focus, and when practiced regularly, can strengthen your resilience to stress.</p>
+        <p><strong>Allos</strong> makes this practice easy and engaging by using customizable music to guide your breathing at your unique resonance frequency and inhale/exhale ratio.</p>
+      </div>
+      <div class="section-image feature-image">
+        <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark benefits-section">
+    <div class="benefits-container">
+      <div class="section-image benefits-image">
+        <img src="/assets/images/hrv-curve.svg" alt="Heart Rate Variability curve">
+      </div>
+      <div class="section-content benefits-content">
+        <h2>Get more from your daily practice</h2>
+        <ul>
+          <li>Use <strong>Target Mode</strong> to slowly guide you to your resonance frequency over time</li>
+          <li>Supports variable <strong>inhale-exhale ratios</strong> for focus or relaxation</li>
+          <li>Diverse genres of music appeal to <strong>all age groups</strong></li>
+          <li>Animated designs and characters for <strong>visual guidance</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark difference-section">
+    <div class="content-box">
+      <div class="section-image difference-image">
+        <img src="/assets/images/ui-audio-select-screen.webp" alt="Allos app audio selection screen">
+      </div>
+      <div class="section-content difference-content">
+        <h2>What Makes Allos Different?</h2>
+        <p>Unlike most breathing apps that rely on voices or repetitive signals, Allos uses <strong>original music</strong> from award-winning composers to pace your breathing practice.</p>
+        <ul>
+          <li>Choose the perfect track to match your <strong>mood</strong> or <strong>desired state</strong></li>
+          <li>Adjust the pace to your unique <strong>resonance frequency</strong> and <strong>inhale/exhale ratio</strong></li>
+          <li>Allos automatically fits the melody and beat of the music to your pace and ratio</li>
+          <li>Start the session and <strong>sync your breath with the music</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-logo">
+        <img src="/assets/images/allos-logo.svg" alt="Allos">
+      </div>
+      <h2 class="cta-headline">Download Allos Today</h2>
+      <p class="cta-subtext">Available for iOS and Android</p>
+      <div class="app-store-badges">
+        <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
