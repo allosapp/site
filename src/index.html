@@ -12,78 +12,6 @@ customHead: |
 ---
 
 <style>
-  /* Nav: more transparent over the hero image */
-  .nav-bar-section {
-    background-color: rgba(44, 31, 42, 0.5);
-  }
-
-  /* ============================================
-     Hero Section
-     ============================================ */
-
-  .hero-section {
-    background: linear-gradient(180deg, #1a0a1f 0%, #2d1535 100%);
-    padding: 0 20px;
-    text-align: center;
-    position: relative;
-    min-height: 100svh;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 85px 20px 30px;
-  }
-
-  .hero-content h1 {
-    font-family: basic-sans, sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    line-height: 1.2;
-    margin: 0 0 8px;
-    color: white;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-line-break { display: block; }
-
-  .hero-subheading {
-    font-family: basic-sans, sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.4;
-    margin: 0 0 20px;
-    color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 0.01em;
-  }
-
-  .hero-image-container {
-    position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-  }
-
-  .hero-image-container img:not(.hero-waveform-overlay) {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .hero-waveform-overlay {
-    position: absolute;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    left: 0;
-    width: 80%;
-    height: auto;
-    display: block;
-    clip-path: inset(0 0 0 50%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
   /* ============================================
      Feature Section – gradient bg, transparent content box
      ============================================ */
@@ -119,31 +47,6 @@ customHead: |
      ============================================ */
 
   @media screen and (min-width: 768px) {
-    .hero-section { padding: 0 40px; }
-
-    .hero-content h1 { font-size: 3rem; }
-
-    .hero-content {
-      position: absolute;
-      top: 145px;
-      left: 40%;
-      transform: translateX(-50%);
-      width: 48%;
-      max-width: 560px;
-      margin: 0;
-      padding: 0;
-      z-index: 10;
-    }
-
-    .hero-waveform-overlay {
-      left: 5%;
-      width: 40%;
-      clip-path: none;
-      top: auto;
-      bottom: 30%;
-      transform: none;
-    }
-
     .feature-section { padding-top: 30px; padding-bottom: 30px; }
 
     .feature-section .content-box {
@@ -181,13 +84,8 @@ customHead: |
      ============================================ */
 
   @media screen and (min-width: 1024px) {
-    .hero-section { padding: 0 60px; }
-
-    .hero-content h1 { font-size: 3.5rem; white-space: nowrap; }
-
-    .hero-line-break { display: none; }
-
-    .hero-content { top: 157px; }
+    /* Home page: full title fits on one line at desktop widths */
+    .hero-content h1 { white-space: nowrap; }
 
     .feature-section { padding-top: 40px; padding-bottom: 40px; }
 
@@ -200,7 +98,7 @@ customHead: |
 <main>
   <div class="hero-section">
     <div class="hero-image-container">
-      <div class="hero-content">
+      <div class="hero-content hero-content--left">
         <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
         <p class="hero-subheading">For calm, focus, and resilience</p>
         <div class="app-store-badges">
@@ -221,7 +119,7 @@ customHead: |
           loading="eager"
           decoding="sync">
       </picture>
-      <img class="hero-waveform-overlay" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
+      <img class="hero-waveform-overlay hero-waveform-overlay--left" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
   </div>
 

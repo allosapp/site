@@ -56,7 +56,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   top: 0; left: 0;
   width: 100%;
   z-index: 100;
-  background-color: rgba(44, 31, 42, 0.87);
+  background-color: rgba(44, 31, 42, 0.5);
   backdrop-filter: blur(3px);
   padding: 10px 0;
   transition: transform 0.3s ease;
@@ -141,6 +141,117 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .nav-links { flex-direction: row; }
   .nav-spacer { height: 97px; }
 }
+/* ============================================
+   HERO SECTION — Full-bleed landing page hero
+   Used by: Home, Coaches, and future landing pages
+   Apply .hero-content--left or --right,
+   and .hero-waveform-overlay--left or --right
+   ============================================ */
+
+.hero-section {
+  background: linear-gradient(180deg, #1a0a1f 0%, #2d1535 100%);
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  min-height: 100svh;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 85px 20px 30px;
+}
+
+.hero-content h1 {
+  font-family: basic-sans, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 8px;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.hero-line-break { display: block; }
+
+.hero-subheading {
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.01em;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.hero-image-container img:not(.hero-waveform-overlay) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-waveform-overlay {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  height: auto;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subject on right side of image (home page): overlay bleeds in from the left */
+.hero-waveform-overlay--left {
+  left: 0;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  clip-path: inset(0 0 0 50%);
+}
+
+/* Subject on left side of image (coaches page): overlay on the right */
+.hero-waveform-overlay--right {
+  right: 0;
+  left: auto;
+  width: 40%;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-section { padding: 0 40px; }
+  .hero-content {
+    position: absolute;
+    top: 145px;
+    width: 48%;
+    max-width: 560px;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    transform: translateX(-50%);
+  }
+  /* Content positioned in the right half of the image (subject on right) */
+  .hero-content--left  { left: 40%; }
+  /* Content positioned in the left half of the image (subject on left) */
+  .hero-content--right { left: 60%; }
+  .hero-content h1 { font-size: 3rem; }
+  .hero-waveform-overlay { clip-path: none; transform: none; width: 40%; top: auto; bottom: 30%; }
+  .hero-waveform-overlay--left  { left: 5%; }
+  .hero-waveform-overlay--right { right: 5%; left: auto; }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero-section  { padding: 0 60px; }
+  .hero-content h1 { font-size: 3.5rem; }
+  .hero-line-break { display: none; }
+  .hero-content { top: 157px; }
+}
+
 /* ============================================
    SHARED PAGE LAYOUT SYSTEM
    Used by: Home, Coaches, Peak
@@ -366,7 +477,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 }
 
 .preview-text          { margin-bottom: 45px; font-size: 22px; }
-.article-title-list    { font-family: embarcadero-mvb-pro, sans-serif; font-size: 30px; text-decoration: none; }
+.article-title-list    { font-family: embarcadero-mvb-pro, sans-serif; font-size: 30px; text-decoration: none; margin-top: 4px; }
 .article-title-list-link       { text-decoration: none; }
 .article-title-list-link:hover { border-bottom: 2px solid #fff; }
 .compass-svg   { margin-top: -30px; }
@@ -386,6 +497,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   font-family: embarcadero-mvb-pro, sans-serif;
   font-size: 52px;
   line-height: 64px;
+  margin-top: 0;
 }
 
 .article-content {
@@ -423,7 +535,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
     grid-template-rows: auto auto auto;
   }
   .article-title-list        { text-align: left; }
-  .article-list-container    { max-width: 430px; padding: 0 20px; }
+  .article-list-container    { max-width: 430px; padding: 0 20px; margin-top: 20px; }
   .resource-article-container { max-width: 440px; padding: 0 20px; }
   .article-title             { font-size: 30px; line-height: 42px; text-align: left; }
   .article-content           { padding: 45px 30px; }
@@ -437,7 +549,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .preview-text              { font-size: 18px; line-height: 24px; }
   .article-list-container    { padding: 0 30px; }
   .article-title-list-link   { font-size: 26px; line-height: 35px; }
-  .resource-article-container { margin-top: 161px; }
+  .resource-article-container { margin-top: 16px; }
   .article-content           { padding: 30px; }
 }
 
