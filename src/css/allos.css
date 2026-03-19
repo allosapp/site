@@ -380,7 +380,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   box-sizing: border-box;
 }
 
-.resource-article-header { display: flex; padding: 0 10px; align-items: center; }
+.resource-article-header { display: flex; padding: 0 10px; align-items: center; gap: 40px; }
 
 .article-title {
   font-family: embarcadero-mvb-pro, sans-serif;
@@ -403,8 +403,8 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .key-points-list li    { margin-bottom: 8px; }
 .reference-heading     { margin-top: 70px; font-weight: 400; }
 .references            { margin-bottom: 10px; }
-.article-header-image-compass    { max-width: 100%; }
-.article-header-image-allos-logo { width: 241px; margin: 20px 52px 32px 0; }
+.article-header-image        { max-width: 100%; }
+.article-header-image-compass { max-width: 100%; }
 
 /* Article — tablet */
 @media screen and (max-width: 768px) {
@@ -427,8 +427,9 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .resource-article-container { max-width: 440px; padding: 0 20px; }
   .article-title             { font-size: 30px; line-height: 42px; text-align: left; }
   .article-content           { padding: 45px 30px; }
-  .article-header-image-compass    { width: 220px; }
-  .article-header-image-allos-logo { width: 150px; }
+  .resource-article-header         { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .article-header-image             { max-width: 220px; }
+  .article-header-image-compass     { max-width: 220px; }
 }
 
 /* Article — small mobile */
