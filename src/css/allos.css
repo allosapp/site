@@ -229,7 +229,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 }
 
 @media screen and (min-width: 768px) {
-  .hero-section { padding: 0 40px; }
+  .hero-section { padding: 0 40px; min-height: 0; }
   .hero-content {
     position: absolute;
     top: 145px;
