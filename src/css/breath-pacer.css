@@ -393,12 +393,29 @@
   margin: 0;
 }
 
+.bp-faq-more {
+  margin: 28px 0 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bp-faq-more a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bp-faq-more a:hover {
+  color: white;
+}
+
 /* ── CTA ──────────────────────────────────────────────────── */
 
 .bp-cta {
   background: #23102a;
   padding: 80px 20px;
   text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .bp-cta-inner {
