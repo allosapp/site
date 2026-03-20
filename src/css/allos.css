@@ -219,11 +219,13 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   clip-path: inset(0 0 0 50%);
 }
 
-/* Subject on left side of image (coaches page): overlay on the right */
+/* Subject on left side of image (coaches page): overlay bleeds in from the right */
 .hero-waveform-overlay--right {
   right: 0;
   left: auto;
-  width: 40%;
+  width: 80%;
+  transform: translate(50%, -50%);
+  clip-path: inset(0 50% 0 0);
 }
 
 @media screen and (min-width: 768px) {
