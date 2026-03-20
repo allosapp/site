@@ -1,66 +1,101 @@
 <footer class="footer">
   <div class="footer-container">
+    <!-- Footer brand statement -->
+    <div class="footer-brand">
+      <p class="footer-brand-text">Allos is a simple, science-backed app for breathing-based wellness. Designed for anyone seeking better sleep, focus, recovery, and calm.</p>
+    </div>
+
     <div class="resources-container">
-      <div class="resources">
-        <h3 class="heading-footer">Resources</h3>
-          <ul role="list" class="ul-resources">
+      <!-- Column 1: Learn -->
+      <div class="footer-section footer-learn">
+        <h3 class="heading-footer">Learn</h3>
+        <ul role="list" class="ul-resources">
+          <li class="list-item-resources">
+            <a href="/learn/" class="footer-link">Learning Hub</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/learn/guide-to-slow-paced-breathing/" class="footer-link">Slow-Paced Breathing</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/learn/what-is-resonance-frequency-breathing/" class="footer-link">Resonance Frequency</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/learn/faq/" class="footer-link">FAQ</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/articles/" class="footer-link">Articles</a>
+          </li>
           <li class="list-item-resources">
             <a href="/about/" class="footer-link">About Allos</a>
           </li>
           <li class="list-item-resources">
-            <a href="/learn/" class="footer-link">The Allos Blog</a>
+            <a href="/download/" class="footer-link footer-link-cta">Download Allos</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Who It's For -->
+      <div class="footer-section footer-audiences">
+        <h3 class="heading-footer">Who It's For</h3>
+        <ul role="list" class="ul-resources">
+          <li class="list-item-resources">
+            <a href="/coaches/" class="footer-link">Coaches &amp; Teams</a>
           </li>
           <li class="list-item-resources">
-            <a href="/download/" aria-current="page" class="footer-link">Download</a>
+            <a href="/clinicians/" class="footer-link">Clinicians</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/students/" class="footer-link">Students</a>
+          </li>
+          <li class="list-item-resources">
+            <a href="/instructors/" class="footer-link">Instructors</a>
           </li>
         </ul>
       </div>
-      <div class="follow-us">
-        <h3 class="heading-footer">Follow Us</h3>
-        <ul role="list" class="ul-resources">
-          <li class="list-item-resources youtube">
-            <a href="https://www.youtube.com/channel/UCcDEUhEN3HWmdSzQOyGIi_A/" target="_blank" class="footer-link">YouTube</a>
-          </li>
-          <li class="list-item-resources instagram">
-            <a href="https://www.instagram.com/allos.app" target="_blank" class="footer-link">Instagram</a>
-          </li>
-          <li class="list-item-resources facebook">
-            <a href="https://www.facebook.com/allosbreathpacer" target="_blank" class="footer-link">Facebook</a>
-          </li>
-        </ul>
-      </div>
-      <div class="newsletter-footer">
-        <h3 class="heading-footer no-border">Sign up for the Allos Newsletter</h3>
-        <p class="newsletter-description">A quarterly newsletter with an insightful look into the latest news &amp; research on breathing.</p>
-<div class="form-block">
-          
-          
+
+      <!-- Column 3: Stay Connected -->
+      <div class="footer-section footer-connect">
+        <h3 class="heading-footer">Stay Connected</h3>
+        <nav class="footer-social" aria-label="Social media links">
+          <ul role="list" class="ul-resources ul-social">
+            <li class="list-item-resources youtube">
+              <a href="https://www.youtube.com/channel/UCcDEUhEN3HWmdSzQOyGIi_A/" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+            </li>
+            <li class="list-item-resources instagram">
+              <a href="https://www.instagram.com/allos.app" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+            </li>
+            <li class="list-item-resources facebook">
+              <a href="https://www.facebook.com/allosbreathpacer" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
+            </li>
+          </ul>
+        </nav>
+        <p class="newsletter-description">Quarterly insights on breathing, science, and wellness.</p>
+        <div class="form-block">
           <!-- Footer Newsletter form section updated and connected to Convert Kit -->
           <script defer src="https://f.convertkit.com/ckjs/ck.5.js"></script>
           <form
-          action="https://app.convertkit.com/forms/3165770/subscriptions"
-          id="email-form"
-          name="email-form"
-          data-name="Email Form"
-          method="post"
-          class="form"
-          data-sv-form="3165770"
-          data-uid="668370a791"
-          data-format="inline"
-          data-version="5"
-          data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Get ready to impress your friends with your breathing knowledge!"}}}'>
-          
+            action="https://app.convertkit.com/forms/3165770/subscriptions"
+            id="email-form"
+            name="email-form"
+            data-name="Email Form"
+            method="post"
+            class="form"
+            data-sv-form="3165770"
+            data-uid="668370a791"
+            data-format="inline"
+            data-version="5"
+            data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Get ready to impress your friends with your breathing knowledge!"}}}'>
             <input type="email" class="text-field" maxlength="256" name="email_address" placeholder="Enter your email" id="email-2" required="">
             <input data-element="submit" type="submit" value="Sign me up" data-wait="Yay!" class="submit-button">
             <div data-style="clean">
               <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
             </div>
           </form>
-          <!-- END of Footer Newsletter form section updated and connected to Convert Kit -->
-
+          <!-- END of Footer Newsletter form section -->
         </div>
       </div>
     </div>
+
     <div class="gradient-footer-bar"></div>
   </div>
   {% include "sub-footer.html" %}
