@@ -263,6 +263,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
    ============================================ */
 
 .section-dark { background: #23102a; padding: 60px 20px; }
+.benefits-section { padding-bottom: 20px; }
 
 .content-box {
   max-width: 1200px;
@@ -329,7 +330,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .benefits-image { max-width: 500px; }
 
 /* CTA section */
-.cta-section { background: #23102a; padding: 80px 20px; text-align: center; }
+.cta-section { background: #23102a; padding: 60px 20px; text-align: center; }
 .cta-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 30px; }
 .cta-logo img, .cta-logos img { max-width: 250px; width: 100%; height: auto; }
 .cta-headline {
@@ -357,6 +358,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 @media screen and (min-width: 768px) {
   .app-store-badges { flex-direction: row; gap: 20px; justify-content: center; }
   .section-dark { padding: 80px 40px; }
+  .benefits-section { padding-bottom: 20px; }
   .content-box { flex-direction: row; gap: 60px; padding: 60px 50px; align-items: flex-end; }
   .section-content h2 { font-size: 2.25rem; }
   .section-content p, .section-content li { font-size: 1.125rem; }
@@ -365,7 +367,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .difference-content, .difference-image { order: 0; }
   .benefits-container { flex-direction: row; gap: 60px; align-items: center; width: fit-content; max-width: 100%; margin: 0 auto; }
   .benefits-content { flex: 0 1 auto; }
-  .cta-section { padding: 100px 40px; }
+  .cta-section { padding: 80px 40px; }
   .cta-logo img, .cta-logos img { max-width: 300px; }
   .cta-headline { font-size: 3rem; }
   .cta-subtext { font-size: 1.35rem; }
@@ -374,12 +376,13 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 /* Shared layout — desktop (1024px+) */
 @media screen and (min-width: 1024px) {
   .section-dark { padding: 100px 60px; }
+  .benefits-section { padding-bottom: 20px; }
   .content-box { padding: 80px 70px; }
   .section-content h2 { font-size: 2.5rem; }
   .section-content p, .section-content li { font-size: 1.2rem; }
   .section-content li { margin-bottom: 20px; }
   .feature-image, .difference-image { margin-bottom: -80px; }
-  .cta-section { padding: 120px 60px; }
+  .cta-section { padding: 100px 60px; }
   .cta-headline { font-size: 2.5rem; }
   .cta-subtext { font-size: 1.5rem; }
 }
@@ -518,7 +521,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .article-list-container {
   width: 100%;
   max-width: 830px;
-  margin: 120px auto 250px;
+  margin: 120px auto 40px;
   box-sizing: border-box;
 }
 
@@ -554,7 +557,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .resource-article-container {
   width: 100%;
   max-width: 900px;
-  margin: 10px auto 150px;
+  margin: 10px auto 40px;
   box-sizing: border-box;
 }
 
@@ -581,7 +584,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .key-points-list       { font-size: 17px; line-height: 1.6; margin-bottom: 20px; }
 .key-points-list li    { margin-bottom: 8px; }
 .reference-heading     { margin-top: 70px; font-weight: 400; }
-.references            { margin-bottom: 10px; }
+.references            { margin-bottom: 10px; overflow-wrap: break-word; }
 .article-header-image        { max-width: 100%; }
 .article-header-image-compass { max-width: 100%; }
 

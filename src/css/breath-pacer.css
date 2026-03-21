@@ -7,7 +7,7 @@
 
 .bp-hero {
   background: #1a0a1f;
-  /* 120px top clears the fixed nav bar on mobile (nav is position:fixed below 768px) */
+  /* Overridden on mobile by the max-767px breakpoint below */
   padding: 120px 20px 44px;
   text-align: center;
 }
@@ -470,6 +470,15 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ── Responsive — max 767px (mobile) ─────────────────────── */
+
+@media screen and (max-width: 767px) {
+  .bp-hero {
+    /* nav-spacer already provides fixed-nav clearance; reduce to match article pages */
+    padding-top: 20px;
+  }
 }
 
 /* ── Responsive — 480px+ ──────────────────────────────────── */

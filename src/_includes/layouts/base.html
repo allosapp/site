@@ -19,6 +19,7 @@
   {{ content | safe }}
   {% include "footer.html" %}
   <script src="/js/modules/nav.js" defer></script>
+  {% if extra_js2 %}<script src="{{ extra_js2 }}" defer></script>{% endif %}
   {% if extra_js %}<script src="{{ extra_js }}" defer></script>{% endif %}
 </body>
 </html>
