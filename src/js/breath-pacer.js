@@ -10,6 +10,23 @@
   var MIN_SCALE = 0.52;
   var MAX_SCALE = 1.0;
 
+  // ─── Screen keep-awake (NoSleep.js) ──────────────────────────────────────
+  // NoSleep.js uses the Screen Wake Lock API on Android/desktop and a tiny
+  // silent looping video on iOS, where the OS-level Auto-Lock overrides the
+  // web Wake Lock API.
+
+  var noSleep = (typeof NoSleep === 'function') ? new NoSleep() : null;
+
+  function acquireWakeLock() {
+    if (!noSleep) { return; }
+    noSleep.enable().catch(function () { /* denied or unavailable — continue */ });
+  }
+
+  function releaseWakeLock() {
+    if (!noSleep) { return; }
+    noSleep.disable();
+  }
+
   // ─── State ────────────────────────────────────────────────────────────────
 
   var state = {
@@ -248,6 +265,7 @@
   function endSession() {
     state.status = 'done';
     state.rafId  = null;
+    releaseWakeLock();
     setLabel('Complete');
     if (timerEl) { timerEl.textContent = ''; }
     if (!reducedMotion && circleEl) {
@@ -283,6 +301,7 @@
         updateTimer();
         enterPhase('inhale', 0, true);
         state.rafId = requestAnimationFrame(tick);
+        acquireWakeLock();
         trackEvent('breath_pacer_start', {
           bpm:     state.bpm,
           ratio:   state.ratio,
@@ -294,6 +313,7 @@
       state.status = 'paused';
       setLabel('Paused');
       updateStartBtn();
+      releaseWakeLock();
       trackEvent('breath_pacer_pause', { elapsed: Math.floor(state.elapsedSeconds) });
     } else if (state.status === 'paused') {
       state.status        = 'running';
@@ -301,6 +321,7 @@
       setLabel(state.phase === 'inhale' ? 'Inhale' : 'Exhale');
       updateStartBtn();
       state.rafId = requestAnimationFrame(tick);
+      acquireWakeLock();
     }
   }
 
@@ -308,6 +329,7 @@
 
   function handleReset() {
     if (state.rafId) { cancelAnimationFrame(state.rafId); state.rafId = null; }
+    releaseWakeLock();
     state.status         = 'idle';
     state.phase          = null;
     state.elapsedSeconds = 0;

@@ -7,7 +7,7 @@
 
 .bp-hero {
   background: #1a0a1f;
-  /* 120px top clears the fixed nav bar on mobile (nav is position:fixed below 768px) */
+  /* Overridden on mobile by the max-767px breakpoint below */
   padding: 120px 20px 44px;
   text-align: center;
 }
@@ -393,12 +393,29 @@
   margin: 0;
 }
 
+.bp-faq-more {
+  margin: 28px 0 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.bp-faq-more a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bp-faq-more a:hover {
+  color: white;
+}
+
 /* ── CTA ──────────────────────────────────────────────────── */
 
 .bp-cta {
   background: #23102a;
   padding: 80px 20px;
   text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .bp-cta-inner {
@@ -453,6 +470,15 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* ── Responsive — max 767px (mobile) ─────────────────────── */
+
+@media screen and (max-width: 767px) {
+  .bp-hero {
+    /* nav-spacer already provides fixed-nav clearance; reduce to match article pages */
+    padding-top: 20px;
+  }
 }
 
 /* ── Responsive — 480px+ ──────────────────────────────────── */

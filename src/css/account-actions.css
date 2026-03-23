@@ -14,6 +14,13 @@
     }
 }
 
+/* Page centering wrapper used on all account pages */
+.hero-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px 24px 80px;
+}
+
 .acc-acts-container {
   background-image: radial-gradient(
     circle farthest-corner at 90% 90%,

@@ -9,7 +9,8 @@
 <body>
   <script>
     // Hide various elements if the user is viewing from within the app via a webview
-    if (new URLSearchParams(window.location.search).has("inApp")) {
+    const qParams = new URLSearchParams(window.location.search)
+    if (qParams.has("inApp") || qParams.get("utm_source") === "app") {
       document.body.setAttribute("data-in-app", "true");
       window.sessionStorage.setItem("in-app-web-view", "true")
     } else if (window.sessionStorage.getItem("in-app-web-view")) {
@@ -20,5 +21,6 @@
   {{ content | safe }}
   {% include "footer.html" %}
   <script src="/js/modules/nav.js" defer></script>
+  {% if extra_js %}<script src="{{ extra_js }}" defer></script>{% endif %}
 </body>
 </html>
