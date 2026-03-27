@@ -34,6 +34,7 @@
     phase:          null,     // 'inhale' | 'exhale'
     bpm:            6.0,
     ratio:          'even',   // 'even' | 'long-exhale'
+    instrument:     'guitar', // 'guitar' | 'piano' | 'flute' | 'handpan'
     sessionSeconds: null,     // null = continuous
     elapsedSeconds: 0,
     phaseElapsed:   0,
@@ -96,10 +97,7 @@
     var resumeP = audioCtx.resume ? audioCtx.resume().catch(function () {}) : Promise.resolve();
 
     return resumeP.then(function () {
-      return Promise.all([
-        loadSound('inhale', '/assets/audio/inhale.mp3'),
-        loadSound('exhale', '/assets/audio/exhale.mp3'),
-      ]);
+      return loadSoundsForInstrument(state.instrument);
     });
   }
 
@@ -115,6 +113,13 @@
       })
       .then(function (decoded) { audioBuffers[name] = decoded; })
       .catch(function () { /* audio unavailable — continue silently */ });
+  }
+
+  function loadSoundsForInstrument(instrument) {
+    return Promise.all([
+      loadSound('inhale', '/assets/audio/inhale-' + instrument + '.mp3'),
+      loadSound('exhale', '/assets/audio/exhale-' + instrument + '.mp3'),
+    ]);
   }
 
   function playSound(name) {
@@ -428,6 +433,26 @@
       ],
       function (item) { return item.value === state.sessionSeconds; },
       function (item) { state.sessionSeconds = item.value; updateTimer(); }
+    );
+
+    // Audio cue (instrument) buttons
+    buildButtons(
+      'bp-audio-buttons',
+      [
+        { value: 'guitar',  label: 'Guitar'  },
+        { value: 'piano',   label: 'Piano'   },
+        { value: 'flute',   label: 'Flute'   },
+        { value: 'handpan', label: 'Handpan' },
+      ],
+      function (item) { return item.value === state.instrument; },
+      function (item) {
+        state.instrument = item.value;
+        // Reload buffers for the new instrument; if the context hasn't been
+        // created yet (user hasn't pressed Start) there's nothing to load.
+        if (audioCtx) {
+          loadSoundsForInstrument(item.value);
+        }
+      }
     );
 
     // Action buttons

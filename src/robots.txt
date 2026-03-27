@@ -11,6 +11,9 @@ Disallow: /redirects
 # Unlisted/draft pages
 Disallow: /peak/
 
+# Audio assets — not for indexing or direct access
+Disallow: /assets/audio/
+
 # Allow all other pages
 Allow: /
 
