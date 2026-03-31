@@ -589,7 +589,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .article-header-image-compass { max-width: 100%; }
 
 /* Article — tablet */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .preview-text              { margin-bottom: 6px; font-size: 20px; line-height: 28px; }
   .article-list-container    { max-width: 650px; }
   .resource-article-container { max-width: 740px; }

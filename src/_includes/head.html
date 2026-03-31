@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <title>{{title}}</title>
 <meta name="description" content="{{ description }}">
-<link rel="canonical" href="https://allos.app{{ page.url }}">
+{% if not noindex %}<link rel="canonical" href="{{ site.baseUrl }}{{ page.url }}">{% endif %}
 {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="/css/allos.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,10 @@
 <script defer data-domain="allos.app" src="https://plausible.io/js/script.outbound-links.js"></script>
 <meta property="og:title" content="{{ title }}" />
 <meta property="og:description" content="{{ description }}" />
-<meta property="og:image" content="https://allos.app/assets/images/{{ social_image }}" />
-<meta property="og:url" content="https://allos.app{{ page.url }}" />
+<meta property="og:image" content="{{ site.baseUrl }}/assets/images/{{ social_image }}" />
+<meta property="og:url" content="{{ site.baseUrl }}{{ page.url }}" />
 <meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ site.baseUrl }}/assets/images/{{ social_image }}">

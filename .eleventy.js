@@ -5,16 +5,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   // Part of two-way association for Universal Links
   eleventyConfig.addPassthroughCopy('src/.well-known');
-  eleventyConfig.addPassthroughCopy('src/favicon.ico');
-  eleventyConfig.addPassthroughCopy('src/apple-touch-icon.png');
-  eleventyConfig.addPassthroughCopy('src/favicon-16x16.png');
-  eleventyConfig.addPassthroughCopy('src/favicon-32x32.png');
-  eleventyConfig.addPassthroughCopy('src/site.webmanifest');
-  eleventyConfig.addPassthroughCopy('src/safari-pinned-tab.svg');
-  eleventyConfig.addPassthroughCopy('src/android-chrome-192x192.png');
-  eleventyConfig.addPassthroughCopy('src/android-chrome-512x512.png');
+  // Favicons, manifests, and browser config — glob covers all current and future root-level assets
+  eleventyConfig.addPassthroughCopy('src/*.{ico,png,svg,webmanifest,xml}');
   eleventyConfig.addPassthroughCopy('src/robots.txt');
-  eleventyConfig.addPassthroughCopy('src/browserconfig.xml');
 
   eleventyConfig.addWatchTarget("src/css");
   eleventyConfig.addWatchTarget("src/js");
