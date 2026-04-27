@@ -12,6 +12,9 @@ customHead: |
 ---
 
 <style>
+  /* Prevent 100vw hero from causing horizontal scroll */
+  html, body { overflow-x: hidden; }
+
   .hero-cta-btn {
     display: inline-block;
     padding: 14px 28px;
@@ -25,81 +28,73 @@ customHead: |
   }
 
   /* ============================================
-     Feature Section – gradient bg, transparent content box
+     Feature Section – gradient bg, semi-transparent card
      ============================================ */
 
   .feature-section {
     background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .feature-section { padding: 40px; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .feature-section { padding: 60px; }
   }
 
   .feature-section .content-box {
-    background: none;
-    border-radius: 0;
-    padding: 0;
-    gap: 16px;
-    justify-content: center;
-  }
-
-  .feature-section .feature-content {
-    flex: 0 1 auto;
-    max-width: 480px;
-    align-self: center;
+    background: rgba(50, 35, 55, 0.28);
+    border-radius: 24px;
   }
 
   .feature-section .feature-image {
-    max-width: 240px;
+    flex: 0 0 auto;
+    width: 260px;
+    max-width: 100%;
     align-self: center;
     margin-bottom: 0;
   }
 
+  .feature-section .feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Waveform overlay — shifted lower and further right vs. home page defaults */
+  .hero-waveform-overlay--left {
+    top: 66%;
+  }
+
   @media screen and (min-width: 768px) {
-    .feature-section { padding-top: 30px; padding-bottom: 30px; }
-
-    .feature-section .content-box {
-      padding: 0;
-      gap: 40px;
-      align-items: flex-end;
-      width: fit-content;
-      margin: 0 auto;
-    }
-
-    .feature-section .feature-content { align-self: center; }
-
-    .feature-section .feature-image {
-      flex-shrink: 0;
-      align-self: flex-end;
-      max-width: 628px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .feature-section .feature-image img {
-      height: auto;
-      max-height: 400px;
-      width: auto;
-      max-width: none;
-      display: block;
-      margin: 0;
-      object-fit: contain;
-      object-position: bottom center;
+    .hero-waveform-overlay--left {
+      bottom: 22%;
+      left: 18%;
     }
   }
 
   @media screen and (min-width: 1024px) {
-    .feature-section { padding-top: 40px; padding-bottom: 40px; }
-    .feature-section .feature-image { max-width: 628px; }
-    .feature-section .feature-image img { max-height: 560px; }
+    .hero-content h1 { white-space: nowrap; }
   }
 
-  /* Longer headline needs a gentler size ramp than the global breakpoints provide */
+  /* Difference section — gradient background behind the rounded card */
+  .difference-section {
+    background: linear-gradient(135deg, #FF276A 0%, #BF6AFE 100%);
+    padding: 20px;
+  }
+
   @media screen and (min-width: 768px) {
-    .hero-content h1 { font-size: 2.25rem; }
+    .difference-section { padding: 40px; }
   }
 
   @media screen and (min-width: 1024px) {
-    .hero-content h1 { font-size: 2.75rem; }
+    .difference-section { padding: 60px; }
+  }
+
+  .difference-section .content-box {
+    background: rgba(50, 35, 55, 0.28);
   }
 
   /* ============================================
@@ -107,9 +102,7 @@ customHead: |
      ============================================ */
 
   .benefits-section {
-    padding-top: 0;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 
   .benefits-container {
@@ -172,8 +165,8 @@ customHead: |
   <div class="hero-section">
     <div class="hero-image-container">
       <div class="hero-content hero-content--left">
-        <h1>A Simple, Music-Guided Breathing Practice</h1>
-        <p class="hero-subheading">Stay Focused, Stay Calm, Sleep Well</p>
+        <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
+        <p class="hero-subheading">For Calm, Focus, and Resilience</p>
         <!-- TODO: Link href to student discount/purchase page when available -->
         <a href="#" class="hero-cta-btn">Get Your Student Discount</a>
       </div>
@@ -186,17 +179,18 @@ customHead: |
           loading="eager"
           decoding="sync">
       </picture>
+      <img class="hero-waveform-overlay hero-waveform-overlay--left" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
   </div>
 
   <section class="section-dark feature-section">
     <div class="content-box">
       <div class="section-content feature-content">
-        <!-- TODO: Refine copy for student context -->
-        <h2>Science-Based Practice for Academic Performance</h2>
-        <p>Slow-paced breathing at your <strong>resonance frequency</strong> has been associated with improvements in nervous system regulation, stress recovery, and sustained attention.</p>
-        <p><strong>Allos</strong> guides your breathing practice with immersive, customizable music — designed to help you shift your mental state before a study session, exam, or high-pressure moment.</p>
-        <p>The app is built to fit into a student's schedule: short sessions, any time, anywhere.</p>
+        <h2>A New Way to Strengthen Your Nervous System: Breathing to Music</h2>
+        <p>Discover the power of a simple, science-based breathing practice guided by music.</p>
+        <p>Choose music created by award-winning producers and artists. No AI.</p>
+        <p>Use it between classes, before bed, or whenever you need a quick reset.</p>
+
       </div>
       <div class="section-image feature-image">
         <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
@@ -216,8 +210,8 @@ customHead: |
           <li>Calm pre-exam <strong>test anxiety</strong> and performance nerves</li>
           <li>Improve conditions for <strong>deep focus</strong> and sustained study</li>
           <li>Accelerate <strong>recovery</strong> between classes, deadlines, and exams</li>
-          <li>Build a <strong>daily stress regulation</strong> habit in minutes</li>
-          <li>Use music you actually enjoy — not boring tones or voice prompts</li>
+          <li>Build a <strong>daily stress regulation</strong> habit with music you enjoy</li>
+
         </ul>
       </div>
     </div>
@@ -230,7 +224,7 @@ customHead: |
       </div>
       <div class="section-content difference-content">
         <h2>What Makes Allos Different?</h2>
-        <p>Unlike most breathing apps that rely on voices or repetitive tones, Allos uses <strong>original music</strong> from award-winning composers to pace your breathing practice.</p>
+        <p>Unlike most breathing apps that rely on voices or repetitive tones, Allos uses <strong>original music</strong> in many genres to pace your breathing practice.</p>
         <ul>
           <li>Choose a track to match your <strong>mood</strong> or the focus state you want to reach</li>
           <li>Adjust the pace to your personal <strong>resonance frequency</strong> and preferred inhale/exhale ratio</li>
