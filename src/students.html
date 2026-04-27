@@ -11,21 +11,171 @@ customHead: |
     imagesizes="100vw">
 ---
 
+<style>
+  .hero-cta-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+
+  /* ============================================
+     Feature Section – gradient bg, transparent content box
+     ============================================ */
+
+  .feature-section {
+    background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .feature-section .content-box {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .feature-section .feature-content {
+    flex: 0 1 auto;
+    max-width: 480px;
+    align-self: center;
+  }
+
+  .feature-section .feature-image {
+    max-width: 240px;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    .feature-section { padding-top: 30px; padding-bottom: 30px; }
+
+    .feature-section .content-box {
+      padding: 0;
+      gap: 40px;
+      align-items: flex-end;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .feature-section .feature-content { align-self: center; }
+
+    .feature-section .feature-image {
+      flex-shrink: 0;
+      align-self: flex-end;
+      max-width: 628px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .feature-section .feature-image img {
+      height: auto;
+      max-height: 400px;
+      width: auto;
+      max-width: none;
+      display: block;
+      margin: 0;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .feature-section { padding-top: 40px; padding-bottom: 40px; }
+    .feature-section .feature-image { max-width: 628px; }
+    .feature-section .feature-image img { max-height: 560px; }
+  }
+
+  /* Longer headline needs a gentler size ramp than the global breakpoints provide */
+  @media screen and (min-width: 768px) {
+    .hero-content h1 { font-size: 2.25rem; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .hero-content h1 { font-size: 2.75rem; }
+  }
+
+  /* ============================================
+     Benefits Section — student image bleeds to left and top edges
+     ============================================ */
+
+  .benefits-section {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .benefits-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    gap: 0;
+  }
+
+  .benefits-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .benefits-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .benefits-content {
+    padding: 40px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .benefits-container {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .benefits-image {
+      flex: 0 0 45%;
+      max-width: 45%;
+    }
+
+    .benefits-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .benefits-content {
+      flex: 1;
+      align-self: center;
+      padding: 40px 40px 40px 40px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .benefits-content {
+      padding: 60px 60px 60px 60px;
+    }
+  }
+</style>
+
 <main>
   <div class="hero-section">
     <div class="hero-image-container">
       <div class="hero-content hero-content--left">
-        <!-- TODO: Revise headline for student persona -->
-        <h1>Focus Deeper,<br class="hero-line-break"> Stress Less</h1>
-        <p class="hero-subheading">For calm, focus, and resilience</p>
-        <div class="app-store-badges">
-          <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
-          </a>
-        </div>
+        <h1>A Simple, Music-Guided Breathing Practice</h1>
+        <p class="hero-subheading">Stay Focused, Stay Calm, Sleep Well</p>
+        <!-- TODO: Link href to student discount/purchase page when available -->
+        <a href="#" class="hero-cta-btn">Get Your Student Discount</a>
       </div>
       <picture>
         <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
@@ -36,7 +186,6 @@ customHead: |
           loading="eager"
           decoding="sync">
       </picture>
-      <img class="hero-waveform-overlay hero-waveform-overlay--left" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
   </div>
 
@@ -50,7 +199,7 @@ customHead: |
         <p>The app is built to fit into a student's schedule: short sessions, any time, anywhere.</p>
       </div>
       <div class="section-image feature-image">
-        <img src="/assets/images/ui-breath-settings-screen-cropped.webp" alt="Allos app breath settings screen">
+        <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
       </div>
     </div>
   </section>
@@ -58,8 +207,7 @@ customHead: |
   <section class="section-dark benefits-section">
     <div class="benefits-container">
       <div class="section-image benefits-image">
-        <!-- TODO: Consider a student-relevant illustration or HRV curve -->
-        <img src="/assets/images/hrv-curve.svg" alt="Heart Rate Variability curve">
+        <img src="/assets/images/student-01.webp" alt="Student using Allos">
       </div>
       <div class="section-content benefits-content">
         <!-- TODO: Confirm benefit list with product/marketing -->
