@@ -3,14 +3,21 @@ layout: layouts/base-home.html
 title: Allos for Students
 description: Music-guided breathing app to help students manage stress, sharpen focus, and build a consistent practice for academic performance
 social_image: social-preview.jpg
+customHead: |
+  <link rel="preload" as="image"
+    imagesrcset="/assets/images/hero-image-home-mobile.avif,
+                 /assets/images/hero-image-home-tablet.avif 768w,
+                 /assets/images/hero-image-home-desktop.avif 1024w"
+    imagesizes="100vw">
 ---
 
 <main>
   <div class="hero-section">
     <div class="hero-image-container">
-      <div class="hero-content hero-content--right">
+      <div class="hero-content hero-content--left">
         <!-- TODO: Revise headline for student persona -->
         <h1>Focus Deeper,<br class="hero-line-break"> Stress Less</h1>
+        <p class="hero-subheading">For calm, focus, and resilience</p>
         <div class="app-store-badges">
           <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
@@ -21,16 +28,15 @@ social_image: social-preview.jpg
         </div>
       </div>
       <picture>
-        <!-- TODO: Replace with student-specific hero images -->
-        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-coaches-desktop.avif" width="2560" height="1688">
-        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-coaches-tablet.avif" width="2127" height="1579">
-        <img src="/assets/images/hero-image-coaches-mobile.avif" alt="Student using Allos"
+        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
+        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-home-tablet.avif" width="2127" height="1579">
+        <img src="/assets/images/hero-image-home-mobile.avif" alt="Student using Allos"
           width="1080" height="1211"
           fetchpriority="high"
           loading="eager"
           decoding="sync">
       </picture>
-      <img class="hero-waveform-overlay hero-waveform-overlay--right" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
+      <img class="hero-waveform-overlay hero-waveform-overlay--left" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
     </div>
   </div>
 
