@@ -180,7 +180,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 .hero-subheading {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   line-height: 1.4;
   margin: 0 0 20px;
   color: rgba(255, 255, 255, 0.85);
@@ -245,6 +245,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   /* Content positioned in the left half of the image (subject on left) */
   .hero-content--right { left: 60%; }
   .hero-content h1 { font-size: 3rem; }
+  .hero-subheading { font-size: 1.75rem; }
   .hero-waveform-overlay { clip-path: none; transform: none; width: 40%; top: auto; bottom: 10%; }
   .hero-waveform-overlay--left  { left: 15%; }
   .hero-waveform-overlay--right { right: 15%; left: auto; }
