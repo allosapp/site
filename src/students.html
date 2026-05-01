@@ -159,6 +159,94 @@ customHead: |
       padding: 60px 60px 60px 60px;
     }
   }
+
+  /* ============================================
+     Student Plan Section — pricing box
+     ============================================ */
+
+  .student-plan-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .student-plan-section { padding: 60px 40px; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .student-plan-section { padding: 80px 60px; }
+  }
+
+  .student-plan-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 36px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .student-plan-heading {
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .student-plan-subheading {
+    font-family: basic-sans, sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+  }
+
+  .student-plan-price {
+    font-family: basic-sans, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .student-plan-price .per-year {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .student-plan-regular {
+    font-family: basic-sans, sans-serif;
+    font-size: 0.9rem;
+    opacity: 0.55;
+    margin-bottom: 28px;
+  }
+
+  .student-plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .student-plan-features li {
+    font-family: basic-sans, sans-serif;
+    padding: 5px 0 5px 1.8em;
+    position: relative;
+  }
+
+  .student-plan-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
 </style>
 
 <main>
@@ -167,8 +255,7 @@ customHead: |
       <div class="hero-content hero-content--left">
         <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
         <p class="hero-subheading">For Calm, Focus, and Resilience</p>
-        <!-- TODO: Link href to student discount/purchase page when available -->
-        <a href="#" class="hero-cta-btn">Get Your Student Discount</a>
+        <a href="/account/sign-in.html" class="hero-cta-btn">Get Your Student Discount</a>
       </div>
       <picture>
         <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
@@ -186,11 +273,11 @@ customHead: |
   <section class="section-dark feature-section">
     <div class="content-box">
       <div class="section-content feature-content">
-        <h2>A New Way to Strengthen Your Nervous System: Breathing to Music</h2>
+        <h2>A New Way to Strengthen Your Nervous System:<br>Breathing to Music</h2>
         <p>Discover the power of a simple, science-based breathing practice guided by music.</p>
         <p>Choose music created by award-winning producers and artists (no AI) designed to shift your mental state.</p>
         <p>Use it between classes, before bed, or whenever you need a quick reset.</p>
-
+        <p>Keep up a daily practice and build your resilience.</p>
       </div>
       <div class="section-image feature-image">
         <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
@@ -235,22 +322,18 @@ customHead: |
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="cta-container">
-      <div class="cta-logo">
-        <img src="/assets/images/allos-logo.svg" alt="Allos">
-      </div>
-      <!-- TODO: Consider student-specific CTA (e.g., free trial offer, student plan pricing) -->
-      <h2 class="cta-headline">Download Allos Today</h2>
-      <p class="cta-subtext">Available for iOS and Android</p>
-      <div class="app-store-badges">
-        <a href="https://apps.apple.com/app/id1599591962" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/images/download-allos-on-the-app-store.svg" alt="Download on the App Store">
-        </a>
-        <a href="https://play.google.com/store/apps/details?id=com.allosdev.allos" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/images/download-allos-on-google-play.svg" alt="Get it on Google Play">
-        </a>
-      </div>
+  <section class="section-dark student-plan-section">
+    <div class="student-plan-box">
+      <h2 class="student-plan-heading">Allos Student Plan</h2>
+      <p class="student-plan-subheading">Get the full experience for 50% off!</p>
+      <p class="student-plan-price">$39.99<span class="per-year">/year</span></p>
+      <p class="student-plan-regular">regularly $79.99/year</p>
+      <ul class="student-plan-features">
+        <li>All premium music &amp; features</li>
+        <li>Access to all new content</li>
+        <li>Cancel any time</li>
+      </ul>
+      <a href="/account/sign-in.html" class="hero-cta-btn">Start Student Plan</a>
     </div>
   </section>
 </main>
