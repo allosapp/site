@@ -15,6 +15,7 @@ input, button, textarea, select { font: inherit; }
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   background-color: #2c1f2a;
   font-family: embarcadero-mvb-pro, sans-serif;
   color: #fff;

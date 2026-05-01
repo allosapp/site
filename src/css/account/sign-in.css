@@ -1,11 +1,3 @@
-#sign-in-container {
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
 #firebaseui-auth-container {
   padding-top: 24px;
   width: 100%;
