@@ -232,7 +232,11 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .hero-section { padding: 0 40px; min-height: 0; }
   .hero-content {
     position: absolute;
-    top: 145px;
+    /* Track ~21% of image height so the H1/subheading/CTA stay
+       proportionally placed as the full-bleed image grows with viewport
+       width. Floor preserves the original tablet/desktop position;
+       ceiling prevents the text from sliding too far down on 4K+. */
+    top: clamp(145px, 14vw, 440px);
     width: 48%;
     max-width: 560px;
     margin: 0;
@@ -254,7 +258,6 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   .hero-section  { padding: 0 60px; }
   .hero-content h1 { font-size: 3.5rem; }
   .hero-line-break { display: none; }
-  .hero-content { top: 157px; }
 }
 
 /* ============================================
