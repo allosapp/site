@@ -8,19 +8,19 @@
   </head>
   <body>
     <script src="/js/modules/detect-in-app.js"></script>
-    <nav class="nav-bar-section">
-      <div class="nav-bar">
-        <a href="/" aria-current="page"
-          ><img
-            src="/assets/images/allos-logo.svg"
-            alt="allos"
-            width="183.59"
-            height="77"
-        /></a>
-        <div class="nav-links-container"></div>
-      </div>
-    </nav>
-    {{ content | safe }}
+    <header class="auth-header">
+      <a href="/">
+        <img
+          src="/assets/images/allos-logo.svg"
+          alt="allos"
+          width="183.59"
+          height="77"
+        />
+      </a>
+    </header>
+    <main class="auth-main">
+      {{ content | safe }}
+    </main>
     <footer class="footer">
       <div class="footer-container">
         <div class="gradient-footer-bar"></div>

@@ -15,6 +15,7 @@ input, button, textarea, select { font: inherit; }
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   background-color: #2c1f2a;
   font-family: embarcadero-mvb-pro, sans-serif;
   color: #fff;
@@ -202,7 +203,7 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 
 .hero-waveform-overlay {
   position: absolute;
-  top: 60%;
+  top: 75%;
   transform: translateY(-50%);
   height: auto;
   display: block;
@@ -249,15 +250,17 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
   /* Content positioned in the left half of the image (subject on left) */
   .hero-content--right { left: 60%; }
   .hero-content h1 { font-size: 3rem; }
-  .hero-waveform-overlay { clip-path: none; transform: none; width: 40%; top: auto; bottom: 30%; }
-  .hero-waveform-overlay--left  { left: 5%; }
-  .hero-waveform-overlay--right { right: 5%; left: auto; }
+  .hero-subheading { font-size: 1.75rem; }
+  .hero-waveform-overlay { clip-path: none; transform: none; width: 40%; top: auto; bottom: 10%; }
+  .hero-waveform-overlay--left  { left: 15%; }
+  .hero-waveform-overlay--right { right: 15%; left: auto; }
 }
 
 @media screen and (min-width: 1024px) {
   .hero-section  { padding: 0 60px; }
   .hero-content h1 { font-size: 3.5rem; }
   .hero-line-break { display: none; }
+  .hero-content { top: 157px; }
 }
 
 /* ============================================
