@@ -1,0 +1,339 @@
+---
+layout: layouts/base-home.html
+title: Allos for Students
+description: Music-guided breathing app to help students manage stress, sharpen focus, and build resilience. Get 50% off with the Allos Student Plan.
+social_image: social-preview.jpg
+customHead: |
+  <link rel="preload" as="image"
+    imagesrcset="/assets/images/hero-image-home-mobile.avif,
+                 /assets/images/hero-image-home-tablet.avif 768w,
+                 /assets/images/hero-image-home-desktop.avif 1024w"
+    imagesizes="100vw">
+---
+
+<style>
+  /* Prevent 100vw hero from causing horizontal scroll */
+  html, body { overflow-x: hidden; }
+
+  .hero-cta-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-top: 8px;
+  }
+
+  /* ============================================
+     Feature Section – gradient bg, semi-transparent card
+     ============================================ */
+
+  .feature-section {
+    background: linear-gradient(180deg, #FF276A 0%, #BF6AFE 100%);
+    padding: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .feature-section { padding: 40px; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .feature-section { padding: 60px; }
+  }
+
+  .feature-section .content-box {
+    background: rgba(50, 35, 55, 0.28);
+    border-radius: 24px;
+  }
+
+  .feature-section .feature-image {
+    flex: 0 0 auto;
+    width: 260px;
+    max-width: 100%;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .feature-section .feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Waveform overlay — shifted lower and further right vs. home page defaults */
+  .hero-waveform-overlay--left {
+    top: 66%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .hero-waveform-overlay--left {
+      bottom: 22%;
+      left: 18%;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .hero-content h1 { white-space: nowrap; }
+  }
+
+  /* Difference section — gradient background behind the rounded card */
+  .difference-section {
+    background: linear-gradient(135deg, #FF276A 0%, #BF6AFE 100%);
+    padding: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .difference-section { padding: 40px; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .difference-section { padding: 60px; }
+  }
+
+  .difference-section .content-box {
+    background: rgba(50, 35, 55, 0.28);
+  }
+
+  /* ============================================
+     Benefits Section — student image bleeds to left and top edges
+     ============================================ */
+
+  .benefits-section {
+    padding: 0;
+  }
+
+  .benefits-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    gap: 0;
+  }
+
+  .benefits-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .benefits-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .benefits-content {
+    padding: 40px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .benefits-container {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .benefits-image {
+      flex: 0 0 45%;
+      max-width: 45%;
+    }
+
+    .benefits-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .benefits-content {
+      flex: 1;
+      align-self: center;
+      padding: 40px 40px 40px 40px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .benefits-content {
+      padding: 60px 60px 60px 60px;
+    }
+  }
+
+  /* ============================================
+     Student Plan Section — pricing box
+     ============================================ */
+
+  .student-plan-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .student-plan-section { padding: 60px 40px; }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .student-plan-section { padding: 80px 60px; }
+  }
+
+  .student-plan-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 40px 36px;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .student-plan-heading {
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .student-plan-subheading {
+    font-family: basic-sans, sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+  }
+
+  .student-plan-price {
+    font-family: basic-sans, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .student-plan-price .per-year {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .student-plan-regular {
+    font-family: basic-sans, sans-serif;
+    font-size: 0.9rem;
+    opacity: 0.55;
+    margin-bottom: 28px;
+  }
+
+  .student-plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .student-plan-features li {
+    font-family: basic-sans, sans-serif;
+    padding: 5px 0 5px 1.8em;
+    position: relative;
+  }
+
+  .student-plan-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+</style>
+
+<main>
+  <div class="hero-section">
+    <div class="hero-image-container">
+      <div class="hero-content hero-content--left">
+        <h1>Sync Your Breath<br class="hero-line-break"> to Music</h1>
+        <p class="hero-subheading">For Calm, Focus, and Resilience</p>
+        <a href="/account/sign-in.html" class="hero-cta-btn">Get Your Student Discount</a>
+      </div>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="/assets/images/hero-image-home-desktop.avif" width="2560" height="1688">
+        <source media="(min-width: 768px)" srcset="/assets/images/hero-image-home-tablet.avif" width="2127" height="1579">
+        <img src="/assets/images/hero-image-home-mobile.avif" alt="Student using Allos"
+          width="1080" height="1211"
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync">
+      </picture>
+      <img class="hero-waveform-overlay hero-waveform-overlay--left" src="/assets/images/frequency-curve.avif" alt="" aria-hidden="true">
+    </div>
+  </div>
+
+  <section class="section-dark feature-section">
+    <div class="content-box">
+      <div class="section-content feature-content">
+        <h2>A New Way to Strengthen Your Nervous System:<br>Breathing to Music</h2>
+        <p>Discover the power of a simple, science-based breathing practice guided by music.</p>
+        <p>Choose music created by award-winning producers and artists (no AI) designed to shift your mental state.</p>
+        <p>Use it between classes, before bed, or whenever you need a quick reset.</p>
+        <p>Keep up a daily practice and build your resilience over time.</p>
+      </div>
+      <div class="section-image feature-image">
+        <img src="/assets/images/breath-setting-screen.avif" alt="Allos app breath settings screen">
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark benefits-section">
+    <div class="benefits-container">
+      <div class="section-image benefits-image">
+        <img src="/assets/images/student-01.webp" alt="Student using Allos">
+      </div>
+      <div class="section-content benefits-content">
+        <!-- TODO: Confirm benefit list with product/marketing -->
+        <h2>Built for the Demands of Student Life</h2>
+        <ul>
+          <li>Calm pre-exam <strong>test anxiety</strong> and performance nerves</li>
+          <li>Improve conditions for <strong>deep focus</strong> and sustained study</li>
+          <li>Accelerate <strong>recovery</strong> between classes, deadlines, and exams</li>
+          <li>Build a <strong>daily stress regulation</strong> habit with music you enjoy</li>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark difference-section">
+    <div class="content-box">
+      <div class="section-image difference-image">
+        <img src="/assets/images/ui-audio-select-screen.webp" alt="Allos app audio selection screen">
+      </div>
+      <div class="section-content difference-content">
+        <h2>What Makes Allos Different?</h2>
+        <p>Unlike most breathing apps that rely on voices or repetitive tones, Allos uses <strong>original music</strong> to pace your breathing practice.</p>
+        <ul>
+          <li>Choose a track to match your <strong>mood</strong> or desired state</li>
+          <li>Adjust the pace to your personal <strong>resonance frequency</strong> and preferred inhale/exhale ratio</li>
+          <li>Allos automatically fits the melody and beat of the music to your pace</li>
+          <li>Start the session and <strong>sync your breath with the music</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark student-plan-section">
+    <div class="student-plan-box">
+      <h2 class="student-plan-heading">Allos Student Plan</h2>
+      <p class="student-plan-subheading">Get the full experience for 50% off!</p>
+      <p class="student-plan-price">$39.99<span class="per-year">/year</span></p>
+      <p class="student-plan-regular">regularly $79.99/year</p>
+      <ul class="student-plan-features">
+        <li>All premium music &amp; features</li>
+        <li>Access to all new content</li>
+        <li>Cancel any time</li>
+      </ul>
+      <a href="/account/sign-in.html" class="hero-cta-btn">Start Student Plan</a>
+    </div>
+  </section>
+</main>
