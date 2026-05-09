@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log *)",
+      "Bash(findstr /i \"index\")",
+      "Bash(findstr /i \"html\")",
+      "Bash(findstr /n \"hero-line-break commit\")",
+      "Bash(findstr /n \"hero-line-break\")",
+      "Bash(Select-String \"hero-line-break\")"
+    ]
+  }
+}

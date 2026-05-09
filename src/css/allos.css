@@ -259,8 +259,6 @@ body[data-in-app="true"] .resource-article-container { margin-top: 20px; }
 @media screen and (min-width: 1024px) {
   .hero-section  { padding: 0 60px; }
   .hero-content h1 { font-size: 3.5rem; }
-  .hero-line-break { display: none; }
-  .hero-content { top: 157px; }
 }
 
 /* ============================================
