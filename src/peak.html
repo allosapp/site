@@ -9,7 +9,7 @@ customScripts: |
 ---
 
 <style>
-  .nav-bar-section { display: none; }
+  .auth-header { display: none; }
 
   /* ============================================
      Hero Section
@@ -22,14 +22,19 @@ customScripts: |
     position: relative;
   }
 
-  .hero-logo {
+  .hero-logo-link {
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 1;
+    display: inline-block;
+  }
+
+  .hero-logo {
     max-width: 100px;
     width: auto;
     height: auto;
-    z-index: 1;
+    display: block;
   }
 
   .hero-logos { margin-bottom: 40px; }
@@ -75,7 +80,8 @@ customScripts: |
   .cta-button { margin-top: 10px; }
 
   @media screen and (min-width: 768px) {
-    .hero-logo { max-width: 150px; top: 15px; left: 30px; }
+    .hero-logo-link { top: 15px; left: 30px; }
+    .hero-logo { max-width: 150px; }
     .hero-section { padding: 60px 40px 0; }
     .hero-logos img { max-width: 400px; }
     .hero-text h1 { font-size: 3rem; }
@@ -103,7 +109,7 @@ customScripts: |
 
 <main>
   <div class="hero-section">
-    <img src="/assets/images/allos-logo.svg" alt="Allos" class="hero-logo">
+    <a href="/" class="hero-logo-link"><img src="/assets/images/allos-logo.svg" alt="Allos" class="hero-logo"></a>
     <div class="hero-text">
       <h1>Train Your Nervous System for Peak Performance</h1>
       <p>Music-guided breathing to support flow, focus, and recovery</p>
