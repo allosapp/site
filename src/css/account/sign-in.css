@@ -6,6 +6,99 @@
   }
 }
 
+/* ============================================
+   FirebaseUI dark-theme overrides
+   FirebaseUI ships its own Material Design CSS assuming a light
+   background. The email-entry view (and password / display-name
+   subviews) otherwise render as a white card with default fixed
+   width that overflows our 400px dark container.
+   All selectors are scoped to #firebaseui-auth-container so they
+   can't leak elsewhere on the page.
+   ============================================ */
+
+#firebaseui-auth-container .firebaseui-container {
+  background-color: transparent;
+  box-shadow: none;
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  color: white;
+}
+
+#firebaseui-auth-container .firebaseui-card-content,
+#firebaseui-auth-container .firebaseui-card-footer,
+#firebaseui-auth-container .firebaseui-card-header,
+#firebaseui-auth-container .firebaseui-card-actions {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#firebaseui-auth-container .firebaseui-title,
+#firebaseui-auth-container .firebaseui-subtitle,
+#firebaseui-auth-container .firebaseui-text,
+#firebaseui-auth-container .firebaseui-id-page-password-recovery-email-sent .firebaseui-text,
+#firebaseui-auth-container .firebaseui-tos {
+  color: white;
+}
+
+#firebaseui-auth-container .firebaseui-tos a,
+#firebaseui-auth-container .firebaseui-link {
+  color: #ff79b0;
+  text-decoration: underline;
+}
+
+#firebaseui-auth-container .mdl-textfield {
+  width: 100%;
+}
+
+#firebaseui-auth-container .mdl-textfield__input {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+#firebaseui-auth-container .mdl-textfield__input:focus {
+  border-bottom-color: white;
+}
+
+#firebaseui-auth-container .mdl-textfield__label,
+#firebaseui-auth-container .mdl-textfield__label:after {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#firebaseui-auth-container .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+#firebaseui-auth-container .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+  color: white;
+}
+
+#firebaseui-auth-container .firebaseui-error,
+#firebaseui-auth-container .mdl-textfield__error {
+  color: #ff7a9c;
+}
+
+#firebaseui-auth-container .firebaseui-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#firebaseui-auth-container .firebaseui-id-submit {
+  background: linear-gradient(135deg, #ff0e93 0%, #c278f6 100%);
+  color: white;
+}
+
+#firebaseui-auth-container .firebaseui-id-secondary-link {
+  color: white;
+}
+
+#firebaseui-auth-container .mdl-button {
+  text-transform: none;
+}
+
 .auth-legal {
   margin-top: 16px;
   margin-bottom: 0;
