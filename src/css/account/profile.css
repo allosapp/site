@@ -16,6 +16,65 @@
       position: absolute;
   }
 
+  .profile-info {
+    width: 100%;
+    margin: 0 0 24px;
+    padding: 0;
+    color: white;
+  }
+
+  .profile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .profile-row:last-child {
+    border-bottom: none;
+  }
+
+  .profile-row dt {
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  .profile-row dd {
+    margin: 0;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .profile-cta {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+
+  .profile-sign-out {
+    font-size: 16px;
+    margin-top: 4px;
+  }
+
+  .verify-wrong-email {
+    margin-top: 16px;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .verify-wrong-email .acc-acts-link-btn {
+    font-size: 14px;
+    padding: 0;
+  }
+
   .acc-acts-cta-link-container {
     display: none;
     margin-top: 0;

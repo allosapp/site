@@ -20,10 +20,10 @@ runOnLoad(() => {
     mainContent: document.getElementById("main-content"),
     resendEmailButton: document.getElementById("resend-email-btn"),
     signOutButton: document.getElementById("sign-out-btn"),
+    verifySignOutButton: document.getElementById("verify-sign-out-btn"),
     userEmail: document.getElementById("user-email"),
     userName: document.getElementById("user-display-name"),
-    userSubscribe: document.getElementById("user-subscribe"),
-    userSubscribeLink: document.querySelector("#user-subscribe a"),
+    userSubscribeBtn: document.getElementById("user-subscribe-btn"),
     userTier: document.getElementById("user-tier"),
     userVerify: document.getElementById("user-verify"),
     verifyEmailAddress: document.getElementById("verify-email-address"),
@@ -38,6 +38,15 @@ runOnLoad(() => {
     Auth.sendEmailVerification(user);
   };
 
+  const signOutAndRedirect = () => {
+    if (currentUser) {
+      auth.signOut();
+    }
+    window.localStorage.removeItem(storageKeys.verifyEmail);
+    window.localStorage.removeItem(storageKeys.purchaseEmail);
+    window.location.replace("/account/sign-in/");
+  };
+
   elements.resendEmailButton.addEventListener("click", () => {
     if (currentUser) {
       sendVerificationEmail(currentUser);
@@ -46,35 +55,14 @@ runOnLoad(() => {
     setTimeout(() => (elements.resendEmailButton.disabled = false), 5000);
   });
 
-  elements.signOutButton.addEventListener("click", () => {
-    if (currentUser) {
-      elements.mainContent.classList.add("hidden");
-      auth.signOut();
-    }
-    window.localStorage.removeItem(storageKeys.verifyEmail);
-    window.localStorage.removeItem(storageKeys.purchaseEmail);
-    window.location.replace("/account/sign-in");
-  });
+  elements.signOutButton.addEventListener("click", signOutAndRedirect);
+  elements.verifySignOutButton.addEventListener("click", signOutAndRedirect);
 
   const render = () => {
-    const isPremium = userIsPremium();
-
-    if (isLoading) {
-      return;
-    } else {
-      elements.loadingContainer.classList.add("invisible");
-    }
-
-    if (!currentUser) {
-      elements.userVerify.classList.add("invisible");
-      elements.mainContent.classList.remove("invisible");
-      elements.userEmail.textContent = "";
-      elements.userName.textContent = "You are not signed in.";
-      elements.userTier.textContent = "";
-      elements.userSubscribe.style.display = "none";
-      elements.signOutButton.textContent = "Sign In";
+    if (isLoading || !currentUser) {
       return;
     }
+    elements.loadingContainer.classList.add("invisible");
 
     if (!currentUser.emailVerified) {
       elements.mainContent.classList.add("invisible");
@@ -83,33 +71,18 @@ runOnLoad(() => {
       return;
     }
 
+    const isPremium = userIsPremium();
     elements.userVerify.classList.add("invisible");
     elements.mainContent.classList.remove("invisible");
     elements.userEmail.textContent = currentUser.email;
-    elements.userName.textContent = currentUser.displayName;
-    elements.userTier.textContent = `Subscription: ${
-      isPremium ? "Allos Premium" : "Allos Free"
-    }`;
-    elements.userSubscribe.style.display = isPremium ? "none" : "block";
-    elements.signOutButton.textContent = "Sign Out";
-  };
-
-  const hideLoading = () => {
-    if (isLoading) {
-      setTimeout(() => {
-        isLoading = false;
-        render();
-      }, 500);
-    }
+    elements.userName.textContent = currentUser.displayName || "—";
+    elements.userTier.textContent = isPremium ? "Allos Premium" : "Allos Free";
+    elements.userSubscribeBtn.style.display = isPremium ? "none" : "inline-block";
   };
 
   Auth.onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      currentUser = null;
-      userAccessTier = null;
-      subscriptionActive = false;
-      hideLoading();
-      render();
+      window.location.replace("/account/sign-in/");
       return;
     }
 
@@ -135,24 +108,44 @@ runOnLoad(() => {
       await setUserUtmCampaign(user, utmCampaign);
     }
 
+    // Post-sign-in redirect to checkout for verified, non-premium users.
+    // Only fires when the user just signed in (sessionStorage flag set by sign-in.js),
+    // so direct navigation to /account/profile/ never teleports the user away.
+    const justSignedIn =
+      sessionStorage.getItem(storageKeys.justSignedIn) === "1";
+    sessionStorage.removeItem(storageKeys.justSignedIn);
+
     const forwardedEmail = window.localStorage.getItem(
       storageKeys.purchaseEmail,
     );
     if (
+      justSignedIn &&
       user.emailVerified &&
       !userIsPremium() &&
       forwardedEmail !== user.email
     ) {
-      // User is verified and not yet subscribed, and we haven't auto-forwarded this user yet.
-      // Send the user to the purchase page.
       window.localStorage.setItem(storageKeys.purchaseEmail, user.email);
       window.location.assign("/account/purchase/");
       return;
     }
 
-    hideLoading();
+    isLoading = false;
     render();
   });
+
+  const recheckEmailVerified = async () => {
+    if (!currentUser || currentUser.emailVerified) {
+      return;
+    }
+    try {
+      await Auth.reload(currentUser);
+    } catch (e) {
+      return;
+    }
+    if (currentUser.emailVerified) {
+      render();
+    }
+  };
 
   const recheckPremiumSub = async () => {
     if (!currentUser) {
@@ -165,15 +158,18 @@ runOnLoad(() => {
     }
   };
 
-  // Refresh subscription status when window gains focus
-  // (e.g., user returns from payment page in another tab)
-  window.addEventListener("focus", recheckPremiumSub);
+  const onFocusOrVisible = () => {
+    recheckEmailVerified();
+    recheckPremiumSub();
+  };
 
-  // Refresh subscription status when page becomes visible
-  // (e.g., user switches back to this tab)
+  // Refresh email-verified and subscription status when window gains focus
+  // or the tab becomes visible again (e.g., user returns from clicking the
+  // verification link in their email client, or from the payment page).
+  window.addEventListener("focus", onFocusOrVisible);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-      recheckPremiumSub();
+      onFocusOrVisible();
     }
   });
 });

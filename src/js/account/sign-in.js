@@ -1,6 +1,7 @@
 import {
   config as firebaseConfig,
 } from "../modules/firebase.js";
+import { storageKeys } from "../modules/constants.js";
 import { runOnLoad } from "../modules/util.js";
 
 runOnLoad(() => {
@@ -14,6 +15,7 @@ runOnLoad(() => {
 
   auth.onAuthStateChanged((user) => {
     if (user) {
+      sessionStorage.setItem(storageKeys.justSignedIn, "1");
       window.location.replace("/account/profile");
     }
   });
@@ -23,12 +25,18 @@ runOnLoad(() => {
     // signed in after successfully completing a third-party sign-in flow.
     signInFlow: "popup",
     signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       {
         provider: "apple.com",
       },
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     signInSuccessUrl: "/account/profile/",
+    callbacks: {
+      signInSuccessWithAuthResult: () => {
+        sessionStorage.setItem(storageKeys.justSignedIn, "1");
+        return true;
+      },
+    },
   });
 });

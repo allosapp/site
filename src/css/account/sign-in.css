@@ -5,3 +5,33 @@
     margin-top: initial;
   }
 }
+
+.auth-legal {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.auth-legal a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+.auth-alt-action {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  width: 100%;
+}
+
+.auth-alt-action a {
+  color: white;
+  text-decoration: underline;
+}

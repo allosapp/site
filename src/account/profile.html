@@ -22,18 +22,32 @@ customScripts: |
         <button id="resend-email-btn" class="acc-acts-link-btn">
           Resend Email
         </button>
+        <div class="verify-wrong-email">
+          <span>Wrong email?</span>
+          <button id="verify-sign-out-btn" class="acc-acts-link-btn">Sign out</button>
+        </div>
       </div>
       <div id="main-content" class="acc-acts-content invisible">
-        <h1>Profile</h1>
-        <p id="user-display-name"></p>
-        <p id="user-email"></p>
-        <p id="user-tier"></p>
-        <div id="user-subscribe" class="acc-acts-cta-link-container">
-          <div>
-            <a href="/account/purchase/">Subscribe</a>
+        <h1>Account</h1>
+        <dl class="profile-info">
+          <div class="profile-row">
+            <dt>Name</dt>
+            <dd id="user-display-name"></dd>
           </div>
-        </div>
-        <button id="sign-out-btn" class="btn-account">
+          <div class="profile-row">
+            <dt>Email</dt>
+            <dd id="user-email"></dd>
+          </div>
+          <div class="profile-row">
+            <dt>Plan</dt>
+            <dd id="user-tier"></dd>
+          </div>
+        </dl>
+        <a id="user-subscribe-btn" href="/account/purchase/" class="btn-account profile-cta">
+          Upgrade to Premium
+        </a>
+        <!-- TODO: add "Manage subscription" button for premium users — links to App Store / Play / RevenueCat customer portal -->
+        <button id="sign-out-btn" class="acc-acts-link-btn profile-sign-out">
           Sign Out
         </button>
       </div>
