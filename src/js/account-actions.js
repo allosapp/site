@@ -149,12 +149,14 @@ const { initializeApp } = App;
     showWorkflow(workflows.emailVerified);
     const email = window.localStorage.getItem(storageKeys.verifyEmail);
     if (email) {
+      elements.emailVerifiedSignIn.classList.add("acc-acts-hidden");
+      elements.emailVerifiedRedirecting.classList.remove("acc-acts-hidden");
       // Looks like the user triggered the email verification flow through the site.
       // Redirect to Profile page.
       setTimeout(() => {
         window.localStorage.removeItem(storageKeys.verifyEmail);
         window.location.replace("/account/profile/");
-      }, 3000);
+      }, 2000);
     }
   }
 
@@ -165,6 +167,8 @@ const { initializeApp } = App;
         passwordInput: document.getElementById("acc-acts-new-password"),
         passwordSubmit: document.getElementById("acc-acts-save-password"),
         userEmail: document.getElementById("acc-acts-user-email"),
+        emailVerifiedSignIn: document.getElementById("acc-acts-email-verified-sign-in"),
+        emailVerifiedRedirecting: document.getElementById("acc-acts-email-verified-redirecting"),
       };
 
       workflows = {
