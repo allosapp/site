@@ -15,6 +15,7 @@ import { isMobileDevice } from "./modules/util.js";
 
   urlParams.delete("continueUrl");
   const forwardUrl = `/account-actions/?${urlParams}`;
+  const appDeepLink = `allos://account-actions?${urlParams}`;
 
   const isMobile = isMobileDevice();
 
@@ -25,7 +26,7 @@ import { isMobileDevice } from "./modules/util.js";
     }
 
     const btn = document.getElementById("ev-continue-btn");
-    btn.href = forwardUrl;
+    btn.href = appDeepLink;
     document.getElementById("ev-loading").classList.add("acc-acts-hidden");
     document.getElementById("ev-continue-in-app").classList.remove("acc-acts-hidden");
   });
