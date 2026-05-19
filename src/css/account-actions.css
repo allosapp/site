@@ -138,6 +138,18 @@
   box-shadow: 0 6px 20px rgba(255, 14, 147, 0.4);
 }
 
+.hero-cta-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #FF276A 0%, #BF6AFE 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 32px;
+}
+
 .acc-acts-link-btn {
   color: white;
   background-color: transparent;
