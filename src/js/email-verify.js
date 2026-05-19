@@ -19,7 +19,7 @@ import { isMobileDevice } from "./modules/util.js";
   const isMobile = isMobileDevice();
 
   document.addEventListener("DOMContentLoaded", () => {
-    if (mode !== "verifyEmail" || source === "web" || !isMobile) {
+    if (source === "web" || !isMobile) {
       window.location.replace(forwardUrl);
       return;
     }
