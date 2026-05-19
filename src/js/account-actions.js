@@ -1,5 +1,6 @@
 import { storageKeys } from "./modules/constants.js";
 import { App, Auth as firebase } from "./modules/firebase.js";
+import { isMobileDevice } from "./modules/util.js";
 const { initializeApp } = App;
 
 (function () {
@@ -35,8 +36,7 @@ const { initializeApp } = App;
       currentWorkflow?.classList.add("acc-acts-hidden");
     }
 
-    const isMobile =
-      navigator?.userAgent?.match(/Android|iPhone|iPad/i) ?? false;
+    const isMobile = isMobileDevice();
     if (isMobile) {
       workflow?.classList.add("acc-acts-is-mobile");
     }
