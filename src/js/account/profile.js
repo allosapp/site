@@ -35,7 +35,9 @@ runOnLoad(() => {
 
   const sendVerificationEmail = (user) => {
     window.localStorage.setItem(storageKeys.verifyEmail, user.email);
-    Auth.sendEmailVerification(user);
+    Auth.sendEmailVerification(user, {
+      url: `${window.location.origin}/?source=web`,
+    });
   };
 
   const signOutAndRedirect = () => {

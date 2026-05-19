@@ -1,3 +1,6 @@
+export const isMobileDevice = () =>
+  /Android|iPhone|iPad/i.test(navigator.userAgent);
+
 export const runOnLoad = (cb) => {
   document.addEventListener("DOMContentLoaded", cb, false);
 };

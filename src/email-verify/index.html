@@ -1,0 +1,29 @@
+---
+layout: layouts/base-minimal.html
+title: Allos Account
+description: Manage your Allos account.
+noindex: true
+customHead: |
+  <link type="text/css" rel="stylesheet" href="/css/account-actions.css" />
+customScripts: |
+  <script type="module" src="/js/email-verify.js"></script>
+---
+
+<div class="acc-acts-container">
+  <div class="acc-acts-container-inner">
+    <div id="ev-loading" class="acc-acts-content">
+      <div class="spinner"></div>
+    </div>
+    <div id="ev-continue-in-app" class="acc-acts-content acc-acts-hidden">
+      <h1>Almost there...</h1>
+      <div class="acc-acts-text">
+        Tap the button below to continue in the Allos app.
+      </div>
+      <div class="acc-acts-cta-link-container" style="width: 100%">
+        <div>
+          <a id="ev-continue-btn" href="#">Continue in App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
