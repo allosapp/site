@@ -1,0 +1,98 @@
+---
+layout: layouts/base-minimal.html
+title: Confirm Account Deletion
+description: Confirm your Allos account deletion request.
+noindex: true
+customHead: |
+  <link type="text/css" rel="stylesheet" href="/css/account-actions.css" />
+customScripts: |
+  <script type="module" src="/js/account-deletion-confirm.js"></script>
+---
+
+<!-- PLACEHOLDER COPY: pending product/legal approval (deletion plan §8,
+     §13 gate 11). Truthfulness rules are normative: pending is never
+     rendered as deleted; terminal states render only from the status
+     lookup; the manual Apple instructions accompany
+     completed_with_manual_followup. -->
+<div class="acc-acts-container">
+  <div class="acc-acts-container-inner">
+    <div id="adc-loading" class="acc-acts-content">
+      <div class="spinner"></div>
+    </div>
+
+    <div id="adc-pending" class="acc-acts-content acc-acts-hidden">
+      <h1>Deletion In Progress</h1>
+      <div class="acc-acts-text">
+        <p>
+          Your deletion request is confirmed. Your account is disabled now,
+          and removal of your account and associated data is underway.
+          We&rsquo;ll email you when it&rsquo;s complete, and this page
+          updates automatically while it&rsquo;s open.
+        </p>
+        <p>
+          Deletion reference (for support):<br />
+          <strong id="adc-reference"></strong>
+        </p>
+        <p>
+          Remember: deleting your Allos account does not cancel an App
+          Store or Google Play subscription &mdash; manage subscriptions
+          with
+          <a href="https://apps.apple.com/account/subscriptions">Apple</a>
+          or
+          <a href="https://play.google.com/store/account/subscriptions">Google&nbsp;Play</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="adc-completed" class="acc-acts-content acc-acts-hidden">
+      <h1>Deletion Complete</h1>
+      <div class="acc-acts-text">
+        <p>
+          Your Allos account and associated data have been deleted.
+        </p>
+      </div>
+    </div>
+
+    <div id="adc-followup" class="acc-acts-content acc-acts-hidden">
+      <h1>Deletion Complete &mdash; One More Step</h1>
+      <div class="acc-acts-text">
+        <p>
+          Your Allos account and associated data have been deleted, but
+          your Sign in with Apple authorization could not be revoked
+          automatically. To remove it, visit
+          <a href="https://appleid.apple.com">appleid.apple.com</a> or open
+          your device&rsquo;s
+          <em>Settings &rarr; Apple Account &rarr; Sign in with Apple</em>
+          and remove Allos from the list.
+        </p>
+      </div>
+    </div>
+
+    <div id="adc-invalid" class="acc-acts-content acc-acts-hidden">
+      <h1>This Link Is No Longer Valid</h1>
+      <div class="acc-acts-text">
+        <p>
+          Confirmation links expire after 1 hour. You can request a new
+          one from the
+          <a href="/account-deletion/">account-deletion page</a>.
+        </p>
+        <p>
+          If you believe your deletion was already submitted, contact
+          <a href="mailto:hello@allos.app?subject=Account%20deletion%20request">hello@allos.app</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="adc-error" class="acc-acts-content acc-acts-hidden">
+      <h1>Something Went Wrong</h1>
+      <div class="acc-acts-text">
+        <p>
+          We couldn&rsquo;t process the confirmation right now. Your
+          account has not been changed unless we told you otherwise.
+          Please try again.
+        </p>
+      </div>
+      <button id="adc-retry" class="btn-account">Try Again</button>
+    </div>
+  </div>
+</div>

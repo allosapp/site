@@ -1,0 +1,92 @@
+---
+layout: layouts/base-minimal.html
+title: Delete Your Allos Account
+description: Request deletion of your Allos account and associated data.
+customHead: |
+  <link type="text/css" rel="stylesheet" href="/css/account-actions.css" />
+customScripts: |
+  <script type="module" src="/js/account-deletion.js"></script>
+---
+
+<!-- PLACEHOLDER COPY: pending product/legal approval (deletion plan §8,
+     §13 gate 11). Structure (required facts, store links, support
+     fallback) is normative. RELEASE GATE: this page must not be deployed
+     or submitted as the Play Console deletion URL until approved copy
+     adds the validated completion-time and retention disclosures (they
+     are deliberately absent until legal validates the maximums). -->
+<div class="acc-acts-container">
+  <div class="acc-acts-container-inner">
+    <div id="ad-request" class="acc-acts-content">
+      <h1>Delete Your Allos Account</h1>
+      <div class="acc-acts-text">
+        <p>
+          This page lets you request deletion of your Allos account without
+          the app. Allos is published on Google Play and the App Store by
+          Allos Development.
+        </p>
+        <p>
+          Deleting your account is <strong>permanent</strong>. Your account
+          and associated data &mdash; profile, completed-session history,
+          and settings tied to your account &mdash; will be deleted, except
+          where retention is legally required. We&rsquo;ll email you when
+          deletion is complete. If you prefer, you can also delete your
+          account in the app under
+          <em>Settings &rarr; Account &rarr; Delete&nbsp;Account</em>.
+        </p>
+        <p>
+          <strong>Deleting your Allos account does not cancel an App Store
+          or Google Play subscription.</strong> Store billing can continue
+          until you cancel it in your store account &mdash; manage
+          subscriptions with
+          <a href="https://apps.apple.com/account/subscriptions">Apple</a>
+          or
+          <a href="https://play.google.com/store/account/subscriptions">Google&nbsp;Play</a>.
+          Cancelling is not required to delete your account.
+        </p>
+        <p>
+          To verify it&rsquo;s you, we&rsquo;ll email a confirmation link to
+          your account&rsquo;s address. Nothing is deleted until you open
+          that link.
+        </p>
+      </div>
+      <div class="acc-acts-input-container">
+        <label for="ad-email">Account email</label>
+        <input
+          id="ad-email"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+        />
+      </div>
+      <div id="ad-error" class="acc-acts-text acc-acts-hidden"></div>
+      <button id="ad-submit" class="btn-account">
+        Email Me a Confirmation Link
+      </button>
+      <div class="acc-acts-text">
+        <p>
+          Didn&rsquo;t receive the email, or no longer have access to the
+          address? Contact
+          <a href="mailto:hello@allos.app?subject=Account%20deletion%20request">hello@allos.app</a>
+          and we&rsquo;ll verify your identity and process the deletion
+          for you.
+        </p>
+      </div>
+    </div>
+    <div id="ad-sent" class="acc-acts-content acc-acts-hidden">
+      <h1>Check Your Email</h1>
+      <div class="acc-acts-text">
+        <p>
+          If an Allos account exists for
+          <strong id="ad-sent-email"></strong>, we&rsquo;ve sent it a
+          confirmation link. Open the link within <strong>1 hour</strong>
+          to confirm the deletion &mdash; nothing happens without it.
+        </p>
+        <p>
+          Don&rsquo;t see it? Check your spam folder, or contact
+          <a href="mailto:hello@allos.app?subject=Account%20deletion%20request">hello@allos.app</a>
+          for a support-assisted deletion.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
