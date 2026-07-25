@@ -138,6 +138,14 @@
   box-shadow: 0 6px 20px rgba(255, 14, 147, 0.4);
 }
 
+/* When .btn-account is a link rather than a <button> */
+a.btn-account {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
 .hero-cta-btn {
   display: inline-block;
   padding: 14px 28px;
