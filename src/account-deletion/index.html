@@ -6,15 +6,19 @@ customHead: |
   <link type="text/css" rel="stylesheet" href="/css/account-actions.css" />
 ---
 
-<!-- PLACEHOLDER COPY: pending product/legal approval (lean plan §11
-     gate 2). Structure (required facts, subscription disclosure, email
-     request mechanism) is normative per plan §4.3. "Allos Development"
-     is the exact Play Console developer name (owner-confirmed
-     2026-07-25). Before registering this URL in Play Console Data
-     safety (gate 7), confirm the support address and response window
-     against the owner-set targets (plan §13). This page is deliberately
-     static — requests are fulfilled manually per the operator procedure
-     in the app repo, firebase/functions/README.md. -->
+<!-- PLACEHOLDER COPY: pending product/legal approval. Structure
+     (required facts, subscription disclosure, completion confirmation,
+     email request mechanism) is normative per the manual-fulfillment
+     plan §5 (app repo, specs/account-deletion-manual-fulfillment-plan.md).
+     "Allos Development" is the exact Play Console developer name
+     (owner-confirmed 2026-07-25). The 30-day timeframe and the 14-day
+     verification-reply window are plan §11 default recommendations and
+     must match the published Privacy Policy before release (gate 7);
+     record the final URL in the release ticket and Play Console Data
+     safety. This page is deliberately capture-only — no backend, no
+     code execution; every deletion action, including the Firebase Auth
+     deletion, is performed manually per the operator runbook in the app
+     repo, docs/account-deletion-operator-runbook.md. -->
 <div class="acc-acts-container">
   <div class="acc-acts-container-inner">
     <div class="acc-acts-content">
@@ -30,12 +34,18 @@ customHead: |
           account and associated data &mdash; profile, completed-session
           history, settings tied to your account, and your customer
           records with our subscription-management and email providers
-          &mdash; will be deleted, except where retention is legally
-          required.
+          &mdash; will be deleted within 30&nbsp;days of your request,
+          once it is verified. The scope of what is deleted, and the few
+          records retained with their retention periods, are described
+          in our Privacy Policy.
         </p>
         <p>
           The fastest way to delete your account is in the app, under
           <em>Settings &rarr; Account &rarr; Delete&nbsp;Account</em>.
+          Guest profiles (using Allos without signing up) have no email
+          address we can verify, so guest data is deleted in the app
+          under <em>Settings &rarr; Account &rarr;
+          Delete&nbsp;Guest&nbsp;Data</em>.
         </p>
         <p>
           <strong>Deleting your Allos account does not cancel an App
@@ -52,12 +62,15 @@ customHead: |
           <a href="mailto:hello@allos.app?subject=Account%20deletion%20request">hello@allos.app</a>
           from the email address on your Allos account, with the subject
           &ldquo;Account deletion request.&rdquo; We&rsquo;ll reply to
-          verify that you control the address &mdash; nothing is deleted
-          until then &mdash; and confirm once deletion is complete,
-          typically within a few days and always within 30&nbsp;days. If
-          you no longer have access to that address, use the in-app
-          deletion flow above &mdash; it verifies your identity by
-          signing in again, not by email.
+          acknowledge your request and verify that you control the
+          address &mdash; nothing is deleted until you answer that reply,
+          and a request with no answer after 14&nbsp;days is closed
+          without action. Once verified, deletion completes within the
+          same 30&nbsp;days counted from your original request, and
+          we&rsquo;ll email you a confirmation when it is done. If you no longer have
+          access to the address on your account, use the in-app deletion
+          flow above &mdash; it verifies your identity by signing in
+          again, not by email.
         </p>
       </div>
       <a
