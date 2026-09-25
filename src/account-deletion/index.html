@@ -6,19 +6,20 @@ customHead: |
   <link type="text/css" rel="stylesheet" href="/css/account-actions.css" />
 ---
 
-<!-- PLACEHOLDER COPY: pending product/legal approval. Structure
-     (required facts, subscription disclosure, completion confirmation,
-     email request mechanism) is normative per the manual-fulfillment
-     plan §5 (app repo, specs/account-deletion-manual-fulfillment-plan.md).
+<!-- Copy pending final product/legal review; structure (required
+     facts, subscription disclosure, completion confirmation, email
+     request mechanism) is normative per the manual-fulfillment plan §5
+     (app repo, specs/account-deletion-manual-fulfillment-plan.md).
      "Allos Development" is the exact Play Console developer name
-     (owner-confirmed 2026-07-25). The 30-day timeframe and the 14-day
-     verification-reply window are plan §11 default recommendations and
-     must match the published Privacy Policy before release (gate 7);
-     record the final URL in the release ticket and Play Console Data
-     safety. This page is deliberately capture-only — no backend, no
-     code execution; every deletion action, including the Firebase Auth
-     deletion, is performed manually per the operator runbook in the app
-     repo, docs/account-deletion-operator-runbook.md. -->
+     (owner-confirmed 2026-07-25). Decided values (app repo release
+     checklist §1, 2026-09-23/24): 30-day Allos-controlled deletion
+     counted from the original request; Google may take up to 63 days
+     after our request to remove analytics data; 14-day verification
+     window. These must match the published Privacy Policy before
+     release (gate 7); record the final URL in the release ticket and
+     Play Console Data safety. This page is deliberately capture-only —
+     no backend, no code execution; fulfilment follows the operator
+     runbook in the app repo, docs/account-deletion-operator-runbook.md. -->
 <div class="acc-acts-container">
   <div class="acc-acts-container-inner">
     <div class="acc-acts-content">
@@ -65,9 +66,12 @@ customHead: |
           acknowledge your request and verify that you control the
           address &mdash; nothing is deleted until you answer that reply,
           and a request with no answer after 14&nbsp;days is closed
-          without action. Once verified, deletion completes within the
-          same 30&nbsp;days counted from your original request, and
-          we&rsquo;ll email you a confirmation when it is done. If you no longer have
+          without action. Once verified, we complete the deletion steps
+          we control within the same 30&nbsp;days counted from your
+          original request, and we&rsquo;ll email you a confirmation when
+          they are done. Google Analytics may then take up to 63&nbsp;days
+          to permanently remove the analytics data we ask it to delete,
+          as described in our Privacy Policy. If you no longer have
           access to the address on your account, use the in-app deletion
           flow above &mdash; it verifies your identity by signing in
           again, not by email.
